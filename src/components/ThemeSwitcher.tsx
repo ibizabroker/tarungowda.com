@@ -20,7 +20,7 @@ export default function ThemeSwitcher({ className }: { className: string }) {
 
   if (resolvedTheme === 'dark') {
     return (
-      <div className={`${className}`}>
+      <div className={`cursor-pointer ${className}`}>
         <Image 
           src={LightMode}
           alt='Light Mode'
@@ -32,7 +32,7 @@ export default function ThemeSwitcher({ className }: { className: string }) {
 
   if (resolvedTheme === 'light') {
     return (
-      <div className={`${className}`}>
+      <div className={`cursor-pointer ${className}`}>
         <Image 
           src={DarkMode}
           alt='Dark Mode'
