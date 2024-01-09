@@ -3,11 +3,11 @@ import Link from "next/link";
 const NotFound = async () => {
   return (
     <>
-      <section className="section-sm text-center">
-        <div className="container">
+      <section className="py-16 xl:py-20 text-center">
+        <div className="mx-auto max-w-[1320px] px-4">
           <div className="row justify-center">
             <div className="sm:col-10 md:col-8 lg:col-6">
-              <span className="text-[8rem] block font-bold text-dark dark:text-darkmode-dark">
+              <span className="text-[8rem] block font-bold text-dark dark:text-white">
                 404
               </span>
               <h1 className="h2 mb-4">Page not found</h1>
@@ -17,7 +17,7 @@ const NotFound = async () => {
                   or is temporarily unavailable.
                 </p>
               </div>
-              <Link href="/" className="btn btn-primary mt-8">
+              <Link href="/" className="inline-block rounded border border-transparent px-5 py-2 font-semibold capitalize transition border-dark bg-dark text-white dark:border-white dark:bg-white dark:text-dark mt-8">
                 Go Home
               </Link>
             </div>
