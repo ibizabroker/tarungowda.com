@@ -63,7 +63,7 @@ export default function Navbar() {
           <li className="mx-3">
             <Link 
               href="/blog" 
-              className="block p-3 font-semibold text-dark transition hover:text-primary dark:text-white lg:px-2 lg:py-3"
+              className="block p-3 font-semibold text-dark hover:scale-125 transition-all ease duration-200 dark:text-white lg:px-2 lg:py-3"
               onClick={() => {setNavbar(!navbar)}}
             >
               Blog
@@ -72,7 +72,7 @@ export default function Navbar() {
           <li className="mx-3">
             <Link 
               href="/projects" 
-              className="block p-3 font-semibold text-dark transition hover:text-primary dark:text-white lg:px-2 lg:py-3"
+              className="block p-3 font-semibold text-dark hover:scale-125 transition-all ease duration-200 dark:text-white lg:px-2 lg:py-3"
               onClick={() => {setNavbar(!navbar)}}
             >
               Projects
@@ -81,7 +81,7 @@ export default function Navbar() {
           <li className="mx-3">
             <Link 
               href="/contact" 
-              className="block p-3 font-semibold text-dark transition hover:text-primary dark:text-white lg:px-2 lg:py-3"
+              className="block p-3 font-semibold text-dark hover:scale-125 transition-all ease duration-200 dark:text-white lg:px-2 lg:py-3"
               onClick={() => {setNavbar(!navbar)}}
             >
               Contact
