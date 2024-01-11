@@ -1,8 +1,16 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
+
+const computedFields: ComputedFields = {
+  slug: {
+    type: "string",
+    resolve: (doc) => `${doc._raw.sourceFileName.replace(/\.md$/, '')}`,
+  },
+};
+
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: `content/**/*.md`,
+  filePathPattern: `blog/*.md`,
   fields: {
     title: { 
       type: 'string', 
@@ -30,15 +38,10 @@ export const Blog = defineDocumentType(() => ({
       required: true
     }
   },
-  computedFields: {
-    url: { 
-      type: 'string', 
-      resolve: (post) => `/blog/${post._raw.flattenedPath}` 
-    },
-  },
+  computedFields
 }))
 
 export default makeSource({ 
-  contentDirPath: 'src', 
+  contentDirPath: 'src/content', 
   documentTypes: [Blog] 
 })
