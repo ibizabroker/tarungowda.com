@@ -1,12 +1,16 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
+import readingTime from 'reading-time';
 
 const computedFields: ComputedFields = {
   slug: {
-    type: "string",
+    type: 'string',
     resolve: (doc) => `${doc._raw.sourceFileName.replace(/\.md$/, '')}`,
   },
+  readingTime: {
+    type: 'json',
+    resolve: (doc) => readingTime(doc.body.raw, { wordsPerMinute: 238 }),
+  }
 };
-
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
