@@ -1,4 +1,9 @@
+import sortBlogsUsingDate from '@/utils/sortBlogs'
+import { allBlogs } from 'contentlayer/generated'
+
 function Home() {
+  const sortedBlogs = sortBlogsUsingDate(allBlogs);
+  console.log(sortedBlogs)
   return (
     <main className="p-5">
       <h1 className="text-3xl font-bold text-gray-800">
