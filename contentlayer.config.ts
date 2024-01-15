@@ -1,5 +1,9 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
 import readingTime from 'reading-time';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
 const computedFields: ComputedFields = {
   slug: {
@@ -47,5 +51,23 @@ export const Blog = defineDocumentType(() => ({
 
 export default makeSource({ 
   contentDirPath: 'src/content', 
-  documentTypes: [Blog] 
+  documentTypes: [Blog],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypePrettyCode, 
+        {
+          theme: "github-dark",
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'append',
+        },
+      ],
+    ]
+  }
 })
