@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm';
 const computedFields: ComputedFields = {
   slug: {
     type: 'string',
-    resolve: (doc) => `${doc._raw.sourceFileName.replace(/\.md$/, '')}`,
+    resolve: (doc) => `${doc._raw.sourceFileName.replace(/\.mdx$/, '')}`,
   },
   readingTime: {
     type: 'json',
@@ -18,7 +18,8 @@ const computedFields: ComputedFields = {
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: `blog/*.md`,
+  filePathPattern: `blog/*.mdx`,
+  contentType: 'mdx',
   fields: {
     title: { 
       type: 'string', 
