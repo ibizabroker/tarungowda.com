@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <header
-      className="bg-white py-4 dark:bg-dark z-30 sticky top-0"
+      className="py-4 sticky top-0 z-[1000]"
     >
       <nav className="relative flex flex-wrap items-center justify-between mx-auto max-w-[1320px] px-4">
         <div className="order-0">
@@ -26,7 +26,7 @@ export default function Navbar() {
         <input id="nav-toggle" type="checkbox" className="hidden" />
         <label
           htmlFor="nav-toggle"
-          className="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1"
+          className="order-3 cursor-pointer flex items-center lg:hidden lg:order-1"
           onClick={() => {setNavbar(!navbar)}}
         >
           <svg
@@ -63,7 +63,7 @@ export default function Navbar() {
           <li className="mx-3">
             <Link 
               href="/blog" 
-              className="block p-3 font-semibold text-dark hover:scale-125 transition-all ease duration-200 dark:text-white lg:px-2 lg:py-3"
+              className="block p-3 font-semibold hover:scale-125 transition-all ease duration-200 lg:px-2 lg:py-3"
               onClick={() => {setNavbar(!navbar)}}
             >
               Blog
@@ -72,7 +72,7 @@ export default function Navbar() {
           <li className="mx-3">
             <Link 
               href="/projects" 
-              className="block p-3 font-semibold text-dark hover:scale-125 transition-all ease duration-200 dark:text-white lg:px-2 lg:py-3"
+              className="block p-3 font-semibold hover:scale-125 transition-all ease duration-200 lg:px-2 lg:py-3"
               onClick={() => {setNavbar(!navbar)}}
             >
               Projects
@@ -81,7 +81,7 @@ export default function Navbar() {
           <li className="mx-3">
             <Link 
               href="/contact" 
-              className="block p-3 font-semibold text-dark hover:scale-125 transition-all ease duration-200 dark:text-white lg:px-2 lg:py-3"
+              className="block p-3 font-semibold hover:scale-125 transition-all ease duration-200 lg:px-2 lg:py-3"
               onClick={() => {setNavbar(!navbar)}}
             >
               Contact

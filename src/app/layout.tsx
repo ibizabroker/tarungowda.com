@@ -1,4 +1,4 @@
-import "./globals.css"
+import "@/styles/main.css"
 import type { Metadata } from 'next'
 import { Inter, Manrope } from 'next/font/google'
 import { Providers } from "@/components/Providers"

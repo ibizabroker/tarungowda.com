@@ -8,12 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: "#1b1b1b",
-        light: "#ffffff",
-        accent: "#7b00d3",
-        accentDark: "#ffdb4d",
-        gray: "#747474",
+        gray: {
+          850: '#18202F',
+          950: '#0b0f1a',
+        },
       },
+      // colors: {
+      //   dark: "#1b1b1b",
+      //   light: "#ffffff",
+      //   accent: "#7b00d3",
+      //   accentDark: "#ffdb4d",
+      //   gray: "#747474",
+      // },
       fontFamily: {
         in: ["var(--font-in)"],
         mr: ["var(--font-mr)"]
