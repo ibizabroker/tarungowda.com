@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <header
-      className="py-4 sticky top-0 z-[1000]"
+      className="bg-white dark:bg-gray-950 py-4 sticky top-0 z-[1000]"
     >
       <nav className="relative flex flex-wrap items-center justify-between mx-auto max-w-[1320px] px-4">
         <div className="order-0">
