@@ -7,6 +7,6 @@
   }
 
   body {
-    @apply h-full bg-white text-slate-500 antialiased dark:bg-gray-950 dark:text-slate-400;
+    @apply h-full antialiased py-12 bg-white text-slate-500 dark:bg-gray-950 dark:text-slate-400;
   }
 }
