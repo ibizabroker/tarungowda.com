@@ -12,11 +12,11 @@ export default function Navbar() {
   const isScrolled = useScroll(0);
 
   return (
-    <header className="bg-white dark:bg-gray-950 h-16 py-2 fixed w-full top-0 z-[1000]">
+    <header className="h-16 py-2 fixed w-full top-0 z-[1000]">
       <div
         className={`fixed inset-0 h-16 ${
           isScrolled ?
-            'border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950':
+            'border-b border-gray-200 dark:border-gray-800 backdrop-blur-[9px]':
             'bg-white dark:bg-gray-950'
         }`}
       />
