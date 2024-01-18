@@ -5,14 +5,21 @@ import ThemeSwitcher from "./ThemeSwitcher"
 import TempLogo from "@/images/templogo.svg"
 import Image from 'next/image'
 import { useState } from "react"
+import useScroll from "@/hooks/useOnScroll"
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
+  const isScrolled = useScroll(0);
 
   return (
-    <header
-      className="bg-white dark:bg-gray-950 py-2 fixed w-full top-0 z-[1000]"
-    >
+    <header className="bg-white dark:bg-gray-950 h-16 py-2 fixed w-full top-0 z-[1000]">
+      <div
+        className={`fixed inset-0 h-16 ${
+          isScrolled ?
+            'border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950':
+            'bg-white dark:bg-gray-950'
+        }`}
+      />
       <nav className="relative flex flex-wrap items-center justify-between mx-auto max-w-[1320px] px-4">
         <div className="order-0">
           <Link href="/" className="max-h-full max-w-full inline-block">
