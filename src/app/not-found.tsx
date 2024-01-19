@@ -17,7 +17,7 @@ const NotFound = async () => {
                   or is temporarily unavailable.
                 </p>
               </div>
-              <Link href="/" className="inline-block rounded border border-transparent px-5 py-2 font-bold capitalize transition border-dark mt-8">
+              <Link href="/" className="button button-primary mt-8 inline-block">
                 Go Home
               </Link>
             </div>
