@@ -1,0 +1,47 @@
+/* classes for rehypeAutolinkHeadings plugin */
+.anchor {
+  @apply hidden
+}
+
+h1:hover>.anchor, 
+h2:hover>.anchor, 
+h3:hover>.anchor, 
+h4:hover>.anchor, 
+h5:hover>.anchor, 
+h6:hover>.anchor {
+  @apply inline-block no-underline
+}
+
+h1>a>.icon.icon-link:before,
+h2>a>.icon.icon-link:before,
+h3>a>.icon.icon-link:before,
+h4>a>.icon.icon-link:before,
+h5>a>.icon.icon-link:before,
+h6>a>.icon.icon-link:before {
+  @apply text-slate-300 dark:text-slate-800 content-['#'] align-baseline ml-4
+}
+
+h1>a>.icon.icon-link:before {
+  @apply text-5xl
+}
+
+h2>a>.icon.icon-link:before {
+  @apply text-3xl
+}
+
+h3>a>.icon.icon-link:before {
+  @apply text-2xl
+}
+
+h4>a>.icon.icon-link:before {
+  @apply text-lg
+}
+
+h5>a>.icon.icon-link:before {
+  @apply text-base
+}
+
+
+h6>a>.icon.icon-link:before {
+  @apply text-base
+}
