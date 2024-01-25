@@ -1,0 +1,51 @@
+.toc {
+  @apply relative;
+}
+
+.toc .toc-card {
+  @apply relative bg-gray-850 border font-medium mx-auto my-0 px-4 py-6 border-solid border-[rgba(0,1,0,)];
+}
+
+.toc .toc-head {
+  @apply text-center font-medium text-[color:var(--color-main-dark-02)] flex justify-start items-center;
+}
+
+.toc .toc-head span {
+  @apply text-[rem(18)] tracking-[0.02em];
+}
+
+.toc .toc-content > .toc-list {
+  @apply border-b-[color:var(--color-border)] border-b border-dashed;
+}
+
+.toc .toc-list {
+  @apply mt-4;
+}
+
+.toc .toc-list.is-collapsible {
+  @apply mt-0 border-l-[none];
+}
+
+.toc .toc-list.is-collapsible a {
+  @apply pl-[1.25em];
+}
+
+.toc .toc-list-item {
+  @apply border-t-[color:var(--color-border)] border-t border-dashed;
+}
+
+.toc .toc-link {
+  @apply flex text-[rgba(0,1,0,)] bg-none leading-normal tracking-[0.02em] px-1 py-2 hover:text-[color:var(--color-main)];
+}
+
+.toc .toc-link.node-name--H2 {
+  @apply text-[rem(15)];
+}
+
+.toc .toc-link.node-name--H3 {
+  @apply text-[rem(15)];
+}
+
+.toc .toc-link.is-active-link {
+  @apply text-[color:var(--color-main)];
+}

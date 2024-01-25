@@ -12,4 +12,13 @@
   .button-secondary {
     @apply bg-violet-100 text-violet-800 border-violet-200 hover:bg-violet-50 dark:text-violet-300 dark:border-violet-500/30 dark:hover:bg-violet-500/30 dark:bg-violet-500/20
   }
+
+  .container {
+    @apply max-w-[1100px] w-full mx-auto my-0 px-8 py-0;
+  }
+  @media (max-width: 650px) {
+    .container {
+      @apply px-4 py-0;
+    }
+  }
 }

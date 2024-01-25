@@ -4,5 +4,7 @@
 @import 'tailwindcss/components';
 @import './components.css';
 @import './mdx-components.css';
+@import './blog.css';
+@import './toc.css';
 
 @import 'tailwindcss/utilities';
