@@ -3,11 +3,11 @@
 }
 
 .toc .toc-card {
-  @apply relative bg-gray-850 border font-medium mx-auto my-0 px-4 py-6 border-solid border-[rgba(0,1,0,)];
+  @apply relative dark:bg-gray-850 border rounded-xl font-medium mx-auto my-0 px-4 py-4 border-solid dark:border-slate-800;
 }
 
 .toc .toc-head {
-  @apply text-center font-medium text-[color:var(--color-main-dark-02)] flex justify-start items-center;
+  @apply text-center font-medium flex justify-start items-center pb-3 border-b;
 }
 
 .toc .toc-head span {
