@@ -1,3 +1,38 @@
+/* for blog showcase page */
+.blogshowcase-container {
+  @apply max-w-[1264px];
+}
+@media (max-width: 992px) {
+  .blogshowcase-container {
+    @apply max-w-[800px];
+  }
+}
+
+.blogshowcase-content {
+  @apply relative flex justify-center;
+}
+@media (max-width: 992px) {
+  .blogshowcase-content {
+    @apply flex-wrap;
+  }
+}
+
+.blogshowcase-main {
+  @apply max-w-[800px] grow mt-12 pb-[120px];
+}
+@media (max-width: 992px) {
+  .blogshowcase-main {
+    @apply max-w-full w-full pb-[72px];
+  }
+}
+@media (max-width: 650px) {
+  .blogshowcase-main {
+    @apply pb-10;
+  }
+}
+
+
+/* for single page of blog */
 .blog-container {
   @apply max-w-[1300px];
 }
