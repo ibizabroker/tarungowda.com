@@ -3,23 +3,23 @@
 }
 
 .toc .toc-card {
-  @apply relative dark:bg-gray-850 border rounded-xl font-medium mx-auto my-0 px-4 py-4 border-solid dark:border-slate-800;
+  @apply relative dark:bg-gray-850 border rounded-xl font-medium mx-auto my-0 border-solid dark:border-slate-800;
 }
 
 .toc .toc-head {
-  @apply text-center font-medium flex justify-start items-center pb-3 border-b;
+  @apply text-center font-medium flex justify-start items-center px-4 pt-4;
+}
+
+.toc .toc-head {
+  @apply pb-3 dark:border-slate-800 border-b;
 }
 
 .toc .toc-head span {
   @apply text-[rem(18)] tracking-[0.02em];
 }
 
-.toc .toc-content > .toc-list {
-  @apply border-b-[color:var(--color-border)] border-b border-dashed;
-}
-
-.toc .toc-list {
-  @apply mt-4;
+.toc .toc-content {
+  @apply px-4 py-3;
 }
 
 .toc .toc-list.is-collapsible {
@@ -27,11 +27,7 @@
 }
 
 .toc .toc-list.is-collapsible a {
-  @apply pl-[1.25em];
-}
-
-.toc .toc-list-item {
-  @apply border-t-[color:var(--color-border)] border-t border-dashed;
+  @apply pl-[1.50em];
 }
 
 .toc .toc-link {

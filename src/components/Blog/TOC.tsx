@@ -9,8 +9,8 @@ export default function Toc() {
       tocSelector: ".toc-content",
       contentSelector: ".user-content",
       headingSelector: "h1, h2, h3",
-      headingsOffset: 100,
-      scrollSmoothOffset: -100,
+      headingsOffset: 75,
+      scrollSmoothOffset: -75,
       scrollSmoothDuration: 300,
       hasInnerContainers: true,
     });
