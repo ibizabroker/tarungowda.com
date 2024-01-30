@@ -1,3 +1,4 @@
+import Card from '@/components/Blog/Card';
 import sortBlogsUsingDate from '@/utils/sortBlogs';
 import { allBlogs } from 'contentlayer/generated'
 
@@ -9,7 +10,7 @@ export default function BlogShowcase() {
     <div className='container blogshowcase-container'>
       <div className='blogshowcase-content'>
         <main className='blogshowcase-main'>
-          Blog showcase
+          <Card blog={sortedBlogs[1]} headingLevel="h2" />
         </main>
       </div>
     </div>
