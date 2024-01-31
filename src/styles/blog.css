@@ -33,7 +33,7 @@
 
 /* blog card */
 .blog-card {
-  @apply relative flex flex-col w-full overflow-hidden dark:bg-gray-850 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-slate-800 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-[-3px];
+  @apply relative flex flex-col w-full overflow-hidden dark:bg-dark-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-slate-800 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-[-3px];
 }
 @media (max-width: 992px) {
   .blog-card:hover {

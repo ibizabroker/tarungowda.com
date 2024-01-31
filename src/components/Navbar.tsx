@@ -16,8 +16,8 @@ export default function Navbar() {
       <div
         className={`fixed inset-0 h-16 ${
           isScrolled ?
-            'border-b border-gray-200 dark:border-gray-800 backdrop-blur-[9px]':
-            'bg-white dark:bg-gray-950'
+            'border-b border-gray-200 dark:border-slate-800 backdrop-blur-[9px]':
+            'bg-white dark:bg-dark-1'
         }`}
       />
       <nav className="relative flex flex-wrap items-center justify-between mx-auto max-w-[1320px] px-4">
