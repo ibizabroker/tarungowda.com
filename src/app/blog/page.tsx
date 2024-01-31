@@ -10,7 +10,7 @@ export default function BlogShowcase() {
     <div className='container blogshowcase-container'>
       <div className='blogshowcase-content'>
         <main className='blogshowcase-main'>
-          <Card blog={sortedBlogs[1]} headingLevel="h2" />
+          <Card blog={sortedBlogs[1]} />
         </main>
       </div>
     </div>

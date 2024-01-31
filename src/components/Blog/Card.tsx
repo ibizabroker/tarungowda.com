@@ -1,25 +1,15 @@
 import Link from "next/link";
 import { format, parseISO } from 'date-fns'
 
-export default function Card({ blog, headingLevel }: { blog: any, headingLevel: any }) {
+export default function Card({ blog }: { blog: any }) {
   const { title, date, description, draft, tags, slug } = blog;
-
-  const Heading = () => {
-    const HeadingTag = headingLevel;
-
-    return (
-      <HeadingTag className='blog-card-heading'>
-        <span>{title}</span>
-      </HeadingTag>
-    );
-  };
 
   return (
     draft ? null :
     <Link href={`blog/${slug}`} as={`blog/${slug}`} className='blog-card'>
 
       <div className='blog-card-content'>
-        <Heading />
+        <p className='blog-card-heading'>{title}</p>
         <p className='blog-card-description'>{description}</p>
         <ul className='blog-card-tags'>
           {tags.map((tag: any) => {
