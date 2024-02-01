@@ -41,7 +41,7 @@
   }
 }
 .blog-card:hover .blog-card-heading {
-  @apply text-[color:var(--color-main)];
+  @apply text-secondary-1;
 }
 
 .blog-card-content {
