@@ -79,10 +79,11 @@
 }
 
 .blog-card-time {
-  @apply text-[color:var(--color-card-time)] text-sm tracking-[0.04em] flex items-center;
+  @apply text-[color:var(--color-card-time)] text-xs tracking-[0.04em] flex items-center;
 }
-.blog-card-time svg {
-  @apply mr-1;
+
+.blog-card-clock {
+  @apply mr-1 dark:text-slate-400 h-4 w-4;
 }
 
 /* for single page of blog */

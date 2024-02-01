@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { format, parseISO } from 'date-fns'
+import Clock from '@/images/clock.svg'
 
 export default function Card({ blog }: { blog: any }) {
   const { title, date, description, draft, tags, slug } = blog;
@@ -21,7 +22,8 @@ export default function Card({ blog }: { blog: any }) {
           })}
         </ul>
         <div className='blog-card-info'>
-          <time dateTime={date} className="mb-1 text-xs">
+          <time dateTime={date} className="blog-card-time">
+            <Clock className='blog-card-clock' />
             {format(parseISO(date), 'LLLL d, yyyy')}
           </time>
         </div>

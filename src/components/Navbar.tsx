@@ -1,9 +1,8 @@
-"use client"
+'use client'
 
 import Link from "next/link"
 import ThemeSwitcher from "./ThemeSwitcher"
 import TempLogo from "@/images/templogo.svg"
-import Image from 'next/image'
 import { useState } from "react"
 import useScroll from "@/hooks/useOnScroll"
 
@@ -23,10 +22,7 @@ export default function Navbar() {
       <nav className="relative flex flex-wrap items-center justify-between mx-auto max-w-[1320px] px-4">
         <div className="order-0">
           <Link href="/" className="max-h-full max-w-full inline-block">
-            <Image 
-              src={TempLogo}
-              alt='Logo'
-            />
+            <TempLogo />
           </Link>
         </div>
 
