@@ -1,10 +1,10 @@
 import slugify from "slugify";
 
-const convertDotsToHyphens = (string: String) => {
+const convertDotsToHyphens = (string: string) => {
   return string.replace(/\./g, "-");
 };
 
-export const formatSlug = (string: String) => {
+export const formatSlug = (string: string) => {
   return slugify(convertDotsToHyphens(string), {
     lower: true,
     remove: /[*+~.()'"!:@]/g,
