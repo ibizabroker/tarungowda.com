@@ -6,5 +6,6 @@
 @import './mdx-components.css';
 @import './blog.css';
 @import './toc.css';
+@import './tags.css';
 
 @import 'tailwindcss/utilities';
