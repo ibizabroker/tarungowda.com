@@ -63,3 +63,7 @@ export const getTagsData = (tags: string[]) => {
 
   return tagsData;
 };
+
+export const getTagSlugLink = (tagSlug: string) => {
+  return `/blog/tags/${tagSlug}`;
+};

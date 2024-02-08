@@ -1,3 +1,4 @@
+/* Tag slug page styles */
 .tag-container {
   @apply max-w-[1264px];
 }
@@ -42,4 +43,53 @@
   .tag-main {
     @apply pb-10;
   }
+}
+
+
+/* Sidebar tag styles */
+.tag-sidebar {
+  @apply sticky shrink-0 grow basis-[280px] max-w-xs max-h-[calc(100vh_-_280px)] h-full ml-12 pb-[72px] top-32;
+}
+@media (max-width: 992px) {
+  .tag-sidebar {
+    @apply static w-full max-w-full flex justify-between ml-0;
+  }
+}
+@media (max-width: 650px) {
+  .tag-sidebar {
+    @apply flex-wrap;
+  }
+}
+
+.tag-block {
+  @apply bg-[rgba(0,1,0,)] border mb-12 pt-4 pb-6 px-6 rounded-[10px] border-solid border-[rgba(0,1,0,)];
+}
+@media (max-width: 992px) {
+  .tag-block {
+    @apply w-[calc(50%_-_16px)] mb-0;
+  }
+}
+@media (max-width: 650px) {
+  .tag-block {
+    @apply w-full mt-6 p-4;
+  }
+}
+
+.tag-block-head {
+  @apply flex items-center text-base font-[bold] tracking-[0.04em] text-[color:var(--color-main-dark-02)] pb-3 border-b-[rgba(0,1,0,)] border-b border-solid;
+}
+
+.tag-list {
+  @apply flex flex-wrap mt-2;
+}
+
+.tag-item {
+  @apply ml-0 mr-2 mt-2 mb-0;
+}
+
+.tag-link {
+  @apply flex items-center tracking-[0.02em] font-semibold text-sm border text-[color:var(--color-main-dark-01)] transition-all duration-[0.3s] px-2 py-0.5 rounded-[30px] border-solid border-[rgba(0,0,0,)] hover:text-[color:var(--color-white)] hover:bg-[color:var(--color-main-dark-01)];
+}
+.tag-link span {
+  @apply text-xs mr-1;
 }
