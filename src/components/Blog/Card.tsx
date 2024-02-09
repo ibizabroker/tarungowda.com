@@ -7,7 +7,7 @@ export default function Card({ blog }: { blog: any }) {
 
   return (
     draft ? null :
-    <Link href={`blog/${slug}`} as={`blog/${slug}`} className='blog-card'>
+    <Link href={`/blog/${slug}`} as={`/blog/${slug}`} className='blog-card'>
 
       <div className='blog-card-content'>
         <p className='blog-card-heading'>{title}</p>
