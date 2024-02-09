@@ -1,7 +1,7 @@
 import { Blog } from 'contentlayer/generated'
 import { allTagsData, getPostsByTag } from "@/utils/tags";
 import List from '@/components/Blog/List';
-import TagSidebar from '@/components/Blog/TagSideBar';
+import TagsSidebar from '@/components/Blog/TagsSideBar';
 
 export default function TagsPage({ params }: { params: any }) {
   const tagData = allTagsData.find((tag) => {
@@ -24,7 +24,7 @@ export default function TagsPage({ params }: { params: any }) {
         <main className='tag-main'>
           <List sortedBlogs={blogs} />
         </main>
-        <TagSidebar />
+        <TagsSidebar />
       </div>
     </div>
   )
