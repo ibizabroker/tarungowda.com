@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { allTagsData, getTagSlugLink } from "@/utils/tags";
 
-export default function TagSidebar() {
+export default function TagsSidebar() {
   const tags = allTagsData;
 
   return (
