@@ -3,7 +3,7 @@
 }
 
 .toc .toc-card {
-  @apply relative dark:bg-dark-2 border rounded-xl font-medium mx-auto my-0 border-solid dark:border-slate-800;
+  @apply relative dark:bg-dark-2 border rounded-xl font-medium mx-auto my-0 border-solid dark:border-divider-1;
 }
 
 .toc .toc-head {
@@ -11,7 +11,7 @@
 }
 
 .toc .toc-head {
-  @apply pb-3 dark:border-slate-800 border-b;
+  @apply pb-3 dark:border-divider-1 border-b;
 }
 
 .toc .toc-head span {

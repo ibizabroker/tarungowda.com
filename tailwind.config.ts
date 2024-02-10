@@ -15,6 +15,10 @@ const config: Config = {
         secondary: {
           1: '#a086f0',
           2: '#251e51'
+        },
+        divider: {
+          1: '#1e293b',
+          2: '#334155'
         }
       },
       fontFamily: {
