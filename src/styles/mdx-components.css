@@ -1,6 +1,6 @@
 /* classes for rehypeAutolinkHeadings plugin */
 .anchor {
-  @apply hidden
+  @apply hidden;
 }
 
 h1:hover>.anchor, 
@@ -9,7 +9,7 @@ h3:hover>.anchor,
 h4:hover>.anchor, 
 h5:hover>.anchor, 
 h6:hover>.anchor {
-  @apply inline-block no-underline
+  @apply inline-block no-underline;
 }
 
 h1>a>.icon.icon-link:before,
@@ -18,31 +18,61 @@ h3>a>.icon.icon-link:before,
 h4>a>.icon.icon-link:before,
 h5>a>.icon.icon-link:before,
 h6>a>.icon.icon-link:before {
-  @apply text-slate-300 dark:text-slate-800 content-['#'] align-baseline ml-4
+  @apply text-slate-300 dark:text-slate-800 hover:!text-secondary-1 content-['#'] align-baseline ml-4;
 }
 
 h1>a>.icon.icon-link:before {
   @apply text-5xl
 }
+@media (max-width: 650px) {
+  h1>a>.icon.icon-link:before {
+    @apply text-[2rem];
+  }
+}
 
 h2>a>.icon.icon-link:before {
-  @apply text-3xl
+  @apply text-4xl leading-[1.2];
+}
+@media (max-width: 650px) {
+  h2>a>.icon.icon-link:before {
+    @apply text-[1.75rem];
+  }
 }
 
 h3>a>.icon.icon-link:before {
-  @apply text-2xl
+  @apply text-[2rem] leading-[1.2];
+}
+@media (max-width: 650px) {
+  h3>a>.icon.icon-link:before {
+    @apply text-2xl;
+  }
 }
 
 h4>a>.icon.icon-link:before {
-  @apply text-lg
+  @apply text-[1.75rem];
+}
+@media (max-width: 650px) {
+  h4>a>.icon.icon-link:before {
+    @apply text-xl;
+  }
 }
 
 h5>a>.icon.icon-link:before {
-  @apply text-base
+  @apply text-2xl;
+}
+@media (max-width: 650px) {
+  h5>a>.icon.icon-link:before {
+    @apply text-lg;
+  }
 }
 
 h6>a>.icon.icon-link:before {
-  @apply text-base
+  @apply text-xl;
+}
+@media (max-width: 650px) {
+  h6>a>.icon.icon-link:before {
+    @apply text-base;
+  }
 }
 
 /* classes for shikiji styling */
@@ -68,4 +98,59 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
  
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
+}
+
+/* headings */
+.h1-level {
+  @apply text-5xl leading-[1.2] dark:text-primary-1 text-primary-2;
+}
+@media (max-width: 650px) {
+  .h1-level {
+    @apply text-[2rem] dark:text-primary-1 text-primary-2;
+  }
+}
+
+.h2-level {
+  @apply text-4xl leading-[1.2] dark:text-primary-1 text-primary-2;
+}
+@media (max-width: 650px) {
+  .h2-level {
+    @apply text-[1.75rem] dark:text-primary-1 text-primary-2;
+  }
+}
+
+.h3-level {
+  @apply text-[2rem] leading-[1.2] dark:text-primary-1 text-primary-2;
+}
+@media (max-width: 650px) {
+  .h3-level {
+    @apply text-2xl dark:text-primary-1 text-primary-2;
+  }
+}
+
+.h4-level {
+  @apply text-[1.75rem] leading-normal dark:text-primary-1 text-primary-2;
+}
+@media (max-width: 650px) {
+  .h4-level {
+    @apply text-xl dark:text-primary-1 text-primary-2;
+  }
+}
+
+.h5-level {
+  @apply text-2xl leading-normal dark:text-primary-1 text-primary-2;
+}
+@media (max-width: 650px) {
+  .h5-level {
+    @apply text-lg dark:text-primary-1 text-primary-2;
+  }
+}
+
+.h6-level {
+  @apply text-xl dark:text-primary-1 text-primary-2;
+}
+@media (max-width: 650px) {
+  .h6-level {
+    @apply text-base dark:text-primary-1 text-primary-2;
+  }
 }
