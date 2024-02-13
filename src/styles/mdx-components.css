@@ -154,3 +154,8 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
     @apply text-base dark:text-primary-1 text-primary-2;
   }
 }
+
+/* paragraph */
+.p-tag {
+  @apply dark:text-primary-1 text-primary-2;
+}

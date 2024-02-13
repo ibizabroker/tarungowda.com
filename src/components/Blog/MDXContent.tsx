@@ -1,6 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 const components = {
+  p: ({ ...props }) => <p className='p-tag' {...props} />,
   h1: ({ ...props }) => <h2 className='h1-level' {...props} />,
   h2: ({ ...props }) => <h2 className='h2-level' {...props} />,
   h3: ({ ...props }) => <h3 className='h3-level' {...props} />,
