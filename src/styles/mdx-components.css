@@ -159,3 +159,12 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .p-tag {
   @apply dark:text-primary-1 text-primary-2;
 }
+
+/* lists */
+.unordered-list {
+  @apply dark:text-primary-1 text-primary-2;
+}
+
+.ordered-list {
+  @apply dark:text-primary-1 text-primary-2;
+}

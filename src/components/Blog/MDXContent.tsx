@@ -7,7 +7,9 @@ const components = {
   h3: ({ ...props }) => <h3 className='h3-level' {...props} />,
   h4: ({ ...props }) => <h4 className='h4-level' {...props} />,
   h5: ({ ...props }) => <h5 className='h5-level' {...props} />,
-  h6: ({ ...props }) => <h2 className='h6-level' {...props} />
+  h6: ({ ...props }) => <h2 className='h6-level' {...props} />,
+  ul: ({ ...props }) => <ul className='unordered-list' {...props} />,
+  ol: ({ ...props }) => <ol className='ordered-list' {...props} />,
 };
 
 export default function MDXContent({ blog }: { blog: any }) {
@@ -15,7 +17,7 @@ export default function MDXContent({ blog }: { blog: any }) {
   const MarkdownContent = useMDXComponent(blog.body.code)
 
   return (
-    <div className='prose prose-lg max-w-max'>
+    <div className='prose prose-lg max-w-max dark:prose-li:marker:text-secondary-1 prose-li:marker:text-secondary-1'>
       <MarkdownContent components={components} />
     </div>
   )
