@@ -162,9 +162,14 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 /* lists */
 .unordered-list {
-  @apply dark:text-primary-1 text-primary-2;
+  @apply dark:text-primary-1 text-primary-2 dark:prose-li:marker:text-secondary-1 prose-li:marker:text-secondary-1;
 }
 
 .ordered-list {
-  @apply dark:text-primary-1 text-primary-2;
+  @apply dark:text-primary-1 text-primary-2 dark:prose-li:marker:text-secondary-1 prose-li:marker:text-secondary-1;
+}
+
+/* blockquote */
+.blockquote-tag {
+  @apply prose-blockquote:dark:bg-dark-2 prose-blockquote:p-0.5 prose-blockquote:px-6 prose-blockquote:border-secondary-1 prose-blockquote:rounded-r-lg
 }
