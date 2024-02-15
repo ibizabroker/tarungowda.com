@@ -171,5 +171,10 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 /* blockquote */
 .blockquote-tag {
-  @apply prose-blockquote:dark:bg-dark-2 prose-blockquote:p-0.5 prose-blockquote:px-6 prose-blockquote:border-secondary-1 prose-blockquote:rounded-r-lg
+  @apply prose-blockquote:dark:bg-dark-2 prose-blockquote:p-0.5 prose-blockquote:px-6 prose-blockquote:border-secondary-1 prose-blockquote:rounded-r-lg;
+}
+
+/* horizontal-line */
+.hr-tag {
+  @apply prose-hr:dark:border-divider-1;
 }
