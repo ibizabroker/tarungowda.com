@@ -17,7 +17,10 @@ export default function MDXContent({ blog }: { blog: any }) {
   const MarkdownContent = useMDXComponent(blog.body.code)
 
   return (
-    <div className='prose prose-lg max-w-max blockquote-tag hr-tag'>
+    <div className='prose prose-lg max-w-max
+      blockquote-tag hr-tag
+      prose-strong:dark:text-primary-1 prose-strong:text-primary-2'
+    >
       <MarkdownContent components={components} />
     </div>
   )
