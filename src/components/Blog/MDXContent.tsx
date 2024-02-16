@@ -10,6 +10,7 @@ const components = {
   h6: ({ ...props }) => <h2 className='h6-level' {...props} />,
   ul: ({ ...props }) => <ul className='unordered-list' {...props} />,
   ol: ({ ...props }) => <ol className='ordered-list' {...props} />,
+  a: ({ ...props }) => <a className='a-tag' {...props} />,
 };
 
 export default function MDXContent({ blog }: { blog: any }) {

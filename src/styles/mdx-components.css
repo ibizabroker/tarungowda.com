@@ -178,3 +178,14 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .hr-tag {
   @apply prose-hr:dark:border-divider-1;
 }
+
+/* link */
+.a-tag {
+  @apply relative dark:text-secondary-1 text-secondary-1 no-underline;
+}
+.a-tag:after {
+  @apply content-[''] bg-secondary-1 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-500;
+}
+.a-tag:hover:after {
+  @apply w-[100%];
+}
