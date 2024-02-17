@@ -75,31 +75,6 @@ h6>a>.icon.icon-link:before {
   }
 }
 
-/* classes for shikiji styling */
-code {
-  counter-reset: line;
-}
- 
-code > [data-line]::before {
-  counter-increment: line;
-  content: counter(line);
- 
-  /* Other styling */
-  display: inline-block;
-  width: 1rem;
-  margin-right: 2rem;
-  text-align: right;
-  color: gray;
-}
- 
-code[data-line-numbers-max-digits="2"] > [data-line]::before {
-  width: 2rem;
-}
- 
-code[data-line-numbers-max-digits="3"] > [data-line]::before {
-  width: 3rem;
-}
-
 /* headings */
 .h1-level {
   @apply text-5xl leading-[1.2] dark:text-primary-1 text-primary-2;
@@ -188,4 +163,149 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 .a-tag:hover:after {
   @apply w-[100%];
+}
+
+/* pre */
+.pre {
+  @apply dark:bg-dark-2 bg-white text-sm leading-6 overflow-x-auto m-0 pl-2 py-4;
+}
+@media (max-width: 650px) {
+  .pre {
+    @apply leading-normal py-3;
+  }
+}
+.pre::-webkit-scrollbar {
+  @apply h-2.5;
+  scrollbar-width: 5px;
+}
+.pre::-webkit-scrollbar-thumb {
+  @apply rounded-md dark:bg-gray-800 bg-slate-300;
+}
+.pre::-webkit-scrollbar-track {
+  @apply rounded-md dark:bg-gray-900 bg-slate-50;
+}
+
+.pre-copy {
+  @apply absolute border dark:text-primary-1 text-primary-2 w-7 h-7 rounded top-4 right-4 cursor-pointer text-base transition-all duration-[0.3s] border-solid backdrop-blur-lg dark:border-divider-2 hover:!border-secondary-1 hover:!text-secondary-1;
+}
+@media (max-width: 650px) {
+  .pre-copy {
+    @apply right-3 top-3;
+  }
+}
+
+.pre-icon-done {
+  @apply flex items-center justify-center;
+}
+
+.pre-icon-copy {
+  @apply flex items-center justify-center;
+}
+
+/* code */
+code {
+  @apply border border-solid dark:border-divider-1;
+  counter-reset: line;
+}
+
+code > [data-line]::before {
+  @apply inline-block w-8 mr-8 text-right dark:text-slate-600 text-slate-300;
+  counter-increment: line;
+  content: counter(line);
+}
+
+div[data-rehype-pretty-code-fragment] {
+  @apply relative w-full block overflow-hidden dark:bg-dark-2 border border-solid dark:border-divider-1 -mt-px mb-8 rounded-[0_0_8px_8px];
+}
+
+.code {
+  @apply text-sm dark:text-secondary-1 text-secondary-1 dark:bg-dark-2 rounded inline leading-[1.2] self-center mx-1 my-0 px-1.5 py-[3px] ml-0 pl-0;
+}
+
+div[data-rehype-pretty-code-fragment] pre code {
+  @apply grid tracking-[0] bg-transparent shadow-none leading-6 border-[none];
+}
+
+/* word highlight style */
+span[data-highlighted-chars] {
+  @apply bg-secondary-1/20 py-1 border-b-4 border-secondary-1;
+}
+
+/* line highlight style */
+span[data-highlighted-line] {
+  @apply border-l-4 border-secondary-1 bg-secondary-1/20;
+}
+
+/* avoid display of code twice */
+html.light .pre[data-theme="dark"] {
+  display: none;
+}
+html.light .pre-copy[data-theme="dark"] {
+  display: none;
+} 
+
+html.dark .pre[data-theme="light"] {
+  display: none;
+}
+html.dark .pre-copy[data-theme="light"] {
+  display: none;
+}
+
+/* code head */
+.code-head {
+  @apply text-xs leading-4 dark:text-primary-1 text-primary-2 border dark:border-divider-1 dark:bg-dark-2 flex items-center w-full mt-8 p-4 rounded-[8px_8px_0_0] border-solid;
+}
+@media (max-width: 650px) {
+  .code-head {
+    @apply p-3;
+  }
+}
+
+.code-head-dots {
+  @apply flex items-center mr-3 before:bg-red-600 after:bg-green-600;
+}
+.code-head-dots span,
+.code-head-dots::before,
+.code-head-dots::after {
+  @apply w-2.5 h-2.5 block mr-1.5 rounded-[50%];
+}
+.code-head-dots::before,
+.code-head-dots::after {
+  @apply content-[""];
+}
+.code-head-dots span {
+  @apply bg-yellow-400;
+}
+
+.code-head-text-wrap {
+  @apply flex justify-between grow;
+}
+
+.code-head-lang-wrap {
+  @apply flex items-center shrink-0;
+}
+
+.code-head-icon {
+  @apply text-sm mr-1;
+}
+.code-head-icon[data-lang="js"] {
+  @apply text-[color:var(--color-lang-js)];
+}
+.code-head-icon[data-lang="html"] {
+  @apply text-base text-[color:var(--color-lang-html)];
+}
+.code-head-icon[data-lang="css"] {
+  @apply text-[color:var(--color-lang-css)];
+}
+.code-head-icon[data-lang="scss"] {
+  @apply text-[color:var(--color-lang-scss)];
+}
+.code-head-icon[data-lang="jsx"] {
+  @apply text-[color:var(--color-lang-jsx)];
+}
+.code-head-icon[data-lang="md"] {
+  @apply mr-1.5;
+}
+.code-head-icon[data-lang="mdx"] {
+  @apply mr-1.5;
 }

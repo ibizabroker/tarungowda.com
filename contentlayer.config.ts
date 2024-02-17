@@ -60,7 +60,11 @@ export default makeSource({
       [
         rehypePrettyCode, 
         {
-          theme: "github-dark",
+          theme: {
+            dark: "slack-dark",
+            light: "slack-ochin",
+          },
+          keepBackground: false,
         },
       ],
       [

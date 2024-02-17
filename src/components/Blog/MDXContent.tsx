@@ -1,6 +1,9 @@
 import { useMDXComponent } from 'next-contentlayer/hooks'
+import Pre from './Pre';
+import CodeHead from './CodeHead';
 
 const components = {
+  CodeHead,
   p: ({ ...props }) => <p className='p-tag' {...props} />,
   h1: ({ ...props }) => <h2 className='h1-level' {...props} />,
   h2: ({ ...props }) => <h2 className='h2-level' {...props} />,
@@ -11,6 +14,8 @@ const components = {
   ul: ({ ...props }) => <ul className='unordered-list' {...props} />,
   ol: ({ ...props }) => <ol className='ordered-list' {...props} />,
   a: ({ ...props }) => <a className='a-tag' {...props} />,
+  pre: Pre,
+  code: ({ ...props }) => <code className='code' {...props} />,
 };
 
 export default function MDXContent({ blog }: { blog: any }) {
