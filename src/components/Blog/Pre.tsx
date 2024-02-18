@@ -1,6 +1,7 @@
 'use client'
 
-import { MdContentCopy, MdDone } from "react-icons/md";
+import Copy from '@/images/copy.svg';
+import CopyDone from '@/images/copy-done.svg';
 import { useEffect, useState, useRef } from "react";
 
 export default function Pre({ ...props }) {
@@ -37,11 +38,11 @@ export default function Pre({ ...props }) {
       >
         {isCopied ? (
           <span className='pre-icon-done'>
-            <MdDone />
+            <CopyDone />
           </span>
         ) : (
           <span className='pre-icon-copy'>
-            <MdContentCopy />
+            <Copy />
           </span>
         )}
       </button>

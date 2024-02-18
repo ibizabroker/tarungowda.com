@@ -1,75 +1,103 @@
-import {
-  IoLogoJavascript,
-  IoLogoHtml5,
-  IoLogoReact,
-  IoLogoCss3,
-  IoLogoSass,
-  IoLogoMarkdown,
-  IoTerminal,
-  IoTerminalOutline,
-} from "react-icons/io5";
+import Angularjs from '@/images/angularjs.svg';
+import Css from '@/images/css.svg';
+import Docker from '@/images/docker.svg';
+import Git from '@/images/git.svg';
+import Html from '@/images/html.svg';
+import Javascript from '@/images/javascript.svg';
+import Markdown from '@/images/markdown.svg'
+import Nextjs from '@/images/nextjs.svg';
+import Python from '@/images/python.svg';
+import ReactNative from '@/images/react-native.svg';
+import Reactjs from '@/images/reactjs.svg';
+import Tailwind from '@/images/tailwind.svg';
+import Terminal from '@/images/terminal.svg';
+import Typescript from '@/images/typescript.svg';
 
 export default function CodeHead({ name, lang }:{ name: any, lang: any }) {
   const outputLanguageString = (value: any) => {
     switch (value) {
-      case "html": {
+      case "angular": {
         return {
-          name: "HTML",
-          icon: <IoLogoHtml5 />,
+          name: "Angular.js",
+          icon: <Angularjs />,
         };
       }
       case "css": {
         return {
           name: "CSS",
-          icon: <IoLogoCss3 />,
+          icon: <Css />,
         };
       }
-      case "scss": {
+      case "docker": {
         return {
-          name: "Sass",
-          icon: <IoLogoSass />,
+          name: "Docker",
+          icon: <Docker />,
+        };
+      }
+      case "git": {
+        return {
+          name: "Git",
+          icon: <Git />,
+        };
+      }
+      case "html": {
+        return {
+          name: "HTML",
+          icon: <Html />,
         };
       }
       case "js": {
         return {
-          name: "JavaScript",
-          icon: <IoLogoJavascript />,
-        };
-      }
-      case "jsx": {
-        return {
-          name: "JSX",
-          icon: <IoLogoReact />,
-        };
-      }
-      case "ts": {
-        return {
-          name: "TypeScript",
-          icon: <IoLogoJavascript />,
-        };
-      }
-      case "tsx": {
-        return {
-          name: "TSX",
-          icon: <IoLogoReact />,
-        };
-      }
-      case "md": {
-        return {
-          name: "Markdown",
-          icon: <IoLogoMarkdown />,
+          name: "Javascript",
+          icon: <Javascript />,
         };
       }
       case "mdx": {
         return {
           name: "MDX",
-          icon: <IoLogoMarkdown />,
+          icon: <Markdown />,
         };
       }
-      case "console": {
+      case "next": {
         return {
-          name: "console",
-          icon: <IoTerminalOutline />,
+          name: "Next.js",
+          icon: <Nextjs />,
+        };
+      }
+      case "python": {
+        return {
+          name: "Python",
+          icon: <Python />,
+        };
+      }
+      case "react-native": {
+        return {
+          name: "React Native",
+          icon: <ReactNative />,
+        };
+      }
+      case "react": {
+        return {
+          name: "React.js",
+          icon: <Reactjs />,
+        };
+      }
+      case "tailwind": {
+        return {
+          name: "TailwindCSS",
+          icon: <Tailwind />,
+        };
+      }
+      case "terminal": {
+        return {
+          name: "Terminal",
+          icon: <Terminal />,
+        };
+      }
+      case "ts": {
+        return {
+          name: "Typescript",
+          icon: <Typescript />,
         };
       }
       default:
