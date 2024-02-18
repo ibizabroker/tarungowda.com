@@ -9,7 +9,7 @@
 }
 
 .blogshowcase-title {
-  @apply text-center text-[color:var(--color-main-dark-01)] text-[2.5rem] tracking-[0.02em] leading-[1.4] flex justify-center items-center mt-16 mb-12 mx-0;
+  @apply text-center text-[2.5rem] tracking-[0.02em] leading-[1.4] flex justify-center items-center mt-16 mb-12 mx-0;
 }
 @media (max-width: 992px) {
   .blogshowcase-title {
@@ -72,7 +72,7 @@
 }
 
 .blog-card-description {
-  @apply text-[0.9375rem] text-[color:var(--color-card-description)] tracking-wider overflow-hidden mt-4 mb-2;
+  @apply text-[0.9375rem] tracking-wider overflow-hidden mt-4 mb-2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -82,7 +82,7 @@
   @apply flex flex-wrap mb-4;
 }
 .blog-card-tag {
-  @apply flex items-center tracking-[0.02em] font-medium text-[0.8125rem] border text-[color:var(--color-main-dark-01)] ml-0 mr-1.5 mt-1.5 mb-0 px-2 py-px rounded-[30px] border-solid dark:border-divider-1;
+  @apply flex items-center tracking-[0.02em] font-medium text-[0.8125rem] border ml-0 mr-1.5 mt-1.5 mb-0 px-2 py-px rounded-[30px] border-solid dark:border-divider-1;
 }
 .blog-card-tag span {
   @apply text-[0.625rem] mr-0.5;
@@ -93,7 +93,7 @@
 }
 
 .blog-card-time {
-  @apply text-[color:var(--color-card-time)] text-xs tracking-[0.04em] flex items-center;
+  @apply text-xs tracking-[0.04em] flex items-center;
 }
 
 .blog-card-clock {
@@ -149,7 +149,7 @@
 }
 
 .blog-main {
-  @apply relative max-w-[1000px] w-9/12 bg-[color:var(--color-bg)] border ml-0 mr-auto mt-10 mb-0 border-solid border-[rgba(0,1,0,)];
+  @apply relative max-w-[1000px] w-9/12 ml-0 mr-auto mt-10 mb-0;
 }
 @media (max-width: 1280px) {
   .blog-main {
@@ -178,39 +178,6 @@
   .user-content {
     @apply text-lg leading-[1.6];
   }
-}
-
-/* .user-content a {
-  @apply bg-[repeating-linear-gradient(90deg,var(--color-main),var(--color-main))] bg-[0_2px] bg-no-repeat bg-[left_bottom_3px] text-[color:var(--color-main)] transition-all duration-[0.3s] hover:bg-[100%_2px];
-} */
-
-.user-content p {
-  @apply mt-[1.25em];
-}
-
-.user-content h2 {
-  @apply mt-[3em];
-}
-
-.user-content h3 {
-  @apply mt-[3em];
-}
-@media (max-width: 650px) {
-  .user-content h3 {
-    @apply mt-[2.5em];
-  }
-}
-
-.user-content h3 + p {
-  @apply mt-[1em];
-}
-
-.user-content h4 {
-  @apply mt-[3em];
-}
-
-.user-content h5 {
-  @apply mt-[3em];
 }
 
 .sidebar {
