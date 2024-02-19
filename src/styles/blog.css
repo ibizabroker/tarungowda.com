@@ -188,3 +188,13 @@
     @apply hidden;
   }
 }
+
+.sidebar::-webkit-scrollbar {
+  @apply w-3;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  @apply rounded-md dark:bg-gray-800 bg-slate-300;
+}
+.sidebar::-webkit-scrollbar-track {
+  @apply rounded-md dark:bg-gray-900 bg-slate-50;
+}
