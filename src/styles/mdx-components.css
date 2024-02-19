@@ -330,3 +330,24 @@ html.dark .pre-copy[data-theme="light"] {
 .code-head-icon[data-lang="ts"] {
   @apply text-white;
 }
+
+/* table */
+.table {
+  @apply border border-separate rounded-xl dark:border-divider-1 dark:text-primary-1 text-primary-2 overflow-hidden;
+}
+
+.thead {
+  @apply dark:bg-dark-2;
+}
+
+.tr {
+  @apply border-none hover:dark:bg-dark-2;
+}
+
+.th {
+  @apply dark:text-primary-1 text-primary-2 px-6 py-3;
+}
+
+.td {
+  @apply px-6 py-2;
+}

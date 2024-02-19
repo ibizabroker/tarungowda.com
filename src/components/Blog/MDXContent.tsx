@@ -16,6 +16,11 @@ const components = {
   a: ({ ...props }) => <a className='a-tag' {...props} />,
   pre: Pre,
   code: ({ ...props }) => <code className='code' {...props} />,
+  table: ({ ...props }) => <table className='table' {...props} />,
+  thead: ({ ...props }) => <thead className='thead' {...props} />,
+  tr: ({ ...props }) => <tr className='tr' {...props} />,
+  th: ({ ...props }) => <th className='th' {...props} />,
+  td: ({ ...props }) => <td className='td' {...props} />,
 };
 
 export default function MDXContent({ blog }: { blog: any }) {
