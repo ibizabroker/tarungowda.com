@@ -2,6 +2,7 @@ import { Blog, allBlogs } from 'contentlayer/generated'
 import MDXComponent from '@/components/Blog/MDXContent'
 import Toc from '@/components/Blog/TOC'
 import NotFound from '@/app/not-found'
+import Heading from '@/components/Blog/Heading'
 
 export default function BlogPage({ params }: { params: Blog }) {
   // console.log(allBlogs)
@@ -16,6 +17,7 @@ export default function BlogPage({ params }: { params: Blog }) {
         <main className='blog-main'>
           <div className='blog-container'>
             <article className='article'>
+              <Heading />
               <div className='user-content'>
                 <MDXComponent blog={blog} />
               </div>
