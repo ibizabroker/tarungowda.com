@@ -17,7 +17,7 @@ export default function BlogPage({ params }: { params: Blog }) {
         <main className='blog-main'>
           <div className='blog-container'>
             <article className='article'>
-              <Heading />
+              <Heading blog={blog} />
               <div className='user-content'>
                 <MDXComponent blog={blog} />
               </div>
