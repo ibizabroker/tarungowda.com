@@ -198,3 +198,48 @@
 .sidebar::-webkit-scrollbar-track {
   @apply rounded-md dark:bg-gray-900 bg-slate-50;
 }
+
+/* heading of blog */
+.heading-head {
+  @apply mb-10 pt-0 pb-[1.5em] px-0 border-b border-solid dark:border-divider-2;
+}
+
+.heading-head-info {
+  @apply flex justify-start items-center mt-10;
+}
+
+.heading-time-wrap {
+  @apply flex;
+}
+
+.heading-time {
+  @apply flex items-center text-sm tracking-[0.04em];
+}
+
+.heading-clock {
+  @apply h-4 w-4 dark:text-primary-1 mr-1;
+}
+
+.heading-tags {
+  @apply flex flex-wrap mt-4;
+}
+
+.heading-tag {
+  @apply ml-0 mr-[0.5em] mt-[0.5em] mb-0;
+}
+
+.heading-tag-link {
+  @apply flex items-center tracking-[0.02em] font-semibold text-sm transition-all duration-[0.3s] px-2 py-0.5 rounded-[30px] border border-solid hover:text-secondary-1 hover:!border-secondary-1 dark:border-divider-2;
+}
+.heading-tag-link span {
+  @apply text-xs mr-1;
+}
+
+.heading-title {
+  @apply text-[70px] font-semibold leading-[1.4] tracking-[0.02em];
+}
+@media (max-width: 650px) {
+  .heading-title {
+    @apply text-[50px];
+  }
+}
