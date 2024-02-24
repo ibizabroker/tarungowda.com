@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { getTagsData } from "@/utils/tags";
 import { format, parseISO } from 'date-fns';
 import Clock from '@/images/clock.svg';
 
 export default function Card({ blog }: { blog: any }) {
   const { title, date, description, draft, tags, slug } = blog;
+  const tagsData = getTagsData(tags);
 
   return (
     draft ? null :
@@ -13,10 +15,10 @@ export default function Card({ blog }: { blog: any }) {
         <p className='blog-card-heading'>{title}</p>
         <p className='blog-card-description'>{description}</p>
         <ul className='blog-card-tags'>
-          {tags.map((tag: any) => {
+          {tagsData.map((tag) => {
             return (
-              <li className='blog-card-tag' key={tag}>
-                <span>#</span> {tag}
+              <li className='blog-card-tag' key={tag.name}>
+                <span>#</span> {tag.name}
               </li>
             );
           })}
