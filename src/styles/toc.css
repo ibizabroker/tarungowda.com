@@ -7,7 +7,7 @@
 }
 
 .toc .toc-head {
-  @apply text-center font-medium flex justify-start items-center px-4 pt-4;
+  @apply text-center font-bold flex justify-start items-center px-4 pt-4;
 }
 
 .toc .toc-head {
@@ -19,7 +19,7 @@
 }
 
 .toc .toc-content {
-  @apply px-4 py-3;
+  @apply py-3;
 }
 
 .toc .toc-list.is-collapsible {
@@ -27,21 +27,21 @@
 }
 
 .toc .toc-list.is-collapsible a {
-  @apply pl-[1.50em];
+  @apply pl-[45px];
 }
 
 .toc .toc-link {
-  @apply flex text-[rgba(0,1,0,)] bg-none leading-normal tracking-[0.02em] px-1 py-2 hover:text-[color:var(--color-main)];
+  @apply flex dark:text-primary-1 text-primary-2 bg-none leading-normal tracking-[0.02em] px-6 py-2 hover:!text-secondary-1;
 }
 
 .toc .toc-link.node-name--H2 {
-  @apply text-[rem(15)];
+  @apply text-[rem(15)] font-medium;
 }
 
 .toc .toc-link.node-name--H3 {
-  @apply text-[rem(15)];
+  @apply text-[rem(15)] font-normal;
 }
 
 .toc .toc-link.is-active-link {
-  @apply text-[color:var(--color-main)];
+  @apply dark:bg-gray-700/20 bg-slate-300/20 text-secondary-1;
 }
