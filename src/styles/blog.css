@@ -163,7 +163,7 @@
 }
 
 .article {
-  @apply max-w-[800px] w-full mx-auto my-0 px-0 py-20;
+  @apply max-w-[800px] w-full mx-auto my-0 px-0 py-0;
 }
 @media (max-width: 650px) {
   .article {
@@ -181,7 +181,7 @@
 }
 
 .sidebar {
-  @apply sticky block w-3/12 max-h-[calc(100vh_-_180px)] grow overflow-auto h-full ml-8 top-[120px];
+  @apply sticky block w-3/12 max-h-[calc(100vh_-_180px)] grow overflow-auto h-full ml-8 top-[130px];
 }
 @media (max-width: 1280px) {
   .sidebar {
