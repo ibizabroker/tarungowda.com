@@ -52,7 +52,7 @@ export const Blog = defineDocumentType(() => ({
 
 export const Projects = defineDocumentType(() => ({
   name: 'Projects',
-  filePathPattern: `project/*.mdx`,
+  filePathPattern: `projects/*.mdx`,
   contentType: 'mdx',
   fields: {
     title: { 
@@ -88,7 +88,7 @@ export const Projects = defineDocumentType(() => ({
 
 export default makeSource({ 
   contentDirPath: 'src/content', 
-  documentTypes: [Blog],
+  documentTypes: [Blog, Projects],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
