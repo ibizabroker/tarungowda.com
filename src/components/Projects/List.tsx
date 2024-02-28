@@ -3,7 +3,7 @@ import Card from "./Card";
 
 export default function List({ allProjects }: { allProjects: Projects[] }) {
   return (
-    <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12">
+    <div className="projects-list">
       {allProjects.map((project: Projects)  => {
         return (
           <div key={project._id}>

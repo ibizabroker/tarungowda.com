@@ -3,7 +3,7 @@ import { allProjects } from 'contentlayer/generated'
 
 export default function Projects() {
   return (
-    <div className="container m-10 max-w-7xl mx-auto md:px-16 px-6">
+    <div className="container projects-container">
       <List allProjects={allProjects} />
     </div>
   );

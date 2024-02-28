@@ -7,5 +7,6 @@
 @import './blog.css';
 @import './toc.css';
 @import './tags.css';
+@import './projects.css';
 
 @import 'tailwindcss/utilities';

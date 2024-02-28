@@ -1,0 +1,26 @@
+.projects-container {
+  @apply m-10 max-w-7xl mx-auto md:px-16 px-6;
+}
+
+.projects-list {
+  @apply grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12;
+}
+
+.project-card {
+  @apply flex items-center gap-x-4 p-4 dark:bg-dark-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-divider-1 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-[-3px];
+}
+.project-card:hover .project-card-title {
+  @apply text-secondary-1;
+}
+
+.project-card-icon {
+  @apply dark:bg-dark-1 rounded-md p-2;
+}
+
+.project-card-title {
+  @apply text-lg tracking-wide mb-1;
+}
+
+.project-card-description {
+  @apply text-sm dark:text-primary-1 text-primary-2;
+}
