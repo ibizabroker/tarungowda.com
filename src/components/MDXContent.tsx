@@ -1,6 +1,6 @@
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import Pre from './Pre';
-import CodeHead from './CodeHead';
+import Pre from './Blog/Pre';
+import CodeHead from './Blog/CodeHead';
 
 const components = {
   CodeHead,
@@ -23,9 +23,9 @@ const components = {
   td: ({ ...props }) => <td className='td' {...props} />,
 };
 
-export default function MDXContent({ blog }: { blog: any }) {
+export default function MDXContent({ mdx }: { mdx: any }) {
 
-  const MarkdownContent = useMDXComponent(blog.body.code)
+  const MarkdownContent = useMDXComponent(mdx.body.code)
 
   return (
     <div className='prose prose-lg max-w-max
