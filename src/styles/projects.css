@@ -2,6 +2,10 @@
   @apply m-10 max-w-7xl mx-auto md:px-16 px-6;
 }
 
+.project-container {
+  @apply m-10 max-w-[930px] w-full mx-auto md:px-16 px-6;
+}
+
 .projects-list {
   @apply grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12;
 }
