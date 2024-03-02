@@ -28,3 +28,31 @@
 .project-card-description {
   @apply text-sm dark:text-primary-1 text-primary-2;
 }
+
+.project-heading-head {
+  @apply flex items-start justify-between mb-4;
+}
+
+.project-heading {
+  @apply font-bold tracking-tight sm:text-5xl text-3xl mb-4 max-w-sm;
+}
+
+.project-links {
+  @apply flex justify-end;
+}
+
+.project-github {
+  @apply rounded-md px-4 py-2;
+}
+
+.project-website {
+  @apply rounded-md px-4 py-2 ml-4;
+}
+
+.project-image {
+  @apply relative w-full h-40 pt-[52.5%];
+}
+
+.project-cover {
+  @apply rounded-xl border dark:border-divider-1 object-cover;
+}

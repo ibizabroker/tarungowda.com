@@ -10,17 +10,17 @@ export default function ProjectPage({ params }: { params: Projects }) {
 
   return (
     <div className='container project-container'>
-      <div className="flex items-start justify-between mb-4">
-        <h1 className="font-bold tracking-tight sm:text-5xl text-3xl mb-4 max-w-sm">
+      <div className="project-heading-head">
+        <h1 className="project-heading">
           {project.title}
         </h1>
-        <div className="flex justify-end">
+        <div className="project-links">
           {project.github? 
             <a
               href={project.github}
               rel="noreferrer noopener"
               target="_blank"
-              className="button-primary rounded-md px-4 py-2"
+              className="button-primary project-github"
             >
               Github
             </a>
@@ -32,7 +32,7 @@ export default function ProjectPage({ params }: { params: Projects }) {
               href={project.website}
               rel="noreferrer noopener"
               target="_blank"
-              className="button-secondary rounded-md px-4 py-2 ml-4"
+              className="button-secondary project-website"
             >
               Website
             </a>
@@ -42,9 +42,9 @@ export default function ProjectPage({ params }: { params: Projects }) {
         </div>
       </div>
 
-      <div className="relative w-full h-40 pt-[52.5%]">
+      <div className="project-image">
         <Image
-          className="rounded-xl border dark:border-zinc-800 border-zinc-100 object-cover"
+          className="project-cover"
           layout="fill"
           src={project.coverImage}
           alt={project.coverImage}
