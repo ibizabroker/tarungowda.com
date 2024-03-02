@@ -45,9 +45,10 @@ export default function ProjectPage({ params }: { params: Projects }) {
       <div className="project-image">
         <Image
           className="project-cover"
-          layout="fill"
           src={project.coverImage}
-          alt={project.coverImage}
+          alt={project.title}
+          fill
+          style={{objectFit: "contain"}}
           quality={100}
         />
       </div>
