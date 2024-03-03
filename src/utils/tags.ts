@@ -2,7 +2,7 @@ import { allBlogs } from "contentlayer/generated";
 import { formatSlug } from "@/utils/slug";
 import { compareDesc } from "date-fns";
 
-export const allTags = Array.from(
+export const allBlogTags = Array.from(
   new Set(
     allBlogs
       .filter((blog) => !blog.draft)
@@ -14,7 +14,7 @@ export const allTags = Array.from(
   )
 );
 
-export const getAllTagSlugs = allTags.map(
+export const getAllBlogTagSlugs = allBlogTags.map(
   (tag) => `/blog/tags/${formatSlug(tag)}`
 );
 
@@ -28,7 +28,7 @@ const sortTags = (tags: string[]) => {
   );
 };
 
-export const allTagsData = sortTags(allTags).map((tag) => {
+export const allBlogTagsData = sortTags(allBlogTags).map((tag) => {
   const tagData = {
     name: tag,
     slug: formatSlug(tag),
@@ -37,7 +37,7 @@ export const allTagsData = sortTags(allTags).map((tag) => {
   return tagData;
 });
 
-export const generateTagsData = (tags: string[]) => {
+export const generateBlogTagsData = (tags: string[]) => {
   return tags.map((tag) => {
     return {
       name: tag,
@@ -46,7 +46,7 @@ export const generateTagsData = (tags: string[]) => {
   });
 };
 
-export const getPostsByTag = (tag: string) => {
+export const getBlogsByTag = (tag: string) => {
   return allBlogs
     .filter((blog) => !blog.draft)
     .filter((blog) => {
@@ -57,13 +57,13 @@ export const getPostsByTag = (tag: string) => {
     });
 };
 
-export const getTagsData = (tags: string[]) => {
+export const getBlogTagsData = (tags: string[]) => {
   const sortedTags = sortTags(tags);
-  const tagsData = generateTagsData(sortedTags);
+  const tagsData = generateBlogTagsData(sortedTags);
 
   return tagsData;
 };
 
-export const getTagSlugLink = (tagSlug: string) => {
+export const getBlogTagSlugLink = (tagSlug: string) => {
   return `/blog/tags/${tagSlug}`;
 };

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { allTagsData, getTagSlugLink } from "@/utils/tags";
+import { allBlogTagsData, getBlogTagSlugLink } from "@/utils/tags";
 
 export default function TagsSidebar() {
-  const tags = allTagsData;
+  const tags = allBlogTagsData;
 
   return (
     <aside className='tag-sidebar'>
@@ -17,7 +17,7 @@ export default function TagsSidebar() {
 
             return (
               <li className='tag-item' key={name}>
-                <Link href={getTagSlugLink(slug)} className='tag-link'>
+                <Link href={getBlogTagSlugLink(slug)} className='tag-link'>
                   <span>#</span> {name}
                 </Link>
               </li>

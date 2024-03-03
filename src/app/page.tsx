@@ -1,6 +1,6 @@
 import { formatSlug } from '@/utils/slug';
-import { getAllTagSlugs, allTagsData, getPostsByTag } from "@/utils/tags";
-import sortBlogsUsingDate from '@/utils/sortBlogs'
+import { sortBlogsUsingDate } from '@/utils/sort';
+import { getAllBlogTagSlugs, allBlogTagsData, getBlogsByTag } from "@/utils/tags";
 import { Blog, allBlogs } from 'contentlayer/generated'
 
 function Home() {
@@ -10,18 +10,18 @@ function Home() {
   const tagSlug = formatSlug("Next.js @test_g12   test")
   console.log(tagSlug)
 
-  const test = allTagsData.find((tag) => {
+  const test = allBlogTagsData.find((tag) => {
     return tag.slug === "nextjs";
   });
   console.log(test)
   const x = test?.name
   let blogs: Blog[] | null = null;
   if(x !== undefined){
-    blogs = getPostsByTag(x);
+    blogs = getBlogsByTag(x);
   }
-  // const blogs = getPostsByTag(test?.name);
+  // const blogs = getBlogsByTag(test?.name);
   console.log(blogs)
-  const slugs = getAllTagSlugs;
+  const slugs = getAllBlogTagSlugs;
   console.log(slugs)
   
   return (

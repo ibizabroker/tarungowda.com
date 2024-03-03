@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Blog } from 'contentlayer/generated'
-import { getTagsData } from "@/utils/tags";
+import { getBlogTagsData } from "@/utils/tags";
 import { format, parseISO } from 'date-fns';
 import Clock from '@/images/clock.svg';
 
 export default function SingleHead({ blog }: { blog: Blog }) {
   const { title, date, description, tags } = blog;
-  const tagsData = getTagsData(tags);
+  const tagsData = getBlogTagsData(tags);
 
   return (
     <div className='heading-head'>

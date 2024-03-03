@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { getTagsData } from "@/utils/tags";
+import { getBlogTagsData } from "@/utils/tags";
 import { format, parseISO } from 'date-fns';
 import Clock from '@/images/clock.svg';
 
 export default function Card({ blog }: { blog: any }) {
   const { title, date, description, draft, tags, slug } = blog;
-  const tagsData = getTagsData(tags);
+  const tagsData = getBlogTagsData(tags);
 
   return (
     draft ? null :

@@ -34,19 +34,34 @@
 }
 
 .project-heading {
-  @apply font-bold tracking-tight sm:text-5xl text-3xl mb-4 max-w-sm;
+  @apply font-bold tracking-tight text-5xl mb-4 max-w-sm;
+}
+@media (max-width: 650px) {
+  .project-heading {
+    @apply text-3xl;
+  }
 }
 
 .project-links {
-  @apply flex justify-end;
+  @apply flex justify-end mt-1.5;
 }
 
 .project-github {
-  @apply rounded-md px-4 py-2;
+  @apply flex justify-center items-center rounded-md px-4 py-2;
+}
+@media (max-width: 650px) {
+  .project-github {
+    @apply px-2 py-0 h-8;
+  }
 }
 
 .project-website {
-  @apply rounded-md px-4 py-2 ml-4;
+  @apply flex justify-center items-center rounded-md px-4 py-2 ml-4;
+}
+@media (max-width: 650px) {
+  .project-website {
+    @apply px-2 py-0 h-8;
+  }
 }
 
 .project-image {

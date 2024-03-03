@@ -1,6 +1,6 @@
 import List from '@/components/Blog/List';
 import TagsSidebar from '@/components/Blog/TagsSideBar';
-import sortBlogsUsingDate from '@/utils/sortBlogs';
+import { sortBlogsUsingDate } from '@/utils/sort';
 import { allBlogs } from 'contentlayer/generated'
 
 export default function BlogShowcase() {

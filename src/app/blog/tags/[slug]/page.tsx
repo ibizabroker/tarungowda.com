@@ -1,10 +1,10 @@
 import { Blog } from 'contentlayer/generated'
-import { allTagsData, getPostsByTag } from "@/utils/tags";
+import { allBlogTagsData, getBlogsByTag } from "@/utils/tags";
 import List from '@/components/Blog/List';
 import TagsSidebar from '@/components/Blog/TagsSideBar';
 
 export default function TagsPage({ params }: { params: any }) {
-  const tagData = allTagsData.find((tag) => {
+  const tagData = allBlogTagsData.find((tag) => {
     return tag.slug === params.slug;
   });
 
@@ -12,7 +12,7 @@ export default function TagsPage({ params }: { params: any }) {
   let blogs: Blog[] | null = null;
 
   if(tagName !== undefined){
-    blogs = getPostsByTag(tagName);
+    blogs = getBlogsByTag(tagName);
   }
 
   return (
