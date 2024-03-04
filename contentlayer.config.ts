@@ -67,6 +67,10 @@ export const Projects = defineDocumentType(() => ({
       type: 'string',
       required: true
     },
+    date: { 
+      type: 'date', 
+      required: true 
+    },
     coverImage: {
       type: 'string',
       required: true
