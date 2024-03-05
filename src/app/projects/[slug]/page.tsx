@@ -2,11 +2,14 @@ import Image from "next/image";
 import { Projects, allProjects } from 'contentlayer/generated'
 import MDXComponent from '@/components/MDXContent'
 import NotFound from '@/app/not-found'
+import { getProjectTagsData } from "@/utils/tags";
 
 export default function ProjectPage({ params }: { params: Projects }) {
   const project = allProjects.find((project) => project.slug === params.slug)
   if (!project)
     return <NotFound />
+
+  const tagsData = getProjectTagsData(project.tags);
 
   return (
     <div className='container project-container'>
@@ -52,6 +55,17 @@ export default function ProjectPage({ params }: { params: Projects }) {
           quality={100}
         />
       </div>
+      <ul className='heading-tags'>
+        {tagsData.map((tag) => {
+          return (
+            <li className='heading-tag' key={tag.name}>
+              <div className='heading-tag-link'>
+                <span>#</span> {tag.name}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
       <article className='article'>
         <div className='user-content'>
           <MDXComponent mdx={project} />
