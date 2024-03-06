@@ -1,10 +1,10 @@
 import { Projects } from "contentlayer/generated";
 import Card from "./Card";
 
-export default function List({ allProjects }: { allProjects: Projects[] }) {
+export default function List({ sortedProjects }: { sortedProjects: any }) {
   return (
     <div className="projects-list">
-      {allProjects.map((project: Projects)  => {
+      {sortedProjects.map((project: Projects)  => {
         return (
           <div key={project._id}>
             <Card project={project} />

@@ -3,6 +3,7 @@ import { Projects, allProjects } from 'contentlayer/generated'
 import MDXComponent from '@/components/MDXContent'
 import NotFound from '@/app/not-found'
 import { getProjectTagsData } from "@/utils/tags";
+import Link from "next/link";
 
 export default function ProjectPage({ params }: { params: Projects }) {
   const project = allProjects.find((project) => project.slug === params.slug)
@@ -59,9 +60,9 @@ export default function ProjectPage({ params }: { params: Projects }) {
         {tagsData.map((tag) => {
           return (
             <li className='heading-tag' key={tag.name}>
-              <div className='heading-tag-link'>
+              <Link href={tag.slug} className='heading-tag-link'>
                 <span>#</span> {tag.name}
-              </div>
+              </Link>
             </li>
           );
         })}

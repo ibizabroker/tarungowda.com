@@ -83,7 +83,7 @@ export const allProjectTags = Array.from(
 );
 
 export const getAllProjectTagSlugs = allProjectTags.map(
-  (tag) => `/project/tags/${formatSlug(tag)}`
+  (tag) => `/projects/tags/${formatSlug(tag)}`
 );
 
 export const allProjectTagsData = sortTags(allProjectTags).map((tag) => {
@@ -99,7 +99,7 @@ export const generateProjectTagsData = (tags: string[]) => {
   return tags.map((tag) => {
     return {
       name: tag,
-      slug: `/project/tags/${formatSlug(tag)}`,
+      slug: `/projects/tags/${formatSlug(tag)}`,
     };
   });
 };
@@ -122,5 +122,5 @@ export const getProjectTagsData = (tags: string[]) => {
 };
 
 export const getProjectTagSlugLink = (tagSlug: string) => {
-  return `/project/tags/${tagSlug}`;
+  return `/projects/tags/${tagSlug}`;
 };
