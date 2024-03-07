@@ -1,5 +1,10 @@
 .projects-container {
-  @apply m-10 max-w-7xl mx-auto md:px-16 px-6;
+  @apply m-10 mt-24 max-w-[1264px] mx-auto md:px-16 px-6;
+}
+@media (max-width: 992px) {
+  .projects-container {
+    @apply max-w-[800px] mt-12;
+  }
 }
 
 .project-container {
