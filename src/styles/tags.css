@@ -48,7 +48,7 @@
 
 /* Sidebar tag styles */
 .tag-sidebar {
-  @apply sticky shrink-0 grow basis-[280px] max-w-xs max-h-[calc(100vh_-_280px)] h-full ml-12 pb-[72px] top-32;
+  @apply sticky grow overflow-auto max-w-xs max-h-[calc(100vh_-_140px)] h-full ml-12 top-[100px];
 }
 @media (max-width: 992px) {
   .tag-sidebar {
@@ -61,8 +61,18 @@
   }
 }
 
+.tag-sidebar::-webkit-scrollbar {
+  @apply w-3;
+}
+.tag-sidebar::-webkit-scrollbar-thumb {
+  @apply rounded-md dark:bg-gray-800 bg-slate-300;
+}
+.tag-sidebar::-webkit-scrollbar-track {
+  @apply rounded-md dark:bg-gray-900 bg-slate-50;
+}
+
 .tag-block {
-  @apply dark:bg-dark-2 border mb-12 pt-4 pb-6 rounded-[10px] border-solid dark:border-divider-1;
+  @apply dark:bg-dark-2 border pt-4 pb-6 rounded-[10px] border-solid dark:border-divider-1;
 }
 @media (max-width: 992px) {
   .tag-block {
@@ -80,7 +90,13 @@
 }
 
 .tag-list {
-  @apply flex flex-wrap mt-2 px-6;
+  @apply flex flex-wrap mt-2 px-6 pr-3;
+}
+@media (max-width: 1110px) {
+  .tag-list {
+    @apply px-4;
+  }
+  
 }
 
 .tag-item {
