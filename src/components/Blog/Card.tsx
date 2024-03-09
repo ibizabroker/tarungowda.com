@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { getBlogTagsData } from "@/utils/tags";
 import { format, parseISO } from 'date-fns';
-import Clock from '@/images/clock.svg';
+import Calendar from '@/icons/calendar.svg';
+import Clock from '@/icons/clock.svg';
 
 export default function Card({ blog }: { blog: any }) {
-  const { title, date, description, draft, tags, slug } = blog;
+  const { title, date, description, draft, tags, slug, readingTime } = blog;
   const tagsData = getBlogTagsData(tags);
 
   return (
@@ -25,9 +26,13 @@ export default function Card({ blog }: { blog: any }) {
         </ul>
         <div className='blog-card-info'>
           <time dateTime={date} className="blog-card-time">
-            <Clock className='blog-card-clock' />
+            <Calendar className='blog-card-calendar' />
             {format(parseISO(date), 'LLLL d, yyyy')}
           </time>
+          <div className="blog-card-time">
+            <Clock className='blog-card-clock' />
+            {readingTime.text}
+          </div>
         </div>
       </div>
     </Link>

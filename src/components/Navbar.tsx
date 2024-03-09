@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import ThemeSwitcher from "./ThemeSwitcher"
-import TempLogo from "@/images/templogo.svg"
+import TempLogo from "@/icons/templogo.svg"
 import { useState } from "react"
 import useScroll from "@/hooks/useOnScroll"
 

@@ -75,15 +75,20 @@
 }
 
 .blog-card-info {
-  @apply flex justify-between mt-auto;
+  @apply flex mt-auto;
 }
 
 .blog-card-time {
   @apply text-xs tracking-[0.04em] flex items-center;
 }
 
-.blog-card-clock {
+.blog-card-calendar {
   @apply mr-1 dark:text-slate-400 h-4 w-4;
+}
+
+
+.blog-card-clock {
+  @apply mr-1 ml-4 dark:text-slate-400 h-4 w-4;
 }
 
 /* blog list */
@@ -202,8 +207,12 @@
   @apply flex items-center text-sm tracking-[0.04em];
 }
 
-.heading-clock {
+.heading-calendar {
   @apply h-4 w-4 dark:text-primary-1 mr-1;
+}
+
+.heading-clock {
+  @apply h-4 w-4 dark:text-primary-1 mr-1 ml-4;
 }
 
 .heading-tags {

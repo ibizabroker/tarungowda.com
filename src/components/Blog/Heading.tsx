@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Blog } from 'contentlayer/generated'
 import { getBlogTagsData } from "@/utils/tags";
 import { format, parseISO } from 'date-fns';
-import Clock from '@/images/clock.svg';
+import Calendar from '@/icons/calendar.svg';
+import Clock from '@/icons/clock.svg';
 
 export default function SingleHead({ blog }: { blog: Blog }) {
-  const { title, date, description, tags } = blog;
+  const { title, date, description, tags, readingTime } = blog;
   const tagsData = getBlogTagsData(tags);
 
   return (
@@ -13,9 +14,13 @@ export default function SingleHead({ blog }: { blog: Blog }) {
       <div className='heading-head-info'>
         <div className='heading-time-wrap'>
           <time className='heading-time'>
-            <Clock className='heading-clock' />
+            <Calendar className='heading-calendar' />
             {format(parseISO(date), 'LLLL d, yyyy')}
           </time>
+          <div className='heading-time'>
+            <Clock className='heading-clock' />
+            {readingTime.text}
+          </div>
         </div>
       </div>
 
