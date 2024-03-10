@@ -7,6 +7,6 @@
   }
 
   body {
-    @apply h-full antialiased py-12 bg-white text-primary-2 dark:bg-dark-1 dark:text-primary-1;
+    @apply h-full antialiased pt-14 bg-white text-primary-2 dark:bg-dark-1 dark:text-primary-1;
   }
 }
