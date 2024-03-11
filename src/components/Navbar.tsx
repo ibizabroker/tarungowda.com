@@ -83,11 +83,11 @@ export default function Navbar() {
           </li>
           <li className="mx-3">
             <Link 
-              href="/contact" 
+              href="/about" 
               className="block p-3 font-semibold hover:scale-125 transition-all ease duration-200 lg:px-2 lg:py-3"
               onClick={() => {setNavbar(!navbar)}}
             >
-              Contact
+              About
             </Link>
           </li>
         </ul>

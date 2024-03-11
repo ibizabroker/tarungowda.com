@@ -85,8 +85,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className='footer-content-sublist'>
-                  <Link href="/contact" className='footer-link'>
-                    Contact
+                  <Link href="/about" className='footer-link'>
+                    About
                   </Link>
                 </li>
               </ul>

@@ -1,0 +1,8 @@
+.about-container {
+  @apply m-10 mt-24 max-w-[1264px] mx-auto md:px-16 px-6;
+}
+@media (max-width: 992px) {
+  .about-container {
+    @apply max-w-[800px] mt-12;
+  }
+}
