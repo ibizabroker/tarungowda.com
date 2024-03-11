@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import GitHubIcon from '@/icons/github.svg';
+import LinkedInIcon from '@/icons/linkedin.svg';
+import SpotifyIcon from '@/icons/spotify.svg';
 
 export default function Footer() {
   let getYear = () => {
@@ -23,10 +26,10 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer nofollow"
                   className='footer-website-link'
-                  aria-label="LinkedIn profile"
-                  title="LinkedIn profile"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
                 >
-                  {/* <LinkedInIcon className='footer-icon' /> */}
+                  <LinkedInIcon className='footer-icon hover:text-[#0077b5]' />
                 </a>
               </li>
               <li>
@@ -35,10 +38,22 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer nofollow"
                   className='footer-website-link'
-                  aria-label="GitHub profile"
-                  title="GitHub profile"
+                  aria-label="GitHub"
+                  title="GitHub"
                 >
-                  {/* <GitHubIcon className='footer-icon' /> */}
+                  <GitHubIcon className='footer-icon dark:hover:text-white hover:text-black' />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://open.spotify.com/user/5lygea2hzqyo0yan37gvswbx0?si=dd01e11347574abf"
+                  target="_blank"
+                  rel="noreferrer nofollow"
+                  className='footer-website-link'
+                  aria-label="Spotify"
+                  title="Spotify"
+                >
+                  <SpotifyIcon className='footer-icon hover:text-[#1ED760]' />
                 </a>
               </li>
             </ul>
@@ -82,7 +97,7 @@ export default function Footer() {
           <div>
             Built with Next.js, TailwindCSS, ContentLayer & Vercel.
           </div>
-          <div>
+          <div className='footer-info-copyright'>
             <strong>&copy;</strong> {getYear()}, Tarun Gowda
           </div>
         </div>

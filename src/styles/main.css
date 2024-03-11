@@ -8,5 +8,6 @@
 @import './toc.css';
 @import './tags.css';
 @import './projects.css';
+@import './footer.css';
 
 @import 'tailwindcss/utilities';

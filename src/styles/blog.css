@@ -18,16 +18,11 @@
 }
 
 .blogshowcase-main {
-  @apply max-w-[800px] grow pb-[120px];
+  @apply max-w-[800px] grow;
 }
 @media (max-width: 992px) {
   .blogshowcase-main {
-    @apply max-w-full w-full pb-[72px];
-  }
-}
-@media (max-width: 650px) {
-  .blogshowcase-main {
-    @apply pb-10;
+    @apply max-w-full w-full;
   }
 }
 
