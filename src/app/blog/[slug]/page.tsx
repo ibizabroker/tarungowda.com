@@ -12,17 +12,17 @@ export default function BlogPage({ params }: { params: Blog }) {
     return <NotFound />
 
   return (
-    <div className='container blog-container'>
+    <div className='container blogshowcase-container'>
       <div className='blog-content'>
         <main className='blog-main'>
-          <div className='blog-container'>
+          {/* <div className='blog-container'> */}
             <article className='article'>
               <Heading blog={blog} />
               <div className='user-content'>
                 <MDXComponent mdx={blog} />
               </div>
             </article>
-          </div>
+          {/* </div> */}
         </main>
         <aside className='sidebar'>
           <Toc />

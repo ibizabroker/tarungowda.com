@@ -42,6 +42,18 @@
   @apply text-[rem(15)] font-normal;
 }
 
+.toc .toc-link.node-name--H4 {
+  @apply text-[rem(15)] font-normal;
+}
+
+.toc .toc-link.node-name--H5 {
+  @apply text-[rem(15)] font-normal;
+}
+
+.toc .toc-link.node-name--H6 {
+  @apply text-[rem(15)] font-normal;
+}
+
 .toc .toc-link.is-active-link {
   @apply dark:bg-gray-700/20 bg-slate-300/20 text-secondary-1;
 }

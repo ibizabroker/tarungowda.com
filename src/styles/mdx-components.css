@@ -81,7 +81,7 @@ h6>a>.icon.icon-link:before {
 
 /* headings */
 .h1-level {
-  @apply text-5xl leading-[1.2] my-9 dark:text-primary-1 text-primary-2;
+  @apply text-5xl leading-[1.2] my-9 mb-3 dark:text-primary-1 text-primary-2;
 }
 @media (max-width: 650px) {
   .h1-level {
@@ -90,7 +90,7 @@ h6>a>.icon.icon-link:before {
 }
 
 .h2-level {
-  @apply text-4xl leading-[1.2] my-9 dark:text-primary-1 text-primary-2;
+  @apply text-4xl leading-[1.2] my-9 mb-3 dark:text-primary-1 text-primary-2;
 }
 @media (max-width: 650px) {
   .h2-level {
@@ -99,7 +99,7 @@ h6>a>.icon.icon-link:before {
 }
 
 .h3-level {
-  @apply text-[2rem] leading-[1.2] my-9 dark:text-primary-1 text-primary-2;
+  @apply text-[2rem] leading-[1.2] my-9 mb-2 dark:text-primary-1 text-primary-2;
 }
 @media (max-width: 650px) {
   .h3-level {
@@ -108,7 +108,7 @@ h6>a>.icon.icon-link:before {
 }
 
 .h4-level {
-  @apply text-[1.75rem] leading-normal my-9 dark:text-primary-1 text-primary-2;
+  @apply text-[1.75rem] leading-normal my-9 mb-2 dark:text-primary-1 text-primary-2;
 }
 @media (max-width: 650px) {
   .h4-level {
@@ -117,7 +117,7 @@ h6>a>.icon.icon-link:before {
 }
 
 .h5-level {
-  @apply text-2xl leading-normal my-9 dark:text-primary-1 text-primary-2;
+  @apply text-2xl leading-normal my-9 mb-2 dark:text-primary-1 text-primary-2;
 }
 @media (max-width: 650px) {
   .h5-level {
@@ -126,7 +126,7 @@ h6>a>.icon.icon-link:before {
 }
 
 .h6-level {
-  @apply text-xl dark:text-primary-1 my-9 text-primary-2;
+  @apply text-xl dark:text-primary-1 my-9 mb-2 text-primary-2;
 }
 @media (max-width: 650px) {
   .h6-level {
