@@ -53,10 +53,7 @@
 }
 
 .blog-card-description {
-  @apply text-[0.9375rem] tracking-wider overflow-hidden mt-4 mb-2;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  @apply text-[0.9375rem] tracking-wider mt-4 mb-2;
 }
 
 .blog-card-tags {
