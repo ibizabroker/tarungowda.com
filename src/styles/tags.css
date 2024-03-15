@@ -74,9 +74,14 @@
 .tag-block {
   @apply dark:bg-dark-2 border pt-4 pb-6 rounded-[10px] border-solid dark:border-divider-1;
 }
+@media (max-width: 1200px) {
+  .tag-block {
+    @apply mt-6 mb-0;
+  }
+}
 @media (max-width: 992px) {
   .tag-block {
-    @apply w-[calc(50%_-_16px)] mb-0;
+    @apply w-[calc(50%_-_16px)] mt-6 mb-0;
   }
 }
 @media (max-width: 650px) {
@@ -91,12 +96,6 @@
 
 .tag-list {
   @apply flex flex-wrap mt-2 px-6 pr-3;
-}
-@media (max-width: 1110px) {
-  .tag-list {
-    @apply px-4;
-  }
-  
 }
 
 .tag-item {
