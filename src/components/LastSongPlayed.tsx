@@ -13,16 +13,14 @@ export default function LastSongPlayed() {
     return <div>Loading...</div>
 
   return(
-    <div className='dark:bg-dark-2 relative flex w-[290px] items-center rounded-md border border-solid dark:border-divider-1 p-3 transition-shadow hover:shadow-[0_0_4px_2px_rgba(120,120,120,0.1)]'>
-      <div className='w-[64px]'>
-        <img
-          className='shadow-[25px]'
-          src={data.albumCover}
-          alt={data.albumName}
-        />
-      </div>
+    <div className='spotify-song-card'>
+      <img
+        className='spotify-album-cover'
+        src={data.albumCover}
+        alt={data.albumName}
+      />
     
-      <div className='flex flex-col ml-4'>
+      <div className='spotify-song-details'>
         <a
           href={data.trackUrl}
           target="_blank"
@@ -57,7 +55,7 @@ export default function LastSongPlayed() {
         </a>
       </div>
 
-      <div className='absolute top-1.5 right-1.5'>
+      <div className='spotify-song-icon'>
         <SpotifyIcon className='footer-icon text-[#1ED760]' />
       </div>
     </div>

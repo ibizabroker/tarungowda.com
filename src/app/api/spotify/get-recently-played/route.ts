@@ -21,7 +21,7 @@ export async function GET() {
       status: 200,
       headers: {
         'content-type': 'application/json',
-        'cache-control': 'public, s-maxage=240, stale-while-revalidate=120'
+        'cache-control': 'public, s-maxage=1800, stale-while-revalidate=300'
       }
     }
   );

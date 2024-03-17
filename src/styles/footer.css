@@ -12,7 +12,11 @@
 }
 
 .footer-content {
-  @apply flex flex-col gap-16 sm:flex-row py-10;
+  @apply flex justify-between flex-col gap-16 lg:flex-row py-10;
+}
+
+.footer-content-main {
+  @apply flex flex-col gap-16 sm:flex-row;
 }
 
 .footer-content-max {

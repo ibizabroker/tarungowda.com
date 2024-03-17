@@ -1,0 +1,15 @@
+.spotify-song-card {
+  @apply dark:bg-dark-2 relative flex w-[290px] items-center rounded-md border border-solid dark:border-divider-1 p-3 transition-shadow hover:shadow-[0_0_4px_2px_rgba(120,120,120,0.1)];
+}
+
+.spotify-album-cover {
+  @apply w-[64px];
+}
+
+.spotify-song-details {
+  @apply flex flex-col ml-4;
+}
+
+.spotify-song-icon {
+  @apply absolute top-1.5 right-1.5;
+}

@@ -8,18 +8,17 @@ const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=1`;
 
 const getAccessToken = async () => {
-  const bodyParams = new URLSearchParams({
-    'grant_type': 'refresh_token',
-    'refresh_token': REFRESH_TOKEN ? REFRESH_TOKEN : '',
-  });
-
   const res = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {
       'Authorization': `Basic ${BASIC_TOKEN}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: bodyParams.toString(),
+    body: new URLSearchParams({
+      'grant_type': 'refresh_token',
+      'refresh_token': REFRESH_TOKEN ? REFRESH_TOKEN : '',
+    }),
+    cache: "no-cache"
   });
 
   const data = await res.json();
@@ -41,7 +40,7 @@ export const getRecentlyPlayed = async () => {
   });
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch now playing data: ${res.statusText}`);
+    throw new Error(`Failed to fetch last played data: ${res.statusText}`);
   }
 
   return res;

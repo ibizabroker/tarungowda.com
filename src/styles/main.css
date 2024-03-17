@@ -9,6 +9,7 @@
 @import './tags.css';
 @import './projects.css';
 @import './about.css';
+@import './spotify.css';
 @import './footer.css';
 
 @import 'tailwindcss/utilities';
