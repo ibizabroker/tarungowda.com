@@ -25,33 +25,30 @@ export default function LastSongPlayed() {
           href={data.trackUrl}
           target="_blank"
           rel="noreferrer nofollow"
-          className='font-medium'
           aria-label={data.trackName}
           title={data.trackName}
         >
-          <span className='hover:underline'>{data.trackName}</span> 
+          <span className='spotify-song-link'>{data.trackName}</span> 
         </a>
         <a
           href={data.artistUrl}
           target="_blank"
           rel="noreferrer nofollow"
-          className='text-xs'
           aria-label={data.artistName}
           title={data.artistName}
         >
-          <span className='hover:no-underline'>by </span>
-          <span className='hover:underline'>{data.artistName}</span>
+          <span className='spotify-text'>by </span>
+          <span className='spotify-link'>{data.artistName}</span>
         </a>
         <a
           href={data.albumUrl}
           target="_blank"
           rel="noreferrer nofollow"
-          className='text-xs'
           aria-label={data.albumName}
           title={data.albumName}
         >
-          <span className='hover:no-underline'>on </span>
-          <span className='hover:underline'>{data.albumName}</span>
+          <span className='spotify-text'>on </span>
+          <span className='spotify-link'>{data.albumName}</span>
         </a>
       </div>
 

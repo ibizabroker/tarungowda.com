@@ -1,3 +1,5 @@
+'use client';
+
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import Pre from './Blog/Pre';
 import CodeHead from './Blog/CodeHead';
