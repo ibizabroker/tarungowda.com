@@ -8,7 +8,8 @@ export async function GET() {
   const topArtistsDetails = topArtists.items.map((artist: any) => ({
     artistName: artist.name,
     artistUrl: artist.external_urls.spotify,
-    artistCover: artist.images[0].url
+    artistCover: artist.images[0].url,
+    artistGenres: artist.genres
   }));
 
   return new NextResponse(

@@ -1,9 +1,9 @@
 .spotify-song-card {
-  @apply dark:bg-dark-2 flex w-[290px] items-center rounded-md border border-solid dark:border-divider-1 p-3 transition-shadow hover:shadow-[0_0_4px_2px_rgba(120,120,120,0.1)];
+  @apply relative dark:bg-dark-2 flex w-[290px] items-center rounded-md border border-solid dark:border-divider-1 p-3 my-2 transition-shadow hover:shadow-[0_0_4px_2px_rgba(120,120,120,0.1)];
 }
 
 .spotify-album-cover {
-  @apply m-0 w-[64px];
+  @apply m-0 w-[64px] h-[64px];
 }
 
 .spotify-song-details {
@@ -23,5 +23,13 @@
 }
 
 .spotify-text {
-  @apply font-normal text-xs dark:text-primary-1 text-primary-2 hover:no-underline;
+  @apply font-normal text-xs dark:text-primary-1 text-primary-2 hover:no-underline m-0;
+}
+
+.top-five-main {
+  @apply flex flex-col md:flex-row justify-between;
+}
+
+.display-text {
+  @apply dark:text-primary-1 text-primary-2;
 }
