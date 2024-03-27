@@ -1,131 +1,26 @@
-import { formatSlug } from '@/utils/slug';
-import { sortBlogsUsingDate } from '@/utils/sort';
-import { getAllBlogTagSlugs, allBlogTagsData, getBlogsByTag } from "@/utils/tags";
-import { Blog, allBlogs } from 'contentlayer/generated'
+import Image from "next/image";
 
 function Home() {
-  const sortedBlogs = sortBlogsUsingDate(allBlogs);
-  console.log(sortedBlogs)
-
-  const tagSlug = formatSlug("Next.js @test_g12   test")
-  console.log(tagSlug)
-
-  const test = allBlogTagsData.find((tag) => {
-    return tag.slug === "nextjs";
-  });
-  console.log(test)
-  const x = test?.name
-  let blogs: Blog[] | null = null;
-  if(x !== undefined){
-    blogs = getBlogsByTag(x);
-  }
-  // const blogs = getBlogsByTag(test?.name);
-  console.log(blogs)
-  const slugs = getAllBlogTagSlugs;
-  console.log(slugs)
+  
   
   return (
-    <main className="p-5">
-      <h1 className="text-3xl font-bold">
-        Test Text 1 2 3 456
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-      <h1 className="text-3xl font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aliquam exercitationem soluta omnis voluptatem ea cumque repellat eius, sequi similique corrupti fuga rem distinctio incidunt quo aperiam nisi ut consectetur!
-      </h1>
-    </main>
+    <div className="container m-10 mt-24 max-w-[1264px] mx-auto md:px-16 px-6">
+      <div className="mb-10">
+        <h1 className="max-w-3xl font-medium tracking-tight sm:text-5xl text-4xl mb-6 lg:leading-[3.7rem]">
+          Tarun Gowda
+        </h1>
+        <div className="relative w-full pt-[56.4%]">
+          <Image
+            className="rounded-xl border dark:border-divider-1 object-cover"
+            src="/static/projects/coverImage/ez-split.png"
+            alt="Tarun Gowda"
+            fill
+            style={{objectFit: "contain"}}
+            quality={100}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
 
