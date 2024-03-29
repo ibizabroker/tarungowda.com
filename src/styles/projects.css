@@ -39,7 +39,7 @@
 }
 
 .project-heading {
-  @apply font-bold tracking-tight text-5xl mb-4 max-w-sm;
+  @apply font-bold tracking-tight text-5xl mb-4;
 }
 @media (max-width: 650px) {
   .project-heading {
