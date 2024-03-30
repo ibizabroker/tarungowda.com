@@ -1,15 +1,24 @@
 import Card from "./Card";
 
-export default function List({ sortedBlogs }: { sortedBlogs: any }) {
+interface Props {
+  sortedBlogs: any;
+  className?: string;
+}
+
+export default function List({ sortedBlogs, className }: Props) {
   return (
     <ul className='blog-list'>
       {sortedBlogs.map((blog: any) => {
         const { _id } = blog;
 
         return (
-          <li key={_id} className='blog-item'>
+          className ?
+          <li key={_id} className={`${className}`}>
             <Card blog={blog} />
-          </li>
+          </li> :
+          <li key={_id} className={`blog-item`}>
+          <Card blog={blog} />
+        </li>
         );
       })}
     </ul>
