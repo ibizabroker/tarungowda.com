@@ -12,11 +12,15 @@
 }
 
 .projects-list {
-  @apply grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12;
+  @apply flex flex-wrap gap-5;
+}
+
+.project-item {
+  @apply flex xl:w-[calc(100%_/3_-(20px/3*2))] md:w-[calc(100%_/2_-(20px/2*1))] w-full;
 }
 
 .project-card {
-  @apply flex items-center gap-x-4 p-4 dark:bg-dark-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-divider-1 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-[-3px];
+  @apply flex items-center gap-x-4 p-4 w-full dark:bg-dark-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-divider-1 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-[-3px];
 }
 .project-card:hover .project-card-title {
   @apply text-secondary-1;

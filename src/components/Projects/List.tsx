@@ -6,7 +6,7 @@ export default function List({ sortedProjects }: { sortedProjects: any }) {
     <div className="projects-list">
       {sortedProjects.map((project: Projects)  => {
         return (
-          <div key={project._id}>
+          <div key={project._id} className="project-item">
             <Card project={project} />
           </div>
         );
