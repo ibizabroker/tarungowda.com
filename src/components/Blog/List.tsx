@@ -7,18 +7,27 @@ interface Props {
 
 export default function List({ sortedBlogs, className }: Props) {
   return (
+    className ?
+    <ul className='blog-list-mainpage'>
+      {sortedBlogs.map((blog: any) => {
+        const { _id } = blog;
+
+        return (
+          <li key={_id} className={`${className}`}>
+            <Card blog={blog} />
+          </li>
+        );
+      })}
+    </ul> :
+
     <ul className='blog-list'>
       {sortedBlogs.map((blog: any) => {
         const { _id } = blog;
 
         return (
-          className ?
-          <li key={_id} className={`${className}`}>
+          <li key={_id} className='blog-item'>
             <Card blog={blog} />
-          </li> :
-          <li key={_id} className={`blog-item`}>
-          <Card blog={blog} />
-        </li>
+          </li>
         );
       })}
     </ul>

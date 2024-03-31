@@ -28,7 +28,7 @@ function Home() {
       </div>
       <div className="my-2">
         <h2 className="font-medium tracking-tight sm:text-4xl text-3xl mb-6 lg:leading-[3.7rem]">Recent Blogs</h2>
-        <BlogList sortedBlogs={sortedBlogs.slice(0, 3)} className="flex xl:w-[calc(50%_-227px)] md:w-[calc(50%_-24px)] w-[calc(100%_-32px)] mr-5 mt-12" />
+        <BlogList sortedBlogs={sortedBlogs.slice(0, 3)} className="flex xl:w-[calc(100%_/3_-(20px/3*2))] md:w-[calc(100%_/2_-(20px/2*1))] w-full" />
       </div>
       <div className="mt-4">
         <h2 className="font-medium tracking-tight sm:text-4xl text-2xl mb-6 lg:leading-[3.7rem]">Recent Projects</h2>
