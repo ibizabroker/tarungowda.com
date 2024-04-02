@@ -11,8 +11,8 @@
   @apply flex lg:flex-row flex-col items-center gap-x-12 gap-y-12 mb-10;
 }
 
-.home-intro-main {
-  @apply min-w-[338px];
+.home-image-div {
+  @apply lg:w-[2380px];
 }
 
 .home-intro-heading {
@@ -22,14 +22,9 @@
 .home-intro-image {
   @apply rounded-2xl w-full;
 }
-@media (max-width: 1170px) and (min-width: 1024px) {
-  .home-intro-image {
-    @apply w-[490px];
-  }
-}
 
 .home-recent-works {
-  @apply mt-40;
+  @apply lg:mt-40 sm:mt-20 mt-14;
 }
 
 .home-recent-works-heading {

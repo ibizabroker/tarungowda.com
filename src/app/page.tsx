@@ -11,20 +11,23 @@ function Home() {
   return (
     <div className="container home-container">
       <div className="home-intro-container">
-        <div className="home-intro-main">
+        <div>
           <h1 className="home-intro-heading">
             Hello! I'm Tarun.
           </h1>
           <p>Your everyday software developer exploring new tech to solve real-world problems. On this website I share some insights through technical blogs and projects that usually automates or solves the challenges I have faced in the past.</p>
         </div>
-        <Image
-          className="home-intro-image"
-          src="/static/projects/coverImage/ez-split.png"
-          alt="Tarun Gowda"
-          width={500}
-          height={100}
-          quality={100}
-        />
+        <div className="home-image-div">
+          <Image
+            className="home-intro-image"
+            src="/static/home/tarungowda.png"
+            alt="Tarun Gowda"
+            width={3840}
+            height={2160}
+            layout="responsive"
+            quality={100}
+          />
+        </div>
       </div>
       <div className="home-recent-works">
         <h2 className="home-recent-works-heading">Recent Blogs</h2>
