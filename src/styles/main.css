@@ -3,6 +3,7 @@
 
 @import 'tailwindcss/components';
 @import './components.css';
+@import './navbar.css';
 @import './home.css';
 @import './mdx-components.css';
 @import './blog.css';

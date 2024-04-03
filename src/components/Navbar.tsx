@@ -3,6 +3,9 @@
 import Link from "next/link"
 import ThemeSwitcher from "./ThemeSwitcher"
 import TempLogo from "@/icons/templogo.svg"
+import GitHubIcon from '@/icons/github.svg';
+import LinkedInIcon from '@/icons/linkedin.svg';
+import SpotifyIcon from '@/icons/spotify.svg';
 import { useState } from "react"
 import useScroll from "@/hooks/useOnScroll"
 
@@ -11,91 +14,155 @@ export default function Navbar() {
   const isScrolled = useScroll(0);
 
   return (
-    <header className="h-16 py-2 fixed w-full top-0 z-[1000]">
-      <div
-        className={`fixed inset-0 h-16 ${
-          isScrolled ?
-            'border-b border-gray-200 dark:border-slate-800 backdrop-blur-[9px]':
-            'bg-white dark:bg-dark-1'
-        }`}
-      />
-      <nav className="relative flex flex-wrap items-center justify-between mx-auto max-w-[1320px] px-4">
-        <div className="order-0">
-          <Link href="/" className="max-h-full max-w-full inline-block">
-            <TempLogo />
-          </Link>
-        </div>
-
-        <input id="nav-toggle" type="checkbox" className="hidden" />
-        <label
-          htmlFor="nav-toggle"
-          className="order-3 cursor-pointer flex items-center lg:hidden lg:order-1"
-          onClick={() => {setNavbar(!navbar)}}
-        >
-          <svg
-            id="menu-button"
-            className={`h-6 fill-current ${
-              navbar ? "hidden": "block"
-            }`}
-            viewBox="0 0 20 20"
-          >
-            <title>Menu Open</title>
-            <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
-          </svg>
-          <svg
-            id="close-button"
-            className={`h-6 fill-current ${
-              navbar ? "block": "hidden"
-            }`}
-            viewBox="0 0 20 20"
-          >
-            <title>Menu Close</title>
-            <polygon
-              points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
-              transform="rotate(45 10 10)"
-            ></polygon>
-          </svg>
-        </label>
-
-        <ul
-          id="nav-menu"
-          className={`text-center lg:text-left order-3 w-full pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 ${
-            navbar ? "block": "hidden"
+    <div>
+      <header className="navbar-header">
+        <div
+          className={`navbar-scroll-common ${
+            isScrolled ?
+              'navbar-scroll' :
+              'navbar-no-scroll'
           }`}
-        >
-          <li className="mx-3">
-            <Link 
-              href="/blog" 
-              className="block p-3 font-semibold hover:scale-125 transition-all ease duration-200 lg:px-2 lg:py-3"
-              onClick={() => {setNavbar(!navbar)}}
-            >
-              Blog
+        />
+        <nav className="navbar-main">
+          <div className="navbar-logo">
+            <Link href="/" className="navbar-logo-link">
+              <TempLogo />
             </Link>
-          </li>
-          <li className="mx-3">
-            <Link 
-              href="/projects" 
-              className="block p-3 font-semibold hover:scale-125 transition-all ease duration-200 lg:px-2 lg:py-3"
-              onClick={() => {setNavbar(!navbar)}}
-            >
-              Projects
-            </Link>
-          </li>
-          <li className="mx-3">
-            <Link 
-              href="/about" 
-              className="block p-3 font-semibold hover:scale-125 transition-all ease duration-200 lg:px-2 lg:py-3"
-              onClick={() => {setNavbar(!navbar)}}
-            >
-              About
-            </Link>
-          </li>
-        </ul>
+          </div>
 
-        <div className="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-          <ThemeSwitcher className="mr-5"/>
+          <button
+            className="navbar-toggle"
+            onClick={() => {setNavbar(!navbar)}}
+          >
+            <div
+              className={`navbar-menu-button ${
+                navbar ? 
+                  "navbar-menu-close-1" : 
+                  "navbar-menu-open"
+              }`}
+            />
+            <div 
+              className={`navbar-menu-button ${
+                navbar ? 
+                  "navbar-menu-close-2" : 
+                  "navbar-menu-open"
+              }`} />
+            <div
+              className={`navbar-menu-button ${
+                navbar ? 
+                  "navbar-menu-close-3" :
+                  "navbar-menu-open"
+              }`}
+            />
+          </button>
+
+          <ul
+            id="nav-menu"
+            className="navbar-list"
+          >
+            <li className="mx-3">
+              <Link 
+                href="/blog" 
+                className="navbar-item"
+              >
+                Blog
+              </Link>
+            </li>
+            <li className="mx-3">
+              <Link 
+                href="/projects" 
+                className="navbar-item"
+              >
+                Projects
+              </Link>
+            </li>
+            <li className="mx-3">
+              <Link 
+                href="/about" 
+                className="navbar-item"
+              >
+                About
+              </Link>
+            </li>
+          </ul>
+
+          <div className={navbar ? "hidden" : "navbar-theme"}>
+            <ThemeSwitcher className="" />
+          </div>
+        </nav>
+      </header>
+      <nav
+        className={navbar ? `navbar-menu navbar-menu-overlay` : `navbar-menu`}
+        onClick={() => {setNavbar(!navbar)}}
+      >
+        <div className="navbar-menu-main">
+          <ul className="navbar-menu-list">
+            <li className="navbar-menu-item">
+              <Link 
+                href="/blog" 
+                className="navbar-menu-link"
+              >
+                Blog
+              </Link>
+            </li>
+            <li className="navbar-menu-item">
+              <Link 
+                href="/projects" 
+                className="navbar-menu-link"
+              >
+                Projects
+              </Link>
+            </li>
+            <li className="navbar-menu-item">
+              <Link 
+                href="/about" 
+                className="navbar-menu-link"
+              >
+                About
+              </Link>
+            </li>
+          </ul>
+
+          <ul className="navbar-menu-socials">
+            <li className="navbar-menu-social-item">
+              <a
+                href="https://www.linkedin.com/in/tarun-gowda/"
+                target="_blank"
+                rel="noreferrer nofollow"
+                className='footer-website-link'
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <LinkedInIcon className="footer-icon hover:text-[#0077b5]" />
+              </a>
+            </li>
+            <li className="navbar-menu-social-item">
+              <a
+                href="https://github.com/ibizabroker"
+                target="_blank"
+                rel="noreferrer nofollow"
+                className='footer-website-link'
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <GitHubIcon className="footer-icon dark:hover:text-white hover:text-black" />
+              </a>
+            </li>
+            <li className="navbar-menu-social-item">
+              <a
+                href="https://open.spotify.com/user/5lygea2hzqyo0yan37gvswbx0?si=dd01e11347574abf"
+                target="_blank"
+                rel="noreferrer nofollow"
+                className='footer-website-link'
+                aria-label="Spotify"
+                title="Spotify"
+              >
+                <SpotifyIcon className="footer-icon hover:text-[#1ED760]" />
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
-    </header>
+    </div>
   )
 }
