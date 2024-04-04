@@ -21,4 +21,16 @@
       @apply px-4 py-0;
     }
   }
+
+  .theme {
+    @apply cursor-pointer dark:bg-dark-2 dark:text-primary-1 text-primary-2 border dark:border-divider-1 rounded-full p-1 duration-300 transition-transform ease-in;
+  }
+
+  .light-theme {
+    @apply rotate-0;
+  }
+
+  .dark-theme {
+    @apply -rotate-180;
+  }
 }

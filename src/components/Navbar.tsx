@@ -87,7 +87,7 @@ export default function Navbar() {
           </ul>
 
           <div className={navbar ? "hidden" : "navbar-theme"}>
-            <ThemeSwitcher className="" />
+            <ThemeSwitcher />
           </div>
         </nav>
       </header>

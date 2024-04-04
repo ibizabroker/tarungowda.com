@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 import LightMode from '@/icons/lightmode.svg'
 import DarkMode from '@/icons/darkmode.svg'
 
-export default function ThemeSwitcher({ className }: { className: string }) {
+export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
 
@@ -17,23 +17,16 @@ export default function ThemeSwitcher({ className }: { className: string }) {
     return null
   }
 
-  if (resolvedTheme === 'dark') {
-    return (
-      <div className={`cursor-pointer ${className}`}>
-        <LightMode 
-          onClick={() => setTheme('light')}
-        />
-      </div>
-    )
-  }
-
-  if (resolvedTheme === 'light') {
-    return (
-      <div className={`cursor-pointer ${className}`}>
-        <DarkMode 
-          onClick={() => setTheme('dark')}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className={`theme ${
+      resolvedTheme === 'light' ? 
+        'light-theme' : 
+        'dark-theme'
+    }`}>
+      {resolvedTheme === 'light' ?
+        <DarkMode onClick={() => setTheme('dark')} /> :
+        <LightMode onClick={() => setTheme('light')} />
+      }
+    </div>
+  )
 }
