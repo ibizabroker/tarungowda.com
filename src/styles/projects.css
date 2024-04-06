@@ -8,7 +8,7 @@
 }
 
 .project-container {
-  @apply m-10 max-w-[930px] w-full mx-auto md:px-16 px-6 mt-24;
+  @apply m-10 max-w-[930px] w-full mx-auto md:px-16 px-6 sm:mt-24 mt-12;
 }
 
 .projects-list {
