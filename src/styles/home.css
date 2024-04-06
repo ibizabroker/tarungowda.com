@@ -1,10 +1,5 @@
 .home-container {
-  @apply m-10 mt-24 max-w-[1264px] mx-auto md:px-16 px-6;
-}
-@media (max-width: 992px) {
-  .home-container {
-    @apply max-w-[800px] mt-12;
-  }
+  @apply m-10 mt-12 md:mt-24 max-w-[1264px] mx-auto md:px-16 px-6;
 }
 
 .home-intro-container {

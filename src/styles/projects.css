@@ -1,14 +1,9 @@
 .projects-container {
-  @apply m-10 mt-24 max-w-[1264px] mx-auto md:px-16 px-6;
-}
-@media (max-width: 992px) {
-  .projects-container {
-    @apply max-w-[800px] mt-12;
-  }
+  @apply m-10 mt-12 md:mt-24 max-w-[1264px] mx-auto px-6 md:px-16;
 }
 
 .project-container {
-  @apply m-10 max-w-[930px] w-full mx-auto md:px-16 px-6 sm:mt-24 mt-12;
+  @apply m-10 max-w-[930px] w-full mx-auto px-6 md:px-16 mt-12 sm:mt-24;
 }
 
 .projects-list {
@@ -43,12 +38,7 @@
 }
 
 .project-heading {
-  @apply font-bold tracking-tight text-5xl mb-4;
-}
-@media (max-width: 650px) {
-  .project-heading {
-    @apply text-3xl;
-  }
+  @apply font-bold tracking-tight text-3xl sm:text-4xl md:text-5xl mb-4;
 }
 
 .project-links {
@@ -56,21 +46,11 @@
 }
 
 .project-github {
-  @apply flex justify-center items-center rounded-md px-4 py-2;
-}
-@media (max-width: 650px) {
-  .project-github {
-    @apply px-2 py-0 h-8;
-  }
+  @apply flex justify-center items-center rounded-md px-2 sm:px-4 py-0 sm:py-2 h-8 sm:h-full;
 }
 
 .project-website {
-  @apply flex justify-center items-center rounded-md px-4 py-2 ml-4;
-}
-@media (max-width: 650px) {
-  .project-website {
-    @apply px-2 py-0 h-8;
-  }
+  @apply flex justify-center items-center rounded-md px-2 sm:px-4 py-0 sm:py-2 h-8 sm:h-full ml-4;
 }
 
 .project-image {

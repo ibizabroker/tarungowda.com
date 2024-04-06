@@ -26,112 +26,52 @@ h6>a>.icon.icon-link:before {
 }
 
 h1>a>.icon.icon-link:before {
-  @apply text-5xl
-}
-@media (max-width: 650px) {
-  h1>a>.icon.icon-link:before {
-    @apply text-[2rem];
-  }
+  @apply text-[2rem] sm:text-5xl;
 }
 
 h2>a>.icon.icon-link:before {
-  @apply text-4xl leading-[1.2];
-}
-@media (max-width: 650px) {
-  h2>a>.icon.icon-link:before {
-    @apply text-[1.75rem];
-  }
+  @apply text-[1.75rem] sm:text-4xl leading-[1.2];
 }
 
 h3>a>.icon.icon-link:before {
-  @apply text-[2rem] leading-[1.2];
-}
-@media (max-width: 650px) {
-  h3>a>.icon.icon-link:before {
-    @apply text-2xl;
-  }
+  @apply text-2xl sm:text-[2rem] leading-[1.2];
 }
 
 h4>a>.icon.icon-link:before {
-  @apply text-[1.75rem];
-}
-@media (max-width: 650px) {
-  h4>a>.icon.icon-link:before {
-    @apply text-xl;
-  }
+  @apply text-xl sm:text-[1.75rem];
 }
 
 h5>a>.icon.icon-link:before {
-  @apply text-2xl;
-}
-@media (max-width: 650px) {
-  h5>a>.icon.icon-link:before {
-    @apply text-lg;
-  }
+  @apply text-lg sm:text-2xl;
 }
 
 h6>a>.icon.icon-link:before {
-  @apply text-xl;
-}
-@media (max-width: 650px) {
-  h6>a>.icon.icon-link:before {
-    @apply text-base;
-  }
+  @apply text-base sm:text-xl;
 }
 
 /* headings */
 .h1-level {
-  @apply text-5xl leading-[1.2] my-9 mb-3 dark:text-primary-1 text-primary-2;
-}
-@media (max-width: 650px) {
-  .h1-level {
-    @apply text-[2rem] dark:text-primary-1 text-primary-2;
-  }
+  @apply text-[2rem] sm:text-5xl leading-[1.2] my-9 mb-3 dark:text-primary-1 text-primary-2;
 }
 
 .h2-level {
-  @apply text-4xl leading-[1.2] my-9 mb-3 dark:text-primary-1 text-primary-2;
-}
-@media (max-width: 650px) {
-  .h2-level {
-    @apply text-[1.75rem] dark:text-primary-1 text-primary-2;
-  }
+  @apply text-[1.75rem] sm:text-4xl leading-[1.2] my-9 mb-3 dark:text-primary-1 text-primary-2;
 }
 
 .h3-level {
-  @apply text-[2rem] leading-[1.2] my-9 mb-2 dark:text-primary-1 text-primary-2;
-}
-@media (max-width: 650px) {
-  .h3-level {
-    @apply text-2xl dark:text-primary-1 text-primary-2;
-  }
+  @apply text-2xl sm:text-[2rem] leading-[1.2] my-9 mb-2 dark:text-primary-1 text-primary-2;
 }
 
 .h4-level {
-  @apply text-[1.75rem] leading-normal my-9 mb-2 dark:text-primary-1 text-primary-2;
-}
-@media (max-width: 650px) {
-  .h4-level {
-    @apply text-xl dark:text-primary-1 text-primary-2;
-  }
+  @apply text-xl sm:text-[1.75rem] leading-normal my-9 mb-2 dark:text-primary-1 text-primary-2;
 }
 
 .h5-level {
-  @apply text-2xl leading-normal my-9 mb-2 dark:text-primary-1 text-primary-2;
-}
-@media (max-width: 650px) {
-  .h5-level {
-    @apply text-lg dark:text-primary-1 text-primary-2;
-  }
+  @apply text-lg sm:text-2xl leading-normal my-9 mb-2 dark:text-primary-1 text-primary-2;
 }
 
 .h6-level {
-  @apply text-xl dark:text-primary-1 my-9 mb-2 text-primary-2;
-}
-@media (max-width: 650px) {
-  .h6-level {
-    @apply text-base dark:text-primary-1 text-primary-2;
-  }
+  @apply text-base sm:text-xl dark:text-primary-1 my-9 mb-2 text-primary-2;
 }
 
 /* paragraph */
@@ -171,12 +111,7 @@ h6>a>.icon.icon-link:before {
 
 /* pre */
 .pre {
-  @apply dark:bg-dark-2 bg-white text-sm leading-6 overflow-x-auto m-0 pl-2 py-4;
-}
-@media (max-width: 650px) {
-  .pre {
-    @apply leading-normal py-3;
-  }
+  @apply dark:bg-dark-2 bg-white text-sm leading-normal sm:leading-6 overflow-x-auto m-0 pl-2 py-3 sm:py-4;
 }
 .pre::-webkit-scrollbar {
   @apply h-2.5;
@@ -190,12 +125,7 @@ h6>a>.icon.icon-link:before {
 }
 
 .pre-copy {
-  @apply absolute border dark:text-primary-1 text-primary-2 p-[1px] w-[22px] h-[22px] rounded top-4 right-4 cursor-pointer text-base transition-all duration-[0.3s] border-solid backdrop-blur-lg dark:border-divider-2 hover:!border-secondary-1 hover:!text-secondary-1;
-}
-@media (max-width: 650px) {
-  .pre-copy {
-    @apply right-3 top-3;
-  }
+  @apply absolute border dark:text-primary-1 text-primary-2 p-[1px] w-[22px] h-[22px] rounded top-3 sm:top-4 right-3 sm:right-4 cursor-pointer text-base transition-all duration-[0.3s] border-solid backdrop-blur-lg dark:border-divider-2 hover:!border-secondary-1 hover:!text-secondary-1;
 }
 
 .pre-icon-done {
@@ -257,12 +187,7 @@ html.dark .pre-copy[data-theme="light"] {
 
 /* code head */
 .code-head {
-  @apply text-xs leading-4 dark:text-primary-1 text-primary-2 border dark:border-divider-1 dark:bg-dark-2 flex items-center w-full mt-8 p-3 rounded-[8px_8px_0_0] border-solid;
-}
-@media (max-width: 650px) {
-  .code-head {
-    @apply p-2;
-  }
+  @apply text-xs leading-4 dark:text-primary-1 text-primary-2 border dark:border-divider-1 dark:bg-dark-2 flex items-center w-full mt-8 p-2 sm:p-3 rounded-[8px_8px_0_0] border-solid;
 }
 
 .code-head-dots {

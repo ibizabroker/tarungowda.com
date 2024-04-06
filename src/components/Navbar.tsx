@@ -60,7 +60,7 @@ export default function Navbar() {
             id="nav-menu"
             className="navbar-list"
           >
-            <li className="mx-3">
+            <li className="ml-2">
               <Link 
                 href="/blog" 
                 className="navbar-item"
@@ -68,7 +68,7 @@ export default function Navbar() {
                 Blog
               </Link>
             </li>
-            <li className="mx-3">
+            <li className="ml-2">
               <Link 
                 href="/projects" 
                 className="navbar-item"
@@ -76,7 +76,7 @@ export default function Navbar() {
                 Projects
               </Link>
             </li>
-            <li className="mx-3">
+            <li className="ml-2">
               <Link 
                 href="/about" 
                 className="navbar-item"

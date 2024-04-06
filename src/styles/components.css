@@ -14,12 +14,7 @@
   }
 
   .container {
-    @apply max-w-[1100px] w-full mx-auto my-0 px-8 py-0;
-  }
-  @media (max-width: 650px) {
-    .container {
-      @apply px-4 py-0;
-    }
+    @apply max-w-[1100px] w-full mx-auto my-0 px-4 sm:px-8 py-0;
   }
 
   .theme {

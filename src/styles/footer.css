@@ -1,14 +1,9 @@
 .footer-main {
-  @apply mt-24 pt-16 text-sm dark:text-primary-1 text-primary-2;
+  @apply mt-24 pt-0 md:pt-16 text-sm dark:text-primary-1 text-primary-2;
 }
 
 .footer-container {
   @apply mx-auto max-w-[1264px] md:px-16 px-6;
-}
-@media (max-width: 992px) {
-  .footer-container {
-    @apply max-w-[800px];
-  }
 }
 
 .footer-content {
