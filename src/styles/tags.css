@@ -1,6 +1,6 @@
 /* Tag slug page styles */
 .tag-container {
-  @apply max-w-[1264px];
+  @apply max-w-[1264px] m-10 mt-12 md:mt-24 mx-auto md:px-16 px-6;
 }
 
 .tag-title {

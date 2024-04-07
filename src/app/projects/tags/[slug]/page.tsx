@@ -15,8 +15,13 @@ export default function TagsPage({ params }: { params: any }) {
   }
 
   return (
-    <div className='container projects-container'>
-      <List sortedProjects={projects} />
+    <div className='container tag-container'>
+      <h1 className='tag-title'>
+        # {tagData?.name}
+      </h1>
+      <div>
+        <List sortedProjects={projects} />
+      </div>
     </div>
   )
 }
