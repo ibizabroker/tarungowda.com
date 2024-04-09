@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import GitHubIcon from '@/icons/github.svg';
-import LinkedInIcon from '@/icons/linkedin.svg';
-import SpotifyIcon from '@/icons/spotify.svg';
 import LastSongPlayed from './LastSongPlayed';
+import { GitHubIcon, LinkedInIcon, SpotifyIcon } from './Icons';
 
 export default function Footer() {
   let getYear = () => {

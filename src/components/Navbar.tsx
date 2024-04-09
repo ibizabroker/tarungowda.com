@@ -2,12 +2,9 @@
 
 import Link from "next/link"
 import ThemeSwitcher from "./ThemeSwitcher"
-import TempLogo from "@/icons/templogo.svg"
-import GitHubIcon from '@/icons/github.svg';
-import LinkedInIcon from '@/icons/linkedin.svg';
-import SpotifyIcon from '@/icons/spotify.svg';
 import { useState } from "react"
 import useScroll from "@/hooks/useOnScroll"
+import { GitHubIcon, LinkedInIcon, SpotifyIcon, TempLogoIcon } from "./Icons"
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -26,7 +23,7 @@ export default function Navbar() {
         <nav className="navbar-main">
           <div className="navbar-logo">
             <Link href="/" className="navbar-logo-link">
-              <TempLogo />
+              <TempLogoIcon />
             </Link>
           </div>
 

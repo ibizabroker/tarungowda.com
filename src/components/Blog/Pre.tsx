@@ -1,8 +1,7 @@
 'use client'
 
-import Copy from '@/icons/copy.svg';
-import CopyDone from '@/icons/copy-done.svg';
 import { useEffect, useState, useRef } from "react";
+import { CopyDoneIcon, CopyIcon } from "../Icons";
 
 export default function Pre({ ...props }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -38,11 +37,11 @@ export default function Pre({ ...props }) {
       >
         {isCopied ? (
           <span className='pre-icon-done'>
-            <CopyDone />
+            <CopyDoneIcon />
           </span>
         ) : (
           <span className='pre-icon-copy'>
-            <Copy />
+            <CopyIcon />
           </span>
         )}
       </button>

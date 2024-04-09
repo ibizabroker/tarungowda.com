@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import LightMode from '@/icons/lightmode.svg'
-import DarkMode from '@/icons/darkmode.svg'
+import { DarkModeIcon, LightModeIcon } from './Icons'
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
@@ -24,8 +23,8 @@ export default function ThemeSwitcher() {
         'dark-theme'
     }`}>
       {resolvedTheme === 'light' ?
-        <DarkMode onClick={() => setTheme('dark')} /> :
-        <LightMode onClick={() => setTheme('light')} />
+        <DarkModeIcon onClick={() => setTheme('dark')} /> :
+        <LightModeIcon onClick={() => setTheme('light')} />
       }
     </div>
   )

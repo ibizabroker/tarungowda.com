@@ -1,17 +1,19 @@
-import Angularjs from '@/icons/angularjs.svg';
-import Css from '@/icons/css.svg';
-import Docker from '@/icons/docker.svg';
-import Git from '@/icons/git.svg';
-import Html from '@/icons/html.svg';
-import Javascript from '@/icons/javascript.svg';
-import Markdown from '@/icons/markdown.svg'
-import Nextjs from '@/icons/nextjs.svg';
-import Python from '@/icons/python.svg';
-import ReactNative from '@/icons/react-native.svg';
-import Reactjs from '@/icons/reactjs.svg';
-import Tailwind from '@/icons/tailwind.svg';
-import Terminal from '@/icons/terminal.svg';
-import Typescript from '@/icons/typescript.svg';
+import { 
+  AngularIcon, 
+  CSSIcon, 
+  DockerIcon, 
+  GitIcon, 
+  HTMLIcon, 
+  JavaScriptIcon, 
+  MarkdownIcon, 
+  NextJSIcon, 
+  PythonIcon, 
+  ReactIcon, 
+  ReactNativeIcon, 
+  TailwindIcon, 
+  TerminalIcon, 
+  TypeScriptIcon 
+} from "../Icons";
 
 export default function CodeHead({ name, lang }:{ name: any, lang: any }) {
   const outputLanguageString = (value: any) => {
@@ -19,85 +21,85 @@ export default function CodeHead({ name, lang }:{ name: any, lang: any }) {
       case "angular": {
         return {
           name: "Angular.js",
-          icon: <Angularjs />,
+          icon: <AngularIcon />,
         };
       }
       case "css": {
         return {
           name: "CSS",
-          icon: <Css />,
+          icon: <CSSIcon />,
         };
       }
       case "docker": {
         return {
           name: "Docker",
-          icon: <Docker />,
+          icon: <DockerIcon />,
         };
       }
       case "git": {
         return {
           name: "Git",
-          icon: <Git />,
+          icon: <GitIcon />,
         };
       }
       case "html": {
         return {
           name: "HTML",
-          icon: <Html />,
+          icon: <HTMLIcon />,
         };
       }
       case "js": {
         return {
           name: "Javascript",
-          icon: <Javascript />,
+          icon: <JavaScriptIcon />,
         };
       }
       case "mdx": {
         return {
           name: "MDX",
-          icon: <Markdown />,
+          icon: <MarkdownIcon />,
         };
       }
       case "next": {
         return {
           name: "Next.js",
-          icon: <Nextjs />,
+          icon: <NextJSIcon />,
         };
       }
       case "python": {
         return {
           name: "Python",
-          icon: <Python />,
+          icon: <PythonIcon />,
         };
       }
       case "react-native": {
         return {
           name: "React Native",
-          icon: <ReactNative />,
+          icon: <ReactNativeIcon />,
         };
       }
       case "react": {
         return {
           name: "React.js",
-          icon: <Reactjs />,
+          icon: <ReactIcon />,
         };
       }
       case "tailwind": {
         return {
           name: "TailwindCSS",
-          icon: <Tailwind />,
+          icon: <TailwindIcon />,
         };
       }
       case "terminal": {
         return {
           name: "Terminal",
-          icon: <Terminal />,
+          icon: <TerminalIcon />,
         };
       }
       case "ts": {
         return {
           name: "Typescript",
-          icon: <Typescript />,
+          icon: <TypeScriptIcon />,
         };
       }
       default:

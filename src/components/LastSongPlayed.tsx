@@ -1,7 +1,7 @@
 'use client';
 
-import SpotifyIcon from '@/icons/spotify.svg';
 import useSWR from 'swr';
+import { SpotifyIcon } from './Icons';
 
 export default function LastSongPlayed() {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
