@@ -24,7 +24,8 @@ function Home() {
             alt="Tarun Gowda"
             width={3840}
             height={2160}
-            layout="responsive"
+            style={{ width: '100%', height: 'auto' }}
+            priority
             quality={100}
           />
         </div>
