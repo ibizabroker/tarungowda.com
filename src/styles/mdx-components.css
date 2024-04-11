@@ -153,7 +153,7 @@ div[data-rehype-pretty-code-fragment] {
 }
 
 .code {
-  @apply text-sm dark:text-secondary-1 text-secondary-1 dark:bg-dark-2 rounded inline leading-[1.2] self-center mx-1 my-0 px-1.5 py-[3px] ml-0 pl-0;
+  @apply text-sm dark:text-secondary-1 text-secondary-1 dark:bg-dark-2 rounded inline leading-[1.2] self-center mx-1 my-0 px-1.5 py-[3px];
 }
 
 div[data-rehype-pretty-code-fragment] pre code {

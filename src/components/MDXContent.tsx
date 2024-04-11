@@ -32,7 +32,8 @@ export default function MDXContent({ mdx }: { mdx: any }) {
   return (
     <div className='prose prose-lg max-w-max
       blockquote-tag hr-tag
-      prose-strong:dark:text-primary-1 prose-strong:text-primary-2'
+      prose-strong:dark:text-primary-1 prose-strong:text-primary-2
+      prose-code:before:hidden prose-code:after:hidden'
     >
       <MarkdownContent components={components} />
     </div>
