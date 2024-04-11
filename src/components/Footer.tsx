@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
           <div>
             <div className='mb-2'>
-              Check Out the Last Song I Listened To!
+              Check out the last song I listened to!
             </div>
             <LastSongPlayed />
           </div>

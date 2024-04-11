@@ -13,7 +13,7 @@ export default function LastSongPlayed() {
     return <div>Loading...</div>
 
   return(
-    <div className='spotify-song-card'>
+    <div className='spotify-song-card-footer'>
       <img
         className='spotify-album-cover'
         src={data.albumCover}

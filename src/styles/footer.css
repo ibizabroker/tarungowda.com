@@ -15,7 +15,7 @@
 }
 
 .footer-content-max {
-  @apply max-w-[348px];
+  @apply w-full sm:max-w-[348px];
 }
 
 .footer-heading-1 {

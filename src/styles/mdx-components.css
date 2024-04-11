@@ -274,9 +274,9 @@ html.dark .pre-copy[data-theme="light"] {
 }
 
 .th {
-  @apply dark:text-primary-1 text-primary-2 px-6 py-3;
+  @apply dark:text-primary-1 text-primary-2 pl-3 sm:px-6 py-3;
 }
 
 .td {
-  @apply px-6 py-2;
+  @apply px-3 sm:px-6 py-2 overflow-auto;
 }
