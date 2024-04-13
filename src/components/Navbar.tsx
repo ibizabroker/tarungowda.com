@@ -1,10 +1,11 @@
 'use client'
 
+import Image from "next/image";
 import Link from "next/link"
 import ThemeSwitcher from "./ThemeSwitcher"
 import { useState } from "react"
 import useScroll from "@/hooks/useOnScroll"
-import { GitHubIcon, LinkedInIcon, SpotifyIcon, TempLogoIcon } from "./Icons"
+import { GitHubIcon, LinkedInIcon, SpotifyIcon } from "./Icons"
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -23,7 +24,13 @@ export default function Navbar() {
         <nav className="navbar-main">
           <div className="navbar-logo">
             <Link href="/" className="navbar-logo-link">
-              <TempLogoIcon />
+              <Image 
+                src={"/logo.png"} 
+                alt="logo" 
+                width={35} 
+                height={35} 
+                quality={100} 
+              />
             </Link>
           </div>
 
