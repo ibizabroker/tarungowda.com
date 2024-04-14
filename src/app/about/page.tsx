@@ -1,6 +1,25 @@
 import { allAbouts } from 'contentlayer/generated';
 import MDXComponent from '@/components/MDXContent';
 import Toc from '@/components/Blog/TOC';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Tarun is a software developer who loves to explore new tech to solve real-world problems. He also writes technical blogs that are usually solutions, workarounds and sometimes just plain tales of tech woes he encountered along the way.',
+  metadataBase: new URL(`https://tarungowda.com/about`),
+  openGraph: {
+    title: 'About',
+    description: 'Tarun is a software developer who loves to explore new tech to solve real-world problems. He also writes technical blogs that are usually solutions, workarounds and sometimes just plain tales of tech woes he encountered along the way.',
+    url: 'https://tarungowda.com/about',
+    images: [
+      {
+        url: 'https://tarungowda.com/static/home/tarungowda.png',
+        width: 1200,
+        height: 630
+      }
+    ],
+  },
+}
 
 export default function AboutPage() {
   const about = allAbouts[0];

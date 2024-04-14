@@ -4,6 +4,34 @@ import MDXComponent from '@/components/MDXContent'
 import NotFound from '@/app/not-found'
 import { getProjectTagsData } from "@/utils/tags";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export function generateMetadata({ params }: { params: Projects }): Metadata {
+  const project = allProjects.find((project) => project.slug === params.slug)
+
+  return {
+    title: {
+      absolute: `${project?.title} | Projects`
+    },
+    metadataBase: new URL(`https://tarungowda.com/projects/${project?.slug}`),
+    description: `${project?.description}`,
+    keywords: `${project?.tags}`,
+    openGraph: {
+      title: {
+        absolute: `${project?.title} | Projects`
+      },
+      description: `${project?.description}`,
+      url: `https://tarungowda.com/projects/${project?.slug}`,
+      images: [
+        {
+          url: `https://tarungowda.com/projects${project?.coverImage}`,
+          width: 1200,
+          height: 630
+        }
+      ],
+    },
+  }
+}
 
 export default function ProjectPage({ params }: { params: Projects }) {
   const project = allProjects.find((project) => project.slug === params.slug)

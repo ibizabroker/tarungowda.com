@@ -10,8 +10,23 @@ const inter = Inter({ subsets: ['latin'], display: "swap", variable: "--font-in"
 const manrope = Manrope({ subsets: ['latin'], display: "swap", variable: "--font-mr" })
 
 export const metadata: Metadata = {
-  title: 'Tarun Gowda',
+  title: {
+    default: 'Tarun Gowda',
+    template: '%s | Tarun Gowda'
+  },
+  metadataBase: new URL('http://localhost:3000'),
   description: 'Website to stay updated with Tarun Gowda (ibizabroker) 👍',
+  openGraph: {
+    title: {
+      default: 'Tarun Gowda',
+      template: '%s | Tarun Gowda'
+    },
+    description: 'Website to stay updated with Tarun Gowda (ibizabroker) 👍',
+    url: 'https://tarungowda.com',
+    siteName: "tarungowda.com",
+    locale: "en_US",
+    type: "website",
+  },
 }
 
 export default function RootLayout({

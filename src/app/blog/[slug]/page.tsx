@@ -3,10 +3,30 @@ import MDXComponent from '@/components/MDXContent'
 import Toc from '@/components/Blog/TOC'
 import NotFound from '@/app/not-found'
 import Heading from '@/components/Blog/Heading'
+import { Metadata } from 'next'
+
+export function generateMetadata({params}: {params: Blog}): Metadata {
+  const blog = allBlogs.find((blog) => blog.slug === params.slug)
+
+  return {
+    title: {
+      absolute: `${blog?.title} | Blog`
+    },
+    metadataBase: new URL(`https://tarungowda.com/blog${blog?.slug}`),
+    description: `${blog?.description}`,
+    keywords: `${blog?.tags}`,
+    creator: `${blog?.author}`,
+    openGraph: {
+      title: {
+        absolute: `${blog?.title} | Blog`
+      },
+      description: `${blog?.description}`,
+      url: `https://tarungowda.com/blog${blog?.slug}`,
+    },
+  }
+}
 
 export default function BlogPage({ params }: { params: Blog }) {
-  // console.log(allBlogs)
-  // console.log(params.slug)
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
   if (!blog)
     return <NotFound />
@@ -15,14 +35,12 @@ export default function BlogPage({ params }: { params: Blog }) {
     <div className='container blogshowcase-container'>
       <div className='blog-content'>
         <main className='blog-main'>
-          {/* <div className='blog-container'> */}
             <article className='article'>
               <Heading blog={blog} />
               <div className='user-content'>
                 <MDXComponent mdx={blog} />
               </div>
             </article>
-          {/* </div> */}
         </main>
         <aside className='sidebar'>
           <Toc />
