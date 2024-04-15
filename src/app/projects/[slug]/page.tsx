@@ -5,6 +5,7 @@ import NotFound from '@/app/not-found'
 import { getProjectTagsData } from "@/utils/tags";
 import Link from "next/link";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export function generateMetadata({ params }: { params: Projects }): Metadata {
   const project = allProjects.find((project) => project.slug === params.slug)
@@ -36,7 +37,7 @@ export function generateMetadata({ params }: { params: Projects }): Metadata {
 export default function ProjectPage({ params }: { params: Projects }) {
   const project = allProjects.find((project) => project.slug === params.slug)
   if (!project)
-    return <NotFound />
+    return notFound();
 
   const tagsData = getProjectTagsData(project.tags);
 

@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning={true} lang="en">
-      <body className={`${inter.variable} ${manrope.variable} font-sans bg-light dark:bg-dark`}>
+      <body className={`${inter.variable} ${manrope.variable} dark:bg-dark-1 bg-white`}>
         <Providers>
           <Navbar />
           {children}

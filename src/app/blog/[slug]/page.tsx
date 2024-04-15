@@ -1,9 +1,9 @@
-import { Blog, allBlogs } from 'contentlayer/generated'
-import MDXComponent from '@/components/MDXContent'
-import Toc from '@/components/Blog/TOC'
-import NotFound from '@/app/not-found'
-import Heading from '@/components/Blog/Heading'
-import { Metadata } from 'next'
+import { Blog, allBlogs } from 'contentlayer/generated';
+import MDXComponent from '@/components/MDXContent';
+import Toc from '@/components/Blog/TOC';
+import Heading from '@/components/Blog/Heading';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export function generateMetadata({params}: {params: Blog}): Metadata {
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
@@ -29,7 +29,7 @@ export function generateMetadata({params}: {params: Blog}): Metadata {
 export default function BlogPage({ params }: { params: Blog }) {
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
   if (!blog)
-    return <NotFound />
+    return notFound();
 
   return (
     <div className='container blogshowcase-container'>

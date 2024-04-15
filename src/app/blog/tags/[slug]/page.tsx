@@ -3,6 +3,7 @@ import { allBlogTagsData, getBlogsByTag } from "@/utils/tags";
 import List from '@/components/Blog/List';
 import TagsSidebar from '@/components/Blog/TagsSideBar';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export function generateMetadata({ params }: { params: any }): Metadata {
   const tagData = allBlogTagsData.find((tag) => {
@@ -33,8 +34,10 @@ export default function TagsPage({ params }: { params: any }) {
   const tagName = tagData?.name
   let blogs: Blog[] | null = null;
 
-  if(tagName !== undefined){
+  if (tagName !== undefined){
     blogs = getBlogsByTag(tagName);
+  } else {
+    notFound();
   }
 
   return (

@@ -2,6 +2,7 @@ import { Projects } from 'contentlayer/generated'
 import { allProjectTagsData, getProjectsByTag } from "@/utils/tags";
 import List from '@/components/Projects/List';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export function generateMetadata({ params }: { params: any }): Metadata {
   const tagData = allProjectTagsData.find((tag) => {
@@ -34,6 +35,8 @@ export default function TagsPage({ params }: { params: any }) {
 
   if(tagName !== undefined){
     projects = getProjectsByTag(tagName);
+  } else {
+    notFound();
   }
 
   return (
