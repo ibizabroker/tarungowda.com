@@ -1,0 +1,172 @@
+---
+title: "Best Practices of React Native"
+date: 2023-08-10
+description: "Are you looking to build a mobile app using React Native and are confused what the best practices for it include? Here I talk about the various practices I have used in the past for building mobile apps."
+author: "Tarun Gowda"
+draft: false
+tags: 
+ - React Native
+ - Code Quality
+---
+
+The best practies for React Native can be distributed in the following categories:
+
+## Project structure
+
+A well-organized project structure is essential for any software development project. A good project structure can help you to maintain clean and organized code, improve code readability and maintainability, and enable easier collaboration with other developers working on the project. In React Native, there are no strict guidelines for project structure, so it's up to the developers to create a structure that best suits their needs. Here is an example of a project structure that I prefer working with:
+
+<CodeHead />  
+```bash
+project-root/
+├── __tests__/
+├  ├── __screens__/
+├  ├  ├── __snapshots__/
+├  ├  ├── __tests__/
+├  ├── __snapshots__/
+├  ├  ├── app.test.js.snap
+├  ├── app.test.js
+├── android/
+├── assets/
+├  ├── fonts/
+├  ├── images/
+├── ios/
+├── node_modules/
+├── src/
+├  ├── components/
+├  ├── screens/
+├  ├── services/
+├  ├── styles/
+├  ├── utils/
+├  ├── constants/
+├  ├── App.js
+├  ├── index.js
+├── .eslintrc.js
+├── .gitignore
+├── package.json
+├── README.md  
+```
+
+- **\_\_tests\_\_/:** Contains all test files.
+	- **\_\_screens\_\_/:** Testing files for particular screens.
+	- **\_\_snapshots\_\_/:** Snapshot testing for App.js file.
+	- **app.test.js:** Testing code for App.js file.
+- **android/:** Android-specific code and configuration files, including the AndroidManifest.xml file, Gradle build files, and Java source files.
+- **assets/:** Application assets, such as images and fonts.
+	- **fonts/:** Custom fonts used in the application.
+	- **images/:** Images used in the application.    
+- **ios/:** iOS-specific code and configuration files used in your application, including the Info.plist file, Xcode project file, and Objective-C or Swift source files. 
+- **node_modules/:** Third-party packages installed via npm or yarn.
+- **src/:** Source code for your application. 
+	- **components/:** Reusable UI components used throughout the application. 
+	- **screens/:** Screens used in your application. 
+	- **services/:** Service files for making API calls, handling storage, etc.
+	- **styles/:** Styles and themes used throughout your application. 
+	- **utils/:** Utility functions and helper files used throughout the application.  
+	- **constants/:** Constant values used throughout the application, such as API endpoints, default settings, etc.  
+	- **App.js:** The main component of the application, responsible for rendering the navigation and layout of the application.
+	- **index.js:** The entry point of the application, responsible for registering the App component and setting up any global configurations.
+- **.eslintrc.js:** Contains the configuration for the ESLint linter.
+- **.gitignore:** Files and directories that should be ignored by git.
+- **package.json:** Project metadata and dependencies.
+- **README.md:** The project documentation and instructions for running the application.
+
+## Keep components small and reusable
+
+Components are the building blocks of a React Native application, and it's essential to keep them small and reusable. A reusable component is a piece of code that can be used in multiple places within an application, rather than being written from scratch each time it is needed. This can help to reduce the amount of code that needs to be written, improve code consistency, and make it easier to maintain applications over time. For example:- you might have a Button component that is used in multiple places within your application, such as for form submissions or say to navigate to a different screens. Instead of writing a new button component each time, you can reuse the existing Button component and customize it with different styles or behavior as needed.
+
+To make a component reusable, you should also ensure that it is highly customizable and flexible. This can be achieved by passing `props` to the component that allow it to be configured in different ways. For example:- you might pass a `backgroundColor` prop to a Button component that allows it to be styled with different background colors. By using reusable components in your code it is easier to modify or add new features to your app in the future.
+
+## Use a state management library
+
+State management in React Native is the process of managing the data that is used by the components in your app. State refers to the data that changes over time and affects how your app behaves.
+
+In React Native, state is managed by the components themselves, and can be updated using the `setState()` method. However, as your app grows in complexity, managing state can become difficult and lead to issues like prop drilling and component coupling. To address these issues, you can use a state management library like `Redux`, `MobX`, or `Context API`. These libraries provide a centralized way to manage state in your app, allowing you to easily share data between components without needing to pass props down the component tree.
+
+**Redux** is a popular state management library that provides a predictable state container for your app. It allows you to define actions that represent changes to your app's state, and reducers that update the state based on those actions. With Redux, you can separate your app's logic from its presentation, making it easier to test and maintain.
+
+**MobX** is another popular state management library that uses observable data to manage state. It provides a more flexible and intuitive approach to state management, allowing you to update your app's state in a more natural way.
+
+The **Context API** is a built-in feature of React that allows you to share state between components without needing to pass props down the component tree. It provides a way to create a global state that can be accessed by any component in your app.
+
+Personally I prefer to use redux.
+
+## Optimize images and assets
+
+Optimizing images and assets is an important aspect of building a high-performing React Native app. Large images and assets can significantly increase the size of your app's bundle, resulting in slower app startup times and a poor user experience. Here are some best practices for optimizing images and assets in React Native:
+- **Compress images:** Compress your images using a lossless image compression method before using them in your app. This can significantly reduce the size of your images without affecting their quality.
+- **Use appropriate image formats:** Use JPEG format for photographs, PNG format for images with transparency, and SVG format for vector graphics. Avoid using GIF format, as it can be resource-intensive.
+- **Resize images:** Resize your images to the appropriate size for your app. This can significantly reduce the size of your images without affecting their quality.
+- **Lazy load images:** Use lazy loading techniques to load images only when they are needed. This can reduce the initial load time of your app and improve its performance.
+- **Use CDN for assets:** Use a Content Delivery Network (CDN) like Cloudinary or Amazon S3 to store your app's assets. This can reduce the load time of your app and improve its performance.
+- **Use progressive loading:** Use progressive loading techniques to load images in stages, starting with a low-quality version and gradually increasing the quality. This can reduce the initial load time of your app and improve its performance.
+- **Use vector graphics:** Use vector graphics instead of bitmap images for icons and logos. Vector graphics can be scaled without losing quality and are usually smaller in size.
+
+Storing your assets on a CDN like Cloudinary or Amazon S3 can also significantly reduce the load time of your app and improve its performance. For personal apps I use Cloudinary.
+
+## Styling
+
+Styling in React Native is similar to styling in web development with CSS. However, there are some differences and best practices to consider when styling in React Native.
+
+One of the primary differences is that React Native uses a subset of CSS properties and values, and introduces some new properties and values as well. This subset is called "React Native StyleSheets". StyleSheets in React Native are JavaScript objects that define a set of styles for a component, using key-value pairs. Here's an example of a basic StyleSheet object:
+
+<CodeHead lang="react-native" />  
+```jsx
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});  
+```
+
+In this example, I defined a container style that sets the `flex`, `backgroundColor`, `alignItems`, and `justifyContent` properties. To apply this style to a component use the style prop:
+
+<CodeHead lang="react-native" />  
+```jsx
+<View style={styles.container}>
+  // Child components here
+</View>
+```
+  
+In addition to the limited set of CSS properties, there are some other best practices to consider when styling in React Native:
+- **Avoid inline styles:** Instead of applying styles inline, use StyleSheet objects to define and apply styles. This helps to improve the readability and maintainability of your code, and can also improve performance.
+- **Use flexbox:** Flexbox is the primary layout system used in React Native. It allows you to create flexible and responsive layouts that adjust to different screen sizes and device orientations.
+- **Use responsive design:** Since React Native apps run on a variety of different devices with different screen sizes and resolutions, it's important to use responsive design principles to ensure that your app looks good and functions well on all devices.
+- **Use color constants:** To ensure consistency across your app, define color constants in a separate file and use them throughout your app. This makes it easy to update colors later on if needed.
+
+## Test your code
+
+Testing is an important part of building high-quality software, and React Native provides several options for testing your code. These are some of the general best practices for code testing:
+- **Unit testing:** Unit testing involves testing individual components or functions in isolation. You can use popular JavaScript testing frameworks such as Jest or Mocha to write unit tests for your React Native code. Unit tests help ensure that your code functions correctly and behaves as expected.
+- **Integration testing:** Integration testing involves testing the interaction between components or different parts of your application. Tools like Enzyme or React Native Testing Library can be used to write integration tests. These tests help ensure that your components work together correctly and that your app functions as expected.
+- **End-to-end testing:** End-to-end testing involves testing your entire application, including user interactions and server interactions. You can use tools like Appium or Detox to write end-to-end tests. These tests help ensure that your app works correctly in a real-world environment and that it meets the needs of your users.
+- **Snapshot testing:** Snapshot testing is a type of testing that captures a snapshot of a component or screen and compares it to a saved reference image. Tools like Jest or Storybook provide easy ways to write snapshot tests. These tests help ensure that your UI remains consistent across different devices and screen sizes.
+- **Mocking and stubbing:** When testing in React Native, it's often useful to mock or stub external dependencies such as APIs or database calls. You can use libraries like Sinon.js or Jest to mock or stub external dependencies in your tests, making it easier to isolate and test individual components or functions.
+
+Jest is one of the most popular testing frameworks in javascript. It's easy integration with React Native helps in easy testing of the code. I would highly recommend using Jest to test your code.
+
+## Naming conventions
+
+Naming conventions are an essential part of any programming language or framework. Following consistent and descriptive naming conventions makes your code more readable. Here are some naming conventions commonly used in React Native:
+
+- **Component Names:** Components should always be named using PascalCase (also known as UpperCamelCase). This means that the first letter of each word in the name should be capitalized. For example, `AppBar` or `LoginForm`. This convention helps to distinguish between components and other types of variables, such as functions or variables.
+- **File Names:** React Native files should be named using camelCase (also known as lowerCamelCase), which means that the first letter of the first word should be in lowercase and the first letter of each subsequent word should be in uppercase. For example,` homeScreen.js` or `lognScreen.js`. This convention helps to distinguish between files and components.
+- **Variable and Function Names:** Variables and functions should be named using camelCase. Variable names should be descriptive and convey the purpose of the variable, such as `userName` or `isPresent`. Function names should be verbs or verb phrases that describe the action the function performs, such as `handleSubmit` or `renderButton`.
+
+By following these naming conventions, you can make your code more organized and easier to understand. It's also a good idea to add the naming convention used for your project in the README.md file, so that the developers contributing to the project follow the same.
+
+## Comment conventions
+
+Comments are an important aspect of writing high-quality code in React Native, as they can help to improve code readability, explain complex or non-obvious logic, and provide documentation for future developers who may work on the codebase.
+
+- For short explanations or comments, use single-line comments (//) and place them on a new line above the code they are describing.
+- For longer explanations or comments, use multi-line comments (/* ... \*/) and place them above the code they are describing.
+- Use TODO comments to mark tasks or reminders that need to be addressed later.
+
+While comments can be helpful, it's important to use them sparingly and only when necessary. Overuse of comments can clutter your code and make it harder to read and maintain.
+
+Hopefully this blog has been insightful, if you have any questions do feel free to ask them in the comment section.
