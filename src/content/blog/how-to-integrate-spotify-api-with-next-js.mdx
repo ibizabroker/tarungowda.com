@@ -6,6 +6,7 @@ author: "Tarun Gowda"
 draft: false
 tags: 
  - Next.js
+ - Typescript
  - Spotify API
 ---
 
@@ -285,7 +286,7 @@ The response would look something like this:
 
 You can also fetch the data in postman using a  GET request at `localhost:3000/api/get-recently-played`. Filter out the content you want to use!
 
-## 3. Create route for /get-top-tracks
+## 4. Create route for /get-top-tracks
 -  In your `spotify.ts` file in utils, we will not get your top tracks. The endpoint provides 3 versions:
 	- short_term: gives data of approx last 4 weeks.
 	- medium_term: gives data of approx last 6 months.
@@ -713,7 +714,7 @@ export const getTopTracks = async () => {
 }
 ```
 
-## 4. Create route for /get-top-artists
+## 5. Create route for /get-top-artists
 -  In your `spotify.ts` file in utils, we will now get your top artists.
 
 <CodeHead name="src/utils/spotify.ts" lang="typescript" />
