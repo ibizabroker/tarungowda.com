@@ -235,6 +235,9 @@ html.dark .pre-copy[data-theme="light"] {
 .code-head-icon[data-lang="js"] {
   @apply text-white;
 }
+.code-head-icon[data-lang="json"] {
+  @apply w-[18px] h-[18px];
+}
 .code-head-icon[data-lang="mdx"] {
   @apply text-[#fbb32b];
 }

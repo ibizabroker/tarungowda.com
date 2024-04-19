@@ -5,6 +5,7 @@ import {
   GitIcon, 
   HTMLIcon, 
   JavaScriptIcon, 
+  JsonIcon, 
   MarkdownIcon, 
   NextJSIcon, 
   PythonIcon, 
@@ -52,6 +53,12 @@ export default function CodeHead({ name, lang }:{ name: any, lang: any }) {
         return {
           name: "Javascript",
           icon: <JavaScriptIcon />,
+        };
+      }
+      case "json": {
+        return {
+          name: "Json",
+          icon: <JsonIcon />,
         };
       }
       case "mdx": {
