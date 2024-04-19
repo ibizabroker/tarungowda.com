@@ -1,0 +1,943 @@
+---
+title: "How to integrate Spotify API with Next.js"
+date: 2024-03-18
+description: "Learn how to integrate Spotify API with Nextjs. In this blog I show three examples for Spotify's Web API, get your last song played, your top 5 artists and tracks for the last 4 weeks."
+author: "Tarun Gowda"
+draft: false
+tags: 
+ - Next.js
+ - Spotify API
+---
+
+Spotify has a huge amount of data available, and the best part is that it's free to access. I use the Spotify API to show the last song I listened to, my top 5 artists, songs in the last 4 weeks. 
+
+Here is a step by step guide on how I achieved this:
+
+## 1. Create App on Spotify Developer Portal
+
+- Head to the [Spotify Developer Portal](https://developer.spotify.com/dashboard) and create an app.
+- Fill in the App Name, App description, Website and Redirect URI. Check in Web API and hit **Save**.
+
+![Create an app](/static/blog/how-to-integrate-spotify-api-with-next-js/create-app.png)
+
+- Find your `Client ID` and `Client Secret` by going to the settings for your app and copy the information.
+
+![App info](/static/blog/how-to-integrate-spotify-api-with-next-js/app-info.png)
+
+Now that you have your `Client ID` and `Client Secret` you can authenticate your account and generate a refresh token.
+
+## 2. Authenticate Your Account
+
+To get a refresh token follow the following steps:
+- Create a base64 basic authentication code of `clientId:clientSecret` for a curl request. You can either use a [website](https://www.base64encode.org/) or write some code for it. Copy this base64 encoded code.
+![Encode to base64](/static/blog/how-to-integrate-spotify-api-with-next-js/encode.png)
+- Go to any browser and type in the below link with the scope you want.
+
+<CodeHead />
+```bash
+https://accounts.spotify.com/en/authorize?client_id=<your_client_id>&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2F&scope=user-read-recently-played+user-top-read
+```
+
+- You will get the redirected uri with a code attached to it. The sample response would look like this:
+
+<CodeHead />
+```bash
+http://localhost:3000/?code=AQDYMKmi2iPhuaZycBeyjAU5ruKgmkZFAz7-A0BlcplE5_mMvX7Jzy6acQyoC90AIHwBaGysW6IDluXtW-Ko4frMVYzJ_Ob4nofQc3bcy2iGsYAYWOE4jx-AyyDvmncc8r-RAFjSlZCQ1ozmV_ZbgnvI4Vlt3voN4fOcFHTFGpSXSI_WOLP6_0R8EY_Nfsq7yTzYWo98vuiCn8SuLcVuRMDN_sk
+```
+
+- Copy the text from `code=`.
+- Open your terminal, and run this command, run the give curl request using your codes.
+
+<CodeHead lang="terminal"/>
+```bash
+curl -H "Authorization: Basic <your_base64_encoded_code>"-d grant_type=authorization_code -d code=<your_code_generated_from_browser> -d redirect_uri=http%3A%2F%2Flocalhost:3000%2F https://accounts.spotify.com/api/token
+```
+- **Note**: When you copy this directly to your terminal it might end up being in multiple lines. Make sure this command is in a **single line**.
+- You will receive a json which would look something like this:
+
+<CodeHead lang="terminal"/>
+```json
+{
+  "access_token":"BQ.....RBg",
+  "token_type":"Bearer",
+  "expires_in":3600,
+  "refresh_token":"AQ...1_M",
+  "scope":"user-read-recently-played user-top-read"
+}
+```
+
+This process will give you the `refresh_token` which is valid forever. We are going to use this token to make API requests.
+
+## 3. Creating route for /get-recently-played
+
+- Create a `.env.local` file in your nextjs project and fill the following
+
+<CodeHead/>
+```bash
+SPOTIFY_CLIENT_ID=<your_client_id>
+SPOTIFY_CLIENT_SECRET=<your_client_secret>
+SPOTIFY_REFRESH_TOKEN=<refresh_token_you_generated>
+```
+
+- Create a spotify.ts file under utils, this file will have the logic for fetching the api.
+
+<CodeHead name="/src/utils/spotify.ts" lang="typescript" />
+```ts
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN; 
+
+const BASIC_TOKEN = Buffer.from(CLIENT_ID + ':' + CLIENT_SECRET).toString('base64');
+const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+
+const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=1`;
+
+const getAccessToken = async () => {
+  const res = await fetch(TOKEN_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Basic ${BASIC_TOKEN}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      'grant_type': 'refresh_token',
+      'refresh_token': REFRESH_TOKEN ? REFRESH_TOKEN : '',
+    }),
+    cache: "no-cache"
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch access token: ${data.error}`);
+  }
+
+  return data.access_token;
+};
+
+export const getRecentlyPlayed = async () => {
+  const access_token = await getAccessToken();
+  
+  const res = await fetch(RECENTLY_PLAYED_ENDPOINT, {
+    headers: {
+      'Authorization': `Bearer ${access_token}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch last played data: ${res.statusText}`);
+  }
+  
+  return res;
+};
+```
+
+- Create an api endpoint for your request, under `app/api/get-recently-played/route.ts` this ensures that your endpoint would be `localhost:3000/api/get-recently-played`.
+<CodeHead name="src/app/api/get-recently-played/route.ts" lang="next" />
+```tsx
+import { getRecentlyPlayed } from '@/utils/spotify';
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  const response = await getRecentlyPlayed();
+  const recentlyPlayedSongs = await response.json();
+
+  return new NextResponse(
+    JSON.stringify(recentlyPlayedSongs),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+        'cache-control': 'public, s-maxage=1800, stale-while-revalidate=300'
+      }
+    }
+  );
+}
+```
+
+- Make a component to fetch the data, the will be a client component as we are fetching the data. Nextjs has a data fetching library called [SWR](https://swr.vercel.app/), it uses the strategy to first return the data from cache (stale), then send the fetch request (revalidate), and finally come with the up-to-date data.
+- Install the library `npm i swr`
+- Create a component to fetch your data:
+
+<CodeHead name="src/components/LastSongPlayed.tsx" lang="next" />
+```tsx
+'use client'
+import useSWR from 'swr';
+
+export default function LastSongPlayed() {
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR('/api/spotify/get-recently-played', fetcher);
+  if (error)
+    return <div>Failed to load</div>
+  if (!data)
+    return <div>Loading...</div>
+
+  return(
+    <div>....</div>
+  )
+}
+```
+
+The response would look something like this:
+
+<CodeHead lang="json" />
+```json
+{
+    "items": [
+        {
+            "track": {
+                "album": {
+                    "album_type": "album",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6mdiAmATAx73kdxrNrnlao"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao",
+                            "id": "6mdiAmATAx73kdxrNrnlao",
+                            "name": "Iron Maiden",
+                            "type": "artist",
+                            "uri": "spotify:artist:6mdiAmATAx73kdxrNrnlao"
+                        }
+                    ],
+                    "available_markets": ["AR", "AU", ...., "XK"],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/5S3gls8Kjn8KVmqlIDEBbO"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/5S3gls8Kjn8KVmqlIDEBbO",
+                    "id": "5S3gls8Kjn8KVmqlIDEBbO",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b2735c29a88ba5341ca428f0c322",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e025c29a88ba5341ca428f0c322",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d000048515c29a88ba5341ca428f0c322",
+                            "width": 64
+                        }
+                    ],
+                    "name": "The Number of the Beast (2015 Remaster)",
+                    "release_date": "1982",
+                    "release_date_precision": "year",
+                    "total_tracks": 8,
+                    "type": "album",
+                    "uri": "spotify:album:5S3gls8Kjn8KVmqlIDEBbO"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6mdiAmATAx73kdxrNrnlao"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao",
+                        "id": "6mdiAmATAx73kdxrNrnlao",
+                        "name": "Iron Maiden",
+                        "type": "artist",
+                        "uri": "spotify:artist:6mdiAmATAx73kdxrNrnlao"
+                    }
+                ],
+                "available_markets": ["AR", "AU", ...., "XK"],
+                "disc_number": 1,
+                "duration_ms": 431093,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "GBCHB1800027"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/469rBLYJUZHMJLtq2Wch3h"
+                },
+                "href": "https://api.spotify.com/v1/tracks/469rBLYJUZHMJLtq2Wch3h",
+                "id": "469rBLYJUZHMJLtq2Wch3h",
+                "is_local": false,
+                "name": "Hallowed Be Thy Name - 2015 Remaster",
+                "popularity": 66,
+                "preview_url": "https://p.scdn.co/mp3-preview/38e2cda8a54e735765753209589b5251b71975f1?cid=957a80c2b7a34a93b87f310ca6f97cb1",
+                "track_number": 8,
+                "type": "track",
+                "uri": "spotify:track:469rBLYJUZHMJLtq2Wch3h"
+            },
+            "played_at": "2024-03-17T12:05:54.887Z",
+            "context": {
+                "type": "playlist",
+                "href": "https://api.spotify.com/v1/playlists/37i9dQZF1EP6YuccBxUcC1",
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/playlist/37i9dQZF1EP6YuccBxUcC1"
+                },
+                "uri": "spotify:playlist:37i9dQZF1EP6YuccBxUcC1"
+            }
+        }
+    ],
+    "next": "https://api.spotify.com/v1/me/player/recently-played?before=1710677154887&limit=1",
+    "cursors": {
+        "after": "1710677154887",
+        "before": "1710677154887"
+    },
+    "limit": 1,
+    "href": "https://api.spotify.com/v1/me/player/recently-played?limit=1"
+}
+```
+
+You can also fetch the data in postman using a  GET request at `localhost:3000/api/get-recently-played`. Filter out the content you want to use!
+
+## 3. Create route for /get-top-tracks
+-  In your `spotify.ts` file in utils, we will not get your top tracks. The endpoint provides 3 versions:
+	- short_term: gives data of approx last 4 weeks.
+	- medium_term: gives data of approx last 6 months.
+	- long_term: calculated from ~1 year of data and including all new data as it becomes available.
+
+<CodeHead name="src/utils/spotify.ts" lang="typescript" />
+```tsx
+const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5`;
+
+export const getTopTracks = async () => {
+  const access_token = await getAccessToken();
+
+  const res = await fetch(TOP_TRACKS_ENDPOINT, {
+    headers: {
+      'Authorization': `Bearer ${access_token}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch last played data: ${res.statusText}`);
+  }
+  
+  return res;
+};
+```
+
+- Create an endpoint in `app/api/get-top-tracks` similar to what we did for `/get-recently-played` and fetch it using `swr`. Sample response for short_term would look like this:
+
+<CodeHead lang="json" />
+```json
+{
+    "items": [
+        {
+            "album": {
+                "album_type": "SINGLE",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6Jnxg5O26hXfwfbRSMzVuB"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6Jnxg5O26hXfwfbRSMzVuB",
+                        "id": "6Jnxg5O26hXfwfbRSMzVuB",
+                        "name": "Revnoir",
+                        "type": "artist",
+                        "uri": "spotify:artist:6Jnxg5O26hXfwfbRSMzVuB"
+                    }
+                ],
+                "available_markets": ["AR", "AU", ...., "XK"], 
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/3MrbhneTc5FlTuTG9KMkcA"
+                },
+                "href": "https://api.spotify.com/v1/albums/3MrbhneTc5FlTuTG9KMkcA",
+                "id": "3MrbhneTc5FlTuTG9KMkcA",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273472eb8d975c0cb9bb870f5fd",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02472eb8d975c0cb9bb870f5fd",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851472eb8d975c0cb9bb870f5fd",
+                        "width": 64
+                    }
+                ],
+                "name": "Bang Bang",
+                "release_date": "2023-09-01",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:3MrbhneTc5FlTuTG9KMkcA"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6Jnxg5O26hXfwfbRSMzVuB"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6Jnxg5O26hXfwfbRSMzVuB",
+                    "id": "6Jnxg5O26hXfwfbRSMzVuB",
+                    "name": "Revnoir",
+                    "type": "artist",
+                    "uri": "spotify:artist:6Jnxg5O26hXfwfbRSMzVuB"
+                }
+            ],
+            "available_markets": ["AR", "AU", ...., "XK"],
+            "disc_number": 1,
+            "duration_ms": 243385,
+            "explicit": true,
+            "external_ids": {
+                "isrc": "QZNWX2354640"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/47uQXeaECAQoht2YCYGK3i"
+            },
+            "href": "https://api.spotify.com/v1/tracks/47uQXeaECAQoht2YCYGK3i",
+            "id": "47uQXeaECAQoht2YCYGK3i",
+            "is_local": false,
+            "name": "Bang Bang",
+            "popularity": 41,
+            "preview_url": "https://p.scdn.co/mp3-preview/ce0c00b8d57af29e48d6d8ba0d295b20995859db?cid=957a80c2b7a34a93b87f310ca6f97cb1",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:47uQXeaECAQoht2YCYGK3i"
+        },
+        {
+            "album": {
+                "album_type": "EP",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6Jnxg5O26hXfwfbRSMzVuB"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6Jnxg5O26hXfwfbRSMzVuB",
+                        "id": "6Jnxg5O26hXfwfbRSMzVuB",
+                        "name": "Revnoir",
+                        "type": "artist",
+                        "uri": "spotify:artist:6Jnxg5O26hXfwfbRSMzVuB"
+                    }
+                ],
+                "available_markets": ["AR", "AU", ...., "XK"],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/6nQSqAVLPDPcsQ2U72zrDK"
+                },
+                "href": "https://api.spotify.com/v1/albums/6nQSqAVLPDPcsQ2U72zrDK",
+                "id": "6nQSqAVLPDPcsQ2U72zrDK",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273958d87b1ff6d1daedf7df2f0",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02958d87b1ff6d1daedf7df2f0",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851958d87b1ff6d1daedf7df2f0",
+                        "width": 64
+                    }
+                ],
+                "name": "Invincible",
+                "release_date": "2024-02-23",
+                "release_date_precision": "day",
+                "total_tracks": 4,
+                "type": "album",
+                "uri": "spotify:album:6nQSqAVLPDPcsQ2U72zrDK"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6Jnxg5O26hXfwfbRSMzVuB"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6Jnxg5O26hXfwfbRSMzVuB",
+                    "id": "6Jnxg5O26hXfwfbRSMzVuB",
+                    "name": "Revnoir",
+                    "type": "artist",
+                    "uri": "spotify:artist:6Jnxg5O26hXfwfbRSMzVuB"
+                }
+            ],
+            "available_markets": ["AR", "AU", ...., "XK"],
+            "disc_number": 1,
+            "duration_ms": 183000,
+            "explicit": true,
+            "external_ids": {
+                "isrc": "QZDA82440154"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/5TNXnK9rT5sV1TK8Zw4TLg"
+            },
+            "href": "https://api.spotify.com/v1/tracks/5TNXnK9rT5sV1TK8Zw4TLg",
+            "id": "5TNXnK9rT5sV1TK8Zw4TLg",
+            "is_local": false,
+            "name": "Invincible",
+            "popularity": 38,
+            "preview_url": "https://p.scdn.co/mp3-preview/2f709582703f643c6ac5e72efb02bb0384fc4715?cid=957a80c2b7a34a93b87f310ca6f97cb1",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:5TNXnK9rT5sV1TK8Zw4TLg"
+        },
+        {
+            "album": {
+                "album_type": "ALBUM",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7t0rwkOPGlDPEhaOcVtOt9"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7t0rwkOPGlDPEhaOcVtOt9",
+                        "id": "7t0rwkOPGlDPEhaOcVtOt9",
+                        "name": "The Cranberries",
+                        "type": "artist",
+                        "uri": "spotify:artist:7t0rwkOPGlDPEhaOcVtOt9"
+                    }
+                ],
+                "available_markets": ["AR", "AU", ...., "XK"],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/0AP5O47kJWlaKVnnybKvQI"
+                },
+                "href": "https://api.spotify.com/v1/albums/0AP5O47kJWlaKVnnybKvQI",
+                "id": "0AP5O47kJWlaKVnnybKvQI",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273f6325f361d7803ad0d908451",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02f6325f361d7803ad0d908451",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851f6325f361d7803ad0d908451",
+                        "width": 64
+                    }
+                ],
+                "name": "Everybody Else Is Doing It, So Why Can't We?",
+                "release_date": "1993-03-01",
+                "release_date_precision": "day",
+                "total_tracks": 12,
+                "type": "album",
+                "uri": "spotify:album:0AP5O47kJWlaKVnnybKvQI"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/7t0rwkOPGlDPEhaOcVtOt9"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/7t0rwkOPGlDPEhaOcVtOt9",
+                    "id": "7t0rwkOPGlDPEhaOcVtOt9",
+                    "name": "The Cranberries",
+                    "type": "artist",
+                    "uri": "spotify:artist:7t0rwkOPGlDPEhaOcVtOt9"
+                }
+            ],
+            "available_markets": ["AR", "AU", ...., "XK"],
+            "disc_number": 1,
+            "duration_ms": 271560,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "USIR29300080"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/4JGKZS7h4Qa16gOU3oNETV"
+            },
+            "href": "https://api.spotify.com/v1/tracks/4JGKZS7h4Qa16gOU3oNETV",
+            "id": "4JGKZS7h4Qa16gOU3oNETV",
+            "is_local": false,
+            "name": "Dreams",
+            "popularity": 80,
+            "preview_url": "https://p.scdn.co/mp3-preview/01e93b284cd90ce02c830fb18aed309a946e77f9?cid=957a80c2b7a34a93b87f310ca6f97cb1",
+            "track_number": 2,
+            "type": "track",
+            "uri": "spotify:track:4JGKZS7h4Qa16gOU3oNETV"
+        },
+        {
+            "album": {
+                "album_type": "ALBUM",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/46gyXjRIvN1NL1eCB8GBxo"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/46gyXjRIvN1NL1eCB8GBxo",
+                        "id": "46gyXjRIvN1NL1eCB8GBxo",
+                        "name": "All Time Low",
+                        "type": "artist",
+                        "uri": "spotify:artist:46gyXjRIvN1NL1eCB8GBxo"
+                    }
+                ],
+                "available_markets": ["AR", "AU", ...., "XK"],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/0H4ELcHequ3OligrjWfrZP"
+                },
+                "href": "https://api.spotify.com/v1/albums/0H4ELcHequ3OligrjWfrZP",
+                "id": "0H4ELcHequ3OligrjWfrZP",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273c8913cd7b91bb7f6bbbec305",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02c8913cd7b91bb7f6bbbec305",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851c8913cd7b91bb7f6bbbec305",
+                        "width": 64
+                    }
+                ],
+                "name": "So Wrong, It's Right",
+                "release_date": "2007-09-25",
+                "release_date_precision": "day",
+                "total_tracks": 12,
+                "type": "album",
+                "uri": "spotify:album:0H4ELcHequ3OligrjWfrZP"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/46gyXjRIvN1NL1eCB8GBxo"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/46gyXjRIvN1NL1eCB8GBxo",
+                    "id": "46gyXjRIvN1NL1eCB8GBxo",
+                    "name": "All Time Low",
+                    "type": "artist",
+                    "uri": "spotify:artist:46gyXjRIvN1NL1eCB8GBxo"
+                }
+            ],
+            "available_markets": ["AR", "AU", ...., "XK"],
+            "disc_number": 1,
+            "duration_ms": 182826,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "USHR20747017"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/0JJP0IS4w0fJx01EcrfkDe"
+            },
+            "href": "https://api.spotify.com/v1/tracks/0JJP0IS4w0fJx01EcrfkDe",
+            "id": "0JJP0IS4w0fJx01EcrfkDe",
+            "is_local": false,
+            "name": "Dear Maria, Count Me In",
+            "popularity": 78,
+            "preview_url": "https://p.scdn.co/mp3-preview/75afe1f2f10936869652f72a5222823fa1d6999e?cid=957a80c2b7a34a93b87f310ca6f97cb1",
+            "track_number": 6,
+            "type": "track",
+            "uri": "spotify:track:0JJP0IS4w0fJx01EcrfkDe"
+        },
+        {
+            "album": {
+                "album_type": "ALBUM",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/4lgrzShsg2FLA89UM2fdO5"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/4lgrzShsg2FLA89UM2fdO5",
+                        "id": "4lgrzShsg2FLA89UM2fdO5",
+                        "name": "Leprous",
+                        "type": "artist",
+                        "uri": "spotify:artist:4lgrzShsg2FLA89UM2fdO5"
+                    }
+                ],
+                "available_markets": ["AR", "AU", ...., "XK"],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/0DvboP39IwpnJU9QrKIpDW"
+                },
+                "href": "https://api.spotify.com/v1/albums/0DvboP39IwpnJU9QrKIpDW",
+                "id": "0DvboP39IwpnJU9QrKIpDW",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b2738fd7578cb75dd30b4fdde9df",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e028fd7578cb75dd30b4fdde9df",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/ab67616d000048518fd7578cb75dd30b4fdde9df",
+                        "width": 64
+                    }
+                ],
+                "name": "Malina",
+                "release_date": "2017-08-25",
+                "release_date_precision": "day",
+                "total_tracks": 11,
+                "type": "album",
+                "uri": "spotify:album:0DvboP39IwpnJU9QrKIpDW"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/4lgrzShsg2FLA89UM2fdO5"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/4lgrzShsg2FLA89UM2fdO5",
+                    "id": "4lgrzShsg2FLA89UM2fdO5",
+                    "name": "Leprous",
+                    "type": "artist",
+                    "uri": "spotify:artist:4lgrzShsg2FLA89UM2fdO5"
+                }
+            ],
+            "available_markets": ["AR", "AU", ...., "XK"],
+            "disc_number": 1,
+            "duration_ms": 231346,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "GBDHC1779203"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/1tBxs9BqNlBXbIxVaCBrv5"
+            },
+            "href": "https://api.spotify.com/v1/tracks/1tBxs9BqNlBXbIxVaCBrv5",
+            "id": "1tBxs9BqNlBXbIxVaCBrv5",
+            "is_local": false,
+            "name": "From the Flame",
+            "popularity": 47,
+            "preview_url": "https://p.scdn.co/mp3-preview/50c1b96c8b020fd8463e15fb3a7c83ddec7ddd8b?cid=957a80c2b7a34a93b87f310ca6f97cb1",
+            "track_number": 3,
+            "type": "track",
+            "uri": "spotify:track:1tBxs9BqNlBXbIxVaCBrv5"
+        }
+    ],
+    "total": 1299,
+    "limit": 5,
+    "offset": 0,
+    "href": "https://api.spotify.com/v1/me/top/tracks?limit=5&time_range=short_term&locale=*",
+    "next": "https://api.spotify.com/v1/me/top/tracks?offset=5&limit=5&time_range=short_term&locale=*",
+    "previous": null
+}
+```
+
+## 4. Create route for /get-top-artists
+-  In your `spotify.ts` file in utils, we will now get your top artists.
+
+<CodeHead name="src/utils/spotify.ts" lang="typescript" />
+```tsx
+const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5`;
+
+export const getTopArtists = async () => {
+  const access_token = await getAccessToken();
+  const res = await fetch(TOP_ARTISTS_ENDPOINT, {
+    headers: {
+      'Authorization': `Bearer ${access_token}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch last played data: ${res.statusText}`);
+  }
+
+  return res;
+};
+```
+
+- Create an endpoint in `app/api/get-top-artists` similar to what we did for `/get-top-tracks` and fetch it using `swr`. Sample response for short_term would look like this:
+
+<CodeHead lang="json" />
+```json
+{
+    "items": [
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/4lgrzShsg2FLA89UM2fdO5"
+            },
+            "followers": {
+                "href": null,
+                "total": 241987
+            },
+            "genres": [
+                "norwegian metal",
+                "prog metal",
+                "progressive metal"
+            ],
+            "href": "https://api.spotify.com/v1/artists/4lgrzShsg2FLA89UM2fdO5",
+            "id": "4lgrzShsg2FLA89UM2fdO5",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5eb1039c96a8100bdeb579126af",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab676161000051741039c96a8100bdeb579126af",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f1781039c96a8100bdeb579126af",
+                    "width": 160
+                }
+            ],
+            "name": "Leprous",
+            "popularity": 46,
+            "type": "artist",
+            "uri": "spotify:artist:4lgrzShsg2FLA89UM2fdO5"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6fOMl44jA4Sp5b9PpYCkzz"
+            },
+            "followers": {
+                "href": null,
+                "total": 9609567
+            },
+            "genres": [
+                "hip hop",
+                "pop rap"
+            ],
+            "href": "https://api.spotify.com/v1/artists/6fOMl44jA4Sp5b9PpYCkzz",
+            "id": "6fOMl44jA4Sp5b9PpYCkzz",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5eb1cf142a710a2f3d9b7a62da1",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab676161000051741cf142a710a2f3d9b7a62da1",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f1781cf142a710a2f3d9b7a62da1",
+                    "width": 160
+                }
+            ],
+            "name": "NF",
+            "popularity": 79,
+            "type": "artist",
+            "uri": "spotify:artist:6fOMl44jA4Sp5b9PpYCkzz"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/46gyXjRIvN1NL1eCB8GBxo"
+            },
+            "followers": {
+                "href": null,
+                "total": 2978320
+            },
+            "genres": [
+                "modern rock",
+                "neon pop punk",
+                "pop emo",
+                "pop punk"
+            ],
+            "href": "https://api.spotify.com/v1/artists/46gyXjRIvN1NL1eCB8GBxo",
+            "id": "46gyXjRIvN1NL1eCB8GBxo",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5ebc8ae9b7a451d74da872bb3ac",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab67616100005174c8ae9b7a451d74da872bb3ac",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f178c8ae9b7a451d74da872bb3ac",
+                    "width": 160
+                }
+            ],
+            "name": "All Time Low",
+            "popularity": 69,
+            "type": "artist",
+            "uri": "spotify:artist:46gyXjRIvN1NL1eCB8GBxo"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/1Ffb6ejR6Fe5IamqA5oRUF"
+            },
+            "followers": {
+                "href": null,
+                "total": 5369877
+            },
+            "genres": [
+                "melodic metalcore",
+                "metalcore",
+                "modern rock",
+                "rock",
+                "uk metalcore"
+            ],
+            "href": "https://api.spotify.com/v1/artists/1Ffb6ejR6Fe5IamqA5oRUF",
+            "id": "1Ffb6ejR6Fe5IamqA5oRUF",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5eb22569dee4597722952f4325b",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab6761610000517422569dee4597722952f4325b",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f17822569dee4597722952f4325b",
+                    "width": 160
+                }
+            ],
+            "name": "Bring Me The Horizon",
+            "popularity": 78,
+            "type": "artist",
+            "uri": "spotify:artist:1Ffb6ejR6Fe5IamqA5oRUF"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/3YQKmKGau1PzlVlkL1iodx"
+            },
+            "followers": {
+                "href": null,
+                "total": 23885186
+            },
+            "genres": [
+                "modern rock",
+                "pop",
+                "pov: indie",
+                "rock"
+            ],
+            "href": "https://api.spotify.com/v1/artists/3YQKmKGau1PzlVlkL1iodx",
+            "id": "3YQKmKGau1PzlVlkL1iodx",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5eb274df4dfcb960867eccedfb5",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab67616100005174274df4dfcb960867eccedfb5",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f178274df4dfcb960867eccedfb5",
+                    "width": 160
+                }
+            ],
+            "name": "Twenty One Pilots",
+            "popularity": 81,
+            "type": "artist",
+            "uri": "spotify:artist:3YQKmKGau1PzlVlkL1iodx"
+        }
+    ],
+    "total": 97,
+    "limit": 5,
+    "offset": 0,
+    "href": "https://api.spotify.com/v1/me/top/artists?limit=5&time_range=short_term&locale=*",
+    "next": "https://api.spotify.com/v1/me/top/artists?offset=5&limit=5&time_range=short_term&locale=*",
+    "previous": null
+}
+```
+
+Spotify offers a lot of data, go through their [Web API documentation](https://developer.spotify.com/documentation/web-api) if you want some custom information from them. To have a look at how I have used spotify on this website refer to the [source code](https://github.com/ibizabroker/tarungowda.com/blob/master/src/utils/spotify.ts).
