@@ -111,10 +111,10 @@ h6>a>.icon.icon-link:before {
 
 /* pre */
 .pre {
-  @apply dark:bg-dark-2 bg-white text-sm leading-normal sm:leading-6 overflow-x-auto m-0 pl-2 py-3 sm:py-4;
+  @apply dark:bg-dark-2 bg-white max-h-[800px] text-sm leading-normal sm:leading-6 overflow-x-auto m-0 pl-2 py-3 sm:py-4;
 }
 .pre::-webkit-scrollbar {
-  @apply h-2.5;
+  @apply h-2.5 w-2.5;
   scrollbar-width: 5px;
 }
 .pre::-webkit-scrollbar-thumb {
@@ -122,6 +122,9 @@ h6>a>.icon.icon-link:before {
 }
 .pre::-webkit-scrollbar-track {
   @apply rounded-md dark:bg-gray-900 bg-slate-50;
+}
+.pre::-webkit-scrollbar-corner {
+  @apply dark:bg-dark-2 bg-white;
 }
 
 .pre-copy {
