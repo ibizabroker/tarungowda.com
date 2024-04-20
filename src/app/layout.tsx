@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 const inter = Inter({ subsets: ['latin'], display: "swap", variable: "--font-in" })
 
@@ -38,6 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning={true} lang="en">
+      <GoogleAnalytics gaId="G-X1DBV519P3" />
       <body className={`${inter.variable} ${manrope.variable} dark:bg-dark-1 bg-white`}>
         <Providers>
           <Navbar />
