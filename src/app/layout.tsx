@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning={true} lang="en">
       <GoogleAnalytics gaId="G-X1DBV519P3" />
-      <body className={`${inter.variable} ${manrope.variable} dark:bg-dark-1 bg-white`}>
+      <body className={`${inter.variable} ${manrope.variable} dark:bg-dark-1 bg-light-1`}>
         <Providers>
           <Navbar />
           {children}

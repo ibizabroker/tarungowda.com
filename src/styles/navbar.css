@@ -7,11 +7,11 @@
 }
 
 .navbar-scroll {
-  @apply border-b dark:border-divider-1 backdrop-blur-[9px];
+  @apply border-b dark:border-divider-1 border-divider-3 backdrop-blur-[9px];
 }
 
 .navbar-no-scroll {
-  @apply bg-white dark:bg-dark-1;
+  @apply dark:bg-dark-1 bg-light-1;
 }
 
 .navbar-main {
@@ -27,7 +27,7 @@
 }
 
 .navbar-toggle {
-  @apply flex flex-col order-3 md:hidden dark:bg-dark-2 border dark:border-divider-1 cursor-pointer h-8 w-8 ml-4 justify-center items-center;
+  @apply flex flex-col order-3 md:hidden dark:bg-dark-2 bg-light-2 border dark:border-divider-1 border-divider-3 cursor-pointer h-8 w-8 ml-4 justify-center items-center;
 }
 
 .navbar-menu-button {
@@ -71,11 +71,11 @@
 }
 
 .navbar-menu-main {
-  @apply w-[55vw] h-full px-12 py-[180px] backdrop-blur-[12px] border-r dark:border-divider-1;
+  @apply w-[55vw] h-full px-12 py-[180px] backdrop-blur-[12px] border-r dark:border-divider-1 border-divider-3;
 }
 
 .navbar-menu-item {
-  @apply border-b dark:border-divider-2;
+  @apply border-b dark:border-divider-2 border-divider-4;
 }
 
 .navbar-menu-link {
