@@ -9,11 +9,13 @@
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **Database**: [Upstash](https://upstash.com/)
 - **Analytics**: [Vercel Analytics](https://vercel.com/analytics), [Google Analytics](https://analytics.google.com/analytics/web/)
 
 ## Run Locally
 
-Create a `.env.local` file similar to [`.env.example`](.env.example).
+- Create a redis database in [upstash](https://console.upstash.com/redis).
+- Create a `.env.local` file similar to [`.env.example`](.env.example). 
 
 ```bash
 git clone https://github.com/ibizabroker/tarungowda.com

@@ -4,6 +4,7 @@ import Toc from '@/components/Blog/TOC';
 import Heading from '@/components/Blog/Heading';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import PageView from '@/components/PageView';
 
 export function generateMetadata({params}: {params: Blog}): Metadata {
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
@@ -26,21 +27,22 @@ export function generateMetadata({params}: {params: Blog}): Metadata {
   }
 }
 
-export default function BlogPage({ params }: { params: Blog }) {
+export default async function BlogPage({ params }: { params: Blog }) {
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
   if (!blog)
     return notFound();
 
   return (
     <div className='container blogshowcase-container'>
+      <PageView slug={params.slug} category='blog' />
       <div className='blog-content'>
         <main className='blog-main'>
-            <article className='article'>
-              <Heading blog={blog} />
-              <div className='user-content'>
-                <MDXComponent mdx={blog} />
-              </div>
-            </article>
+          <article className='article'>
+            <Heading blog={blog} />
+            <div className='user-content'>
+              <MDXComponent mdx={blog} />
+            </div>
+          </article>
         </main>
         <aside className='sidebar'>
           <Toc />
