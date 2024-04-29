@@ -3,10 +3,15 @@ import { Blog } from 'contentlayer/generated'
 import { getBlogTagsData } from "@/utils/tags";
 import { format, parseISO } from 'date-fns';
 import { CalendarIcon, ClockIcon, ViewIcon } from "../Icons";
+import { Redis } from '@upstash/redis';
 
-export default function BlogHeading({ blog, views }: { blog: Blog, views: number[] }) {
-  const { title, date, description, tags, readingTime } = blog;
+const redis = Redis.fromEnv();
+
+export default async function BlogHeading({ blog }: { blog: Blog }) {
+  const { title, date, description, tags, readingTime, slug } = blog;
   const tagsData = getBlogTagsData(tags);
+
+  const views = await redis.mget<number[]>(['views', 'blog', blog.slug].join(':')) ?? 0;
 
   return (
     <div className='heading-head'>
@@ -22,7 +27,7 @@ export default function BlogHeading({ blog, views }: { blog: Blog, views: number
           </div>
           <div className='heading-time'>
             <ViewIcon className='heading-clock' />
-            {views}
+            {views} views
           </div>
         </div>
       </div>
