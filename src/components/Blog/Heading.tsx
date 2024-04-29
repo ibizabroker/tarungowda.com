@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Blog } from 'contentlayer/generated'
 import { getBlogTagsData } from "@/utils/tags";
 import { format, parseISO } from 'date-fns';
-import { CalendarIcon, ClockIcon } from "../Icons";
+import { CalendarIcon, ClockIcon, ViewIcon } from "../Icons";
 
-export default function SingleHead({ blog }: { blog: Blog }) {
+export default function BlogHeading({ blog, views }: { blog: Blog, views: number[] }) {
   const { title, date, description, tags, readingTime } = blog;
   const tagsData = getBlogTagsData(tags);
 
@@ -19,6 +19,10 @@ export default function SingleHead({ blog }: { blog: Blog }) {
           <div className='heading-time'>
             <ClockIcon className='heading-clock' />
             {readingTime.text}
+          </div>
+          <div className='heading-time'>
+            <ViewIcon className='heading-clock' />
+            {views}
           </div>
         </div>
       </div>

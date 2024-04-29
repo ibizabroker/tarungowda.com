@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Projects, allProjects } from 'contentlayer/generated'
 import MDXComponent from '@/components/MDXContent'
-import NotFound from '@/app/not-found'
 import { getProjectTagsData } from "@/utils/tags";
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import PageView from "@/components/PageView";
 
 export function generateMetadata({ params }: { params: Projects }): Metadata {
   const project = allProjects.find((project) => project.slug === params.slug)
@@ -43,6 +43,7 @@ export default function ProjectPage({ params }: { params: Projects }) {
 
   return (
     <div className='container project-container'>
+      <PageView slug={params.slug} category='projects' />
       <div className="project-heading-head">
         <h1 className="project-heading">
           {project.title}

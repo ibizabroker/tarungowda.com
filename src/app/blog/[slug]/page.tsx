@@ -5,6 +5,9 @@ import Heading from '@/components/Blog/Heading';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageView from '@/components/PageView';
+import { Redis } from '@upstash/redis';
+
+const redis = Redis.fromEnv();
 
 export function generateMetadata({params}: {params: Blog}): Metadata {
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
@@ -27,10 +30,12 @@ export function generateMetadata({params}: {params: Blog}): Metadata {
   }
 }
 
-export default function BlogPage({ params }: { params: Blog }) {
+export default async function BlogPage({ params }: { params: Blog }) {
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
   if (!blog)
     return notFound();
+
+  const views = await redis.mget<number[]>(['views', 'blog', params.slug].join(':')) ?? 0;
 
   return (
     <div className='container blogshowcase-container'>
@@ -38,7 +43,7 @@ export default function BlogPage({ params }: { params: Blog }) {
       <div className='blog-content'>
         <main className='blog-main'>
           <article className='article'>
-            <Heading blog={blog} />
+            <Heading blog={blog} views={views} />
             <div className='user-content'>
               <MDXComponent mdx={blog} />
             </div>
