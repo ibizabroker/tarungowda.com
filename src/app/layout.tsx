@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: 'Tarun Gowda',
     template: '%s | Tarun Gowda'
   },
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('https://tarungowda.com'),
   description: 'Website to stay updated with Tarun Gowda (ibizabroker) 👍',
   openGraph: {
     title: {
