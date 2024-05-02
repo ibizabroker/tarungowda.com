@@ -23,13 +23,6 @@ export function generateMetadata({ params }: { params: Projects }): Metadata {
       },
       description: `${project?.description}`,
       url: `https://tarungowda.com/projects/${project?.slug}`,
-      images: [
-        {
-          url: `https://tarungowda.com/projects${project?.coverImage}`,
-          width: 1200,
-          height: 630
-        }
-      ],
     },
   }
 }
