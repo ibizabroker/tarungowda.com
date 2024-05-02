@@ -24,24 +24,13 @@ export default async function Image() {
           width: "100%",
         }}
       >
-        {/* <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            fontSize: "80px",
-            color: "#a086f0",
-            lineHeight: "80px",
-            marginBottom: "20px",
-          }}
-        > */}
-          <img
-            style={{ marginRight: "15px" }}
-            width="250"
-            height="250"
-            src={"http://localhost:3000/logo.png"}
-          />
-          <span style={{fontSize: "90px", color: "#a086f0", marginBottom: "20px",}}>tarungowda.com</span>
-        {/* </div> */}
+        <img
+          style={{ marginRight: "15px" }}
+          width="250"
+          height="250"
+          src={"https://tarungowda.com/logo.png"}
+        />
+        <span style={{fontSize: "90px", color: "#a086f0", marginBottom: "20px",}}>tarungowda.com</span>
         Unleashing endless possibilities through code exploration and innovation.
       </div>
     ),

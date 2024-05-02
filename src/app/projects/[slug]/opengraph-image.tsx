@@ -46,12 +46,12 @@ export default async function Image({ params }: { params: Projects }) {
               style={{ marginRight: "20px" }}
               width="50"
               height="50"
-              src={"http://localhost:3000/logo.png"}
+              src={"https://tarungowda.com/logo.png"}
             />
             <span style={{ color: "#94a3b8" }}>Projects|</span>{project?.title}
           </div>
           <img 
-            src={`http://localhost:3000/${project?.coverImage}`} 
+            src={`https://tarungowda.com/${project?.coverImage}`} 
             width="1000"
             height="525"
             style={{ borderRadius: "25px" }}

@@ -40,7 +40,7 @@ export default async function Image({ params }: { params: any }) {
             style={{ marginRight: "15px" }}
             width="100"
             height="100"
-            src={"http://localhost:3000/logo.png"}
+            src={"https://tarungowda.com/logo.png"}
           />
           <span style={{ color: "#94a3b8" }}>Projects|</span>#{tagData?.name}
         </div>
