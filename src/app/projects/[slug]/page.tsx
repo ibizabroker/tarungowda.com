@@ -14,7 +14,6 @@ export function generateMetadata({ params }: { params: Projects }): Metadata {
     title: {
       absolute: `${project?.title} | Projects`
     },
-    metadataBase: new URL(`https://tarungowda.com/projects/${project?.slug}`),
     description: `${project?.description}`,
     keywords: `${project?.tags}`,
     openGraph: {

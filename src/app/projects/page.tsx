@@ -6,7 +6,6 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Projects",
-  metadataBase: new URL("https://tarungowda.com/projects"),
   description: "Welcome to my project gallery, where I've rounded up some of my favorite creations. From coding experiments to passion projects, these are the things that have kept me busy and excited over the years. Take a look around, if anything catches your eye feel free to contribute!",
   openGraph: {
     title: "Projects",
