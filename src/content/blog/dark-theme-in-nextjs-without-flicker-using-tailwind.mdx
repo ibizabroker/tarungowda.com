@@ -1,0 +1,212 @@
+---
+title: "Dark Theme in Nextjs without Flicker using Tailwind"
+date: 2024-04-06
+description: "Switch between light and dark mode in Nextjs without any flicker. In the blog I use next-themes with tailwind css to implement this feature."
+author: "Tarun Gowda"
+draft: false
+tags: 
+ - Next.js
+ - Typescript
+ - Next Themes
+---
+
+Tailwind provides us an easy way to switch between light and dark themes. Sometimes, a white flash appears when you're switching between the themes, also knows as a page flicker. To avoid this you should identify the system them of a user at load time.
+
+## Understanding the Flicker Problem
+
+Next.js, a popular framework for building React applications, pre-renders pages on the server side, making websites fast and snappy. However, it can't predict user preferences like whether someone prefers light or dark mode. So, when a user manually toggles between themes, there can be a brief moment where the wrong theme is applied, causing that unwanted flash.
+
+The [next-themes](https://github.com/pacocoursey/next-themes) package can help avoid this issue while allowing users the ability to toggle between light and dark mode in your Next.js website.
+
+On this website I applied `next-themes` with `TailwindCSS` following the below steps:
+
+## Change your tailwind config
+
+Go to your `tailwind.config.ts` file and add a `darkMode` setting. This is for toggling between dark and light modes [manually](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually).
+
+<CodeHead name="tailwind.config.ts" lang="ts" />
+```ts {14}
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+	//....
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+  darkMode: 'class',
+}
+
+export default config
+```
+## Installation of next-themes
+
+`next-themes` is a theme React library designed for Nextjs applications. Managing themes with this application is easier as it helps prevent the flicker problem by using Nextjs's capabilities for server-side rendering and client-side hydration.
+
+To install next-themes use the command:
+
+<CodeHead lang="terminal" />
+```bash
+npm install next-themes
+```
+
+## Setup and usage of next-themes
+
+Let's create a file `Providers.tsx` under your components:
+
+<CodeHead name="components/Providers.tsx" lang="next" />
+```tsx
+'use client'
+
+import { ThemeProvider } from "next-themes"
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+    >
+      {children}
+    </ThemeProvider>
+  )
+}
+```
+
+Now, we need to add `<Providers>` component to your `layout.tsx` file, inside the `<body>` tag. Since the `<html>` tag is being updated by next-themes, we get a hydration warning in the console. To suppress this you can set [suppressHydrationWarning](https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors) as `true`.
+
+<CodeHead name="app/layout.tsx" lang="next" />
+```tsx /suppressHydrationWarning={true}/ {19,23}
+import "@/styles/main.css"
+import type { Metadata } from 'next'
+import { Providers } from "@/components/Providers"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
+
+export const metadata: Metadata = {
+  // ....
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html suppressHydrationWarning={true} lang="en">
+      <body className="dark:bg-dark-1 bg-white">
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
+      </body>
+    </html>
+  )
+}
+```
+
+## Switch theme from the UI
+
+#### Icons for switching the theme
+You can use your custom icons, or if you're feeling lazy feel free to use the icons I've used. The icons I use are defined in [Icons.tsx](https://github.com/ibizabroker/tarungowda.com/blob/master/src/components/Icons.tsx) file. We need two icons, one for dark and one for light mode:
+
+<CodeHead name="components/Icons.tsx" lang="next" />
+```tsx
+export function DarkModeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="currentColor" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 1.992a10 10 0 1 0 9.236 13.838c.341 -.82 -.476 -1.644 -1.298 -1.31a6.5 6.5 0 0 1 -6.864 -10.787l.077 -.08c.551 -.63 .113 -1.653 -.758 -1.653h-.266l-.068 -.006l-.06 -.002z" strokeWidth="0" fill="currentColor" />
+    </svg>
+  )
+}
+
+export function LightModeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="currentColor" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" strokeWidth="0" />
+      <path d="M18.313 16.91l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1  0 1 1.218 -1.567l.102 .07z" strokeWidth="0" />
+      <path d="M7.007 16.993a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" strokeWidth="0" />
+      <path d="M4 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" strokeWidth="0" />
+      <path d="M21 11a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" strokeWidth="0" />
+      <path d="M6.213 4.81l.094 .083l.7 .7a1 1 0 0 1 -1.32 1.497l-.094 -.083l-.7 -.7a1 1 0 0 1 1.217 -1.567l.102 .07z" strokeWidth="0" />
+      <path d="M19.107 4.893a1 1 0 0 1 .083 1.32l-.083 .094l-.7 .7a1 1 0 0 1 -1.497 -1.32l.083 -.094l.7 -.7a1 1 0 0 1 1.414 0z" strokeWidth="0" />
+      <path d="M12 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" strokeWidth="0" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" strokeWidth="0" />
+    </svg>
+  )
+}
+```
+#### Create a ThemeSwitcher component
+
+After creating the `Provider` you need a `ThemeSwitcher` component which will change the theme of the website on press of a button. 
+
+<CodeHead name="components/ThemeSwitcher.tsx" lang="next" />
+```tsx
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
+import { DarkModeIcon, LightModeIcon } from './Icons'
+  
+export default function ThemeSwitcher() {
+  const [mounted, setMounted] = useState(false)
+  const { setTheme, resolvedTheme } = useTheme()
+
+  useEffect(() =>  {
+    setMounted(true)
+  }, [])
+  
+  if (!mounted) {
+    return null
+  }
+
+  return (
+    <div className={`theme ${
+      resolvedTheme === 'light' ?
+        'light-theme' :
+        'dark-theme'
+    }`}>
+      {resolvedTheme === 'light' ?
+        <DarkModeIcon onClick={() => setTheme('dark')} /> :
+        <LightModeIcon onClick={() => setTheme('light')} />
+      }
+    </div>
+  )
+}
+```
+
+#### Add it to your NavBar
+Now that we have the component in place we need to place it in the UI, let's add it in the `NavBar.tsx` file for easy theme switching for the user.
+
+<CodeHead name="components/NavBar.tsx" lang="next" />
+```tsx {13}
+// ....
+import ThemeSwitcher from "./ThemeSwitcher"
+import { useState } from "react"
+  
+export default function Navbar() {
+  const [navbar, setNavbar] = useState(false);
+  
+  return (
+    <div>
+      <header className="navbar-header">
+        // ....
+          <div className="navbar-theme">
+            <ThemeSwitcher />
+          </div>
+        // ...
+      </header>
+     </div>
+   )
+}
+```
+
+You can now switch themes in Next.js without any flicker. If you guys have any questions, feel free to reach out in the comment section!
