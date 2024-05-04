@@ -102,7 +102,7 @@ export default function Footer() {
         </div>
         <div className='footer-info'>
           <div>
-            Built with Next.js, TailwindCSS, ContentLayer & Vercel.
+            Built with Next.js, TailwindCSS, ContentLayer, Upstash & Vercel.
           </div>
           <div className='footer-info-copyright'>
             <strong>&copy;</strong> {getYear()}, Tarun Gowda
