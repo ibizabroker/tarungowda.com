@@ -13,7 +13,6 @@ export function generateMetadata({params}: {params: Blog}): Metadata {
     title: {
       absolute: `${blog?.title} | Blog`
     },
-    metadataBase: new URL(`https://tarungowda.com/blog${blog?.slug}`),
     description: `${blog?.description}`,
     keywords: `${blog?.tags}`,
     creator: `${blog?.author}`,

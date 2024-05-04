@@ -13,7 +13,6 @@ export function generateMetadata({ params }: { params: any }): Metadata {
     title: {
       absolute: `# ${tagData?.name} | Projects`
     },
-    metadataBase: new URL(`https://tarungowda.com/projects/tags/${tagData?.slug}`),
     description: `Projects related for the tag - # ${tagData?.name}`,
     openGraph: {
       title: {

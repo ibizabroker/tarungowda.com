@@ -14,7 +14,6 @@ export function generateMetadata({ params }: { params: any }): Metadata {
     title: {
       absolute: `# ${tagData?.name} | Blog`
     },
-    metadataBase: new URL(`https://tarungowda.com/blog/tags/${tagData?.slug}`),
     description: `Blogs related for the tag - # ${tagData?.name}`,
     openGraph: {
       title: {
