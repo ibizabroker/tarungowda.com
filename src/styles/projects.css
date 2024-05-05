@@ -15,14 +15,14 @@
 }
 
 .project-card {
-  @apply flex items-center gap-x-4 p-4 w-full dark:bg-dark-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-divider-1 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-[-3px];
+  @apply flex items-center gap-x-4 p-4 w-full dark:bg-dark-2 bg-light-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-divider-1 border-divider-3 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-[-3px];
 }
 .project-card:hover .project-card-title {
-  @apply text-secondary-1;
+  @apply dark:text-secondary-1 text-secondary-2;
 }
 
 .project-card-icon {
-  @apply dark:bg-dark-1 rounded-md p-2;
+  @apply dark:bg-dark-1 bg-light-1 rounded-md p-2;
 }
 
 .project-card-title {
@@ -58,5 +58,5 @@
 }
 
 .project-cover {
-  @apply rounded-xl border dark:border-divider-1 object-cover;
+  @apply rounded-xl border dark:border-divider-1 border-divider-3 object-cover;
 }
