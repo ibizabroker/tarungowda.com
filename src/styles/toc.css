@@ -3,7 +3,7 @@
 }
 
 .toc .toc-card {
-  @apply relative dark:bg-dark-2 border rounded-xl font-medium mx-auto my-0 border-solid dark:border-divider-1;
+  @apply relative dark:bg-dark-2 bg-light-2 border rounded-xl font-medium mx-auto my-0 border-solid dark:border-divider-1 border-divider-3;
 }
 
 .toc .toc-head {
@@ -11,7 +11,7 @@
 }
 
 .toc .toc-head {
-  @apply pb-3 dark:border-divider-1 border-b;
+  @apply pb-3 dark:border-divider-1 border-divider-3 border-b;
 }
 
 .toc .toc-head span {
@@ -31,7 +31,7 @@
 }
 
 .toc .toc-link {
-  @apply flex dark:text-primary-1 text-primary-2 bg-none leading-normal tracking-[0.02em] px-6 py-2 hover:!text-secondary-1;
+  @apply flex dark:text-primary-1 text-primary-2 bg-none leading-normal tracking-[0.02em] px-6 py-2 hover:dark:!text-secondary-1 hover:!text-secondary-2;
 }
 
 .toc .toc-link.node-name--H2 {
@@ -55,5 +55,5 @@
 }
 
 .toc .toc-link.is-active-link {
-  @apply dark:bg-gray-700/20 bg-slate-300/20 text-secondary-1;
+  @apply dark:bg-gray-700/20 bg-slate-400/20 dark:text-secondary-1 text-secondary-2;
 }

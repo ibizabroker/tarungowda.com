@@ -13,10 +13,10 @@
 
 /* blog card */
 .blog-card {
-  @apply relative flex flex-col w-full overflow-hidden dark:bg-dark-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-divider-1 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-0 md:hover:translate-y-[-3px];
+  @apply relative flex flex-col w-full overflow-hidden dark:bg-dark-2 bg-light-2 border transition-all duration-[0.3s] rounded-[10px] border-solid dark:border-divider-1 border-divider-3 hover:shadow-[0_0_8px_4px_rgba(120,120,120,0.3)] hover:translate-y-0 md:hover:translate-y-[-3px];
 }
 .blog-card:hover .blog-card-heading {
-  @apply text-secondary-1;
+  @apply dark:text-secondary-1 text-secondary-2;
 }
 
 .blog-card-content {
@@ -35,7 +35,7 @@
   @apply flex flex-wrap mb-4;
 }
 .blog-card-tag {
-  @apply flex items-center tracking-[0.02em] font-medium text-[0.8125rem] border ml-0 mr-1.5 mt-1.5 mb-0 px-2 py-px rounded-[30px] border-solid dark:border-divider-1;
+  @apply flex items-center tracking-[0.02em] font-medium text-[0.8125rem] border ml-0 mr-1.5 mt-1.5 mb-0 px-2 py-px rounded-[30px] border-solid dark:border-divider-1 border-divider-3;
 }
 .blog-card-tag span {
   @apply text-[0.625rem] mr-0.5;
@@ -99,15 +99,15 @@
   @apply w-3;
 }
 .sidebar::-webkit-scrollbar-thumb {
-  @apply rounded-md dark:bg-gray-800 bg-slate-300;
+  @apply rounded-md dark:bg-scroll-1 bg-scroll-3;
 }
 .sidebar::-webkit-scrollbar-track {
-  @apply rounded-md dark:bg-gray-900 bg-slate-50;
+  @apply rounded-md dark:bg-scroll-2 bg-scroll-4;
 }
 
 /* heading of blog */
 .heading-head {
-  @apply mb-10 pt-0 pb-[1.5em] px-0 border-b border-solid dark:border-divider-2;
+  @apply mb-10 pt-0 pb-[1.5em] px-0 border-b border-solid dark:border-divider-2 border-divider-4;
 }
 
 .heading-head-info {
@@ -139,7 +139,7 @@
 }
 
 .heading-tag-link {
-  @apply flex items-center tracking-[0.02em] font-semibold text-sm transition-all duration-[0.3s] px-2 py-0.5 rounded-[30px] border border-solid hover:text-secondary-1 hover:!border-secondary-1 dark:border-divider-2;
+  @apply flex items-center tracking-[0.02em] font-semibold text-sm transition-all duration-[0.3s] px-2 py-0.5 rounded-[30px] border border-solid hover:dark:text-secondary-1 hover:dark:!border-secondary-1 hover:text-secondary-2 hover:!border-secondary-2 dark:border-divider-2 border-divider-4;
 }
 .heading-tag-link span {
   @apply text-xs mr-1;

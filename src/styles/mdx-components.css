@@ -22,7 +22,7 @@ h3>a>.icon.icon-link:before,
 h4>a>.icon.icon-link:before,
 h5>a>.icon.icon-link:before,
 h6>a>.icon.icon-link:before {
-  @apply text-slate-300 dark:text-slate-800 hover:!text-secondary-1 content-['#'] align-baseline ml-4;
+  @apply text-slate-300 dark:text-slate-800 hover:dark:!text-secondary-1 hover:!text-secondary-2 content-['#'] align-baseline ml-4;
 }
 
 h1>a>.icon.icon-link:before {
@@ -81,29 +81,29 @@ h6>a>.icon.icon-link:before {
 
 /* lists */
 .unordered-list {
-  @apply dark:text-primary-1 text-primary-2 dark:prose-li:marker:text-secondary-1 prose-li:marker:text-secondary-1;
+  @apply dark:text-primary-1 text-primary-2 dark:prose-li:marker:text-secondary-1 prose-li:marker:text-secondary-2;
 }
 
 .ordered-list {
-  @apply dark:text-primary-1 text-primary-2 dark:prose-li:marker:text-secondary-1 prose-li:marker:text-secondary-1;
+  @apply dark:text-primary-1 text-primary-2 dark:prose-li:marker:text-secondary-1 prose-li:marker:text-secondary-2;
 }
 
 /* blockquote */
 .blockquote-tag {
-  @apply prose-blockquote:dark:bg-dark-2 prose-blockquote:p-0.5 prose-blockquote:px-6 prose-blockquote:border-secondary-1 prose-blockquote:rounded-r-lg;
+  @apply prose-blockquote:dark:bg-dark-2 prose-blockquote:bg-light-2 prose-blockquote:p-0.5 prose-blockquote:px-6 dark:prose-blockquote:border-secondary-1 prose-blockquote:border-secondary-2 prose-blockquote:rounded-r-lg;
 }
 
 /* horizontal-line */
 .hr-tag {
-  @apply prose-hr:dark:border-divider-1;
+  @apply prose-hr:dark:border-divider-1 prose-hr:border-divider-3;
 }
 
 /* link */
 .a-tag {
-  @apply relative dark:text-secondary-1 text-secondary-1 no-underline;
+  @apply relative dark:text-secondary-1 text-secondary-2 no-underline;
 }
 .a-tag:after {
-  @apply content-[''] bg-secondary-1 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-500;
+  @apply content-[''] dark:bg-secondary-1 bg-secondary-2 h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-500;
 }
 .a-tag:hover:after {
   @apply w-[100%];
@@ -111,24 +111,24 @@ h6>a>.icon.icon-link:before {
 
 /* pre */
 .pre {
-  @apply dark:bg-dark-2 bg-white max-h-[800px] text-sm leading-normal sm:leading-6 overflow-x-auto m-0 pl-2 py-3 sm:py-4;
+  @apply dark:bg-dark-2 bg-light-2 max-h-[800px] text-sm leading-normal sm:leading-6 overflow-x-auto m-0 pl-2 py-3 sm:py-4;
 }
 .pre::-webkit-scrollbar {
   @apply h-2.5 w-2.5;
   scrollbar-width: 5px;
 }
 .pre::-webkit-scrollbar-thumb {
-  @apply rounded-md dark:bg-gray-800 bg-slate-300;
+  @apply rounded-md dark:bg-scroll-1 bg-scroll-3;
 }
 .pre::-webkit-scrollbar-track {
-  @apply rounded-md dark:bg-gray-900 bg-slate-50;
+  @apply rounded-md dark:bg-scroll-2 bg-scroll-4;
 }
 .pre::-webkit-scrollbar-corner {
-  @apply dark:bg-dark-2 bg-white;
+  @apply dark:bg-dark-2 bg-light-2;
 }
 
 .pre-copy {
-  @apply absolute border dark:text-primary-1 text-primary-2 p-[1px] w-[22px] h-[22px] rounded top-3 sm:top-4 right-3 sm:right-4 cursor-pointer text-base transition-all duration-[0.3s] border-solid backdrop-blur-lg dark:border-divider-2 hover:!border-secondary-1 hover:!text-secondary-1;
+  @apply absolute border dark:text-primary-1 text-primary-2 p-[1px] w-[22px] h-[22px] rounded top-3 sm:top-4 right-3 sm:right-4 cursor-pointer text-base transition-all duration-[0.3s] border-solid backdrop-blur-lg dark:border-divider-2 border-divider-4 hover:dark:!border-secondary-1 hover:!border-secondary-2 hover:dark:!text-secondary-1 hover:!text-secondary-2;
 }
 
 .pre-icon-done {
@@ -141,7 +141,7 @@ h6>a>.icon.icon-link:before {
 
 /* code */
 code {
-  @apply border border-solid dark:border-divider-1;
+  @apply border border-solid dark:border-divider-1 border-divider-3;
   counter-reset: line;
 }
 
@@ -156,11 +156,11 @@ code > [data-line]::before {
 }
 
 div[data-rehype-pretty-code-fragment] {
-  @apply relative w-full block overflow-hidden dark:bg-dark-2 border border-solid dark:border-divider-1 -mt-px mb-8 rounded-[0_0_8px_8px];
+  @apply relative w-full block overflow-hidden dark:bg-dark-2 bg-light-2 border border-solid dark:border-divider-1 border-divider-3 -mt-px mb-8 rounded-[0_0_8px_8px];
 }
 
 .code {
-  @apply text-sm dark:text-secondary-1 text-secondary-1 dark:bg-dark-2 rounded inline leading-[1.2] self-center mx-1 my-0 px-1.5 py-[3px];
+  @apply text-sm dark:text-secondary-1 text-secondary-2 dark:bg-dark-2 bg-light-2 rounded inline leading-[1.2] self-center mx-1 my-0 px-1.5 py-[3px];
 }
 
 div[data-rehype-pretty-code-fragment] pre code {
@@ -169,12 +169,12 @@ div[data-rehype-pretty-code-fragment] pre code {
 
 /* word highlight style */
 span[data-highlighted-chars] {
-  @apply bg-secondary-1/20 py-1 border-b-4 border-secondary-1;
+  @apply bg-secondary-1/20 py-1 border-b dark:border-secondary-1 border-secondary-2;
 }
 
 /* line highlight style */
 span[data-highlighted-line] {
-  @apply border-l-4 border-secondary-1 bg-secondary-1/20;
+  @apply border-l-4 dark:border-secondary-1 border-secondary-2 bg-secondary-1/20;
 }
 
 /* avoid display of code twice */
@@ -194,7 +194,7 @@ html.dark .pre-copy[data-theme="light"] {
 
 /* code head */
 .code-head {
-  @apply text-xs leading-4 dark:text-primary-1 text-primary-2 border dark:border-divider-1 dark:bg-dark-2 flex items-center w-full mt-8 p-2 sm:p-3 rounded-[8px_8px_0_0] border-solid;
+  @apply text-xs leading-4 dark:text-primary-1 text-primary-2 border dark:border-divider-1 border-divider-3 dark:bg-dark-2 bg-light-2 flex items-center w-full mt-8 p-2 sm:p-3 rounded-[8px_8px_0_0] border-solid;
 }
 
 .code-head-dots {
@@ -272,15 +272,15 @@ html.dark .pre-copy[data-theme="light"] {
 
 /* table */
 .table {
-  @apply border border-separate rounded-xl dark:border-divider-1 dark:text-primary-1 text-primary-2 overflow-hidden;
+  @apply border border-separate rounded-xl dark:border-divider-1 border-divider-3 dark:text-primary-1 text-primary-2 overflow-hidden;
 }
 
 .thead {
-  @apply dark:bg-dark-2;
+  @apply dark:bg-dark-2 bg-light-2;
 }
 
 .tr {
-  @apply border-none hover:dark:bg-dark-2;
+  @apply border-none hover:dark:bg-dark-2 hover:bg-light-2;
 }
 
 .th {
