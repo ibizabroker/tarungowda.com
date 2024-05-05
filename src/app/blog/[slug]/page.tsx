@@ -5,6 +5,7 @@ import Heading from '@/components/Blog/Heading';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageView from '@/components/PageView';
+import GiscusComments from '@/components/Giscus';
 
 export function generateMetadata({params}: {params: Blog}): Metadata {
   const blog = allBlogs.find((blog) => blog.slug === params.slug)
@@ -42,6 +43,9 @@ export default async function BlogPage({ params }: { params: Blog }) {
               <MDXComponent mdx={blog} />
             </div>
           </article>
+          <div className='comment-section'>
+            <GiscusComments />
+          </div>
         </main>
         <aside className='sidebar'>
           <Toc />
