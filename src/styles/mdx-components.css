@@ -169,7 +169,7 @@ div[data-rehype-pretty-code-fragment] pre code {
 
 /* word highlight style */
 span[data-highlighted-chars] {
-  @apply bg-secondary-1/20 py-1 border-b-4 dark:border-secondary-1 border-secondary-2;
+  @apply bg-secondary-1/20 py-1 border-b dark:border-secondary-1 border-secondary-2;
 }
 
 /* line highlight style */
