@@ -2,7 +2,6 @@ import BlogList from "@/components/Blog/List";
 import ProjectList from "@/components/Projects/List";
 import { sortBlogsUsingDate, sortProjectsUsingDate } from "@/utils/sort";
 import { allBlogs, allProjects } from "contentlayer/generated";
-import HomeImage from "../../public/static/home/tarungowda.png";
 import Image from "next/image";
 
 function Home() {
@@ -21,7 +20,7 @@ function Home() {
         <div className="home-image-div">
           <Image
             className="home-intro-image"
-            src={HomeImage}
+            src="/static/home/tarungowda.png"
             alt="Tarun Gowda"
             width={3840}
             height={2160}
