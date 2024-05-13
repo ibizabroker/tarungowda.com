@@ -18,6 +18,7 @@ export default function LastSongPlayed() {
         className='spotify-album-cover'
         src={data.albumCover}
         alt={data.albumName}
+        fetchPriority="high"
       />
     
       <div className='spotify-song-details'>

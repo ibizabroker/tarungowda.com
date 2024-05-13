@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageView from "@/components/PageView";
+import getBase64 from "@/utils/image";
 
 export function generateMetadata({ params }: { params: Projects }): Metadata {
   const project = allProjects.find((project) => project.slug === params.slug)
@@ -26,12 +27,13 @@ export function generateMetadata({ params }: { params: Projects }): Metadata {
   }
 }
 
-export default function ProjectPage({ params }: { params: Projects }) {
+export default async function ProjectPage({ params }: { params: Projects }) {
   const project = allProjects.find((project) => project.slug === params.slug)
   if (!project)
     return notFound();
 
   const tagsData = getProjectTagsData(project.tags);
+  const base64data = await getBase64(`https://tarungowda.com${project.coverImage}`);
 
   return (
     <div className='container project-container'>
@@ -74,8 +76,8 @@ export default function ProjectPage({ params }: { params: Projects }) {
           src={project.coverImage}
           alt={project.title}
           fill
-          style={{objectFit: "contain"}}
-          quality={100}
+          placeholder="blur"
+          blurDataURL={base64data}
         />
       </div>
       <ul className='heading-tags'>
