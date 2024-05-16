@@ -27,14 +27,13 @@ export function generateMetadata({ params }: { params: Projects }): Metadata {
   }
 }
 
-export default function ProjectPage({ params }: { params: Projects }) {
+export default async function ProjectPage({ params }: { params: Projects }) {
   const project = allProjects.find((project) => project.slug === params.slug)
   if (!project)
     return notFound();
 
   const tagsData = getProjectTagsData(project.tags);
-  // const base64data = await getBase64(`https://tarungowda.com${project.coverImage}`);
-  const base64data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNc0PbhPwAG+wMXN2n7pwAAAABJRU5ErkJggg==';
+  const base64data = await getBase64(`https://tarungowda.com${project.coverImage}`);
 
   return (
     <div className='container project-container'>

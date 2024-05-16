@@ -3,9 +3,8 @@ import Link from "next/link";
 import { Projects } from 'contentlayer/generated'
 import getBase64 from "@/utils/image";
 
-export default function Card({ project }: { project: Projects }) {
-  // const base64data = await getBase64(`https://tarungowda.com${project.icon}`);
-  const base64data = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNc0PbhPwAG+wMXN2n7pwAAAABJRU5ErkJggg==';
+export default async function Card({ project }: { project: Projects }) {
+  const base64data = await getBase64(`https://tarungowda.com${project.icon}`);
   
   return (
     <Link

@@ -33,6 +33,7 @@
     "rehype-pretty-code": "^0.10.0",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "sharp": "^0.33.4",
     "shiki": "^0.14.3",
     "slugify": "^1.6.6",
     "swr": "^2.2.5",
