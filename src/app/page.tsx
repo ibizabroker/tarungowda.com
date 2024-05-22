@@ -24,9 +24,9 @@ function Home() {
             alt="Tarun Gowda"
             width={3840}
             height={2160}
-            style={{ width: '100%', height: 'auto' }}
+            sizes="(min-width: 1340px) 647px, (min-width: 1040px) 47.5vw, (min-width: 780px) calc(100vw - 128px), calc(100vw - 48px)"
             priority
-            quality={100}
+            quality={60}
           />
         </div>
       </div>

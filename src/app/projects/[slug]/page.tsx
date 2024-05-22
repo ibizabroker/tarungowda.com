@@ -32,6 +32,7 @@ export default function ProjectPage({ params }: { params: Projects }) {
     return notFound();
 
   const tagsData = getProjectTagsData(project.tags);
+  const base64data = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNc0PahHgAGewKXqgTxrAAAAABJRU5ErkJggg==";
 
   return (
     <div className='container project-container'>
@@ -74,8 +75,8 @@ export default function ProjectPage({ params }: { params: Projects }) {
           src={project.coverImage}
           alt={project.title}
           fill
-          style={{objectFit: "contain"}}
-          quality={100}
+          placeholder="blur"
+          blurDataURL={base64data}
         />
       </div>
       <ul className='heading-tags'>
