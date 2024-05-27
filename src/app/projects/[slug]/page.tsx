@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Projects, allProjects } from 'contentlayer/generated'
 import MDXComponent from '@/components/MDXContent'
 import { getProjectTagsData } from "@/utils/tags";
@@ -6,6 +5,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageView from "@/components/PageView";
+import ProjectImage from "@/components/Projects/ProjectImage";
 
 export function generateMetadata({ params }: { params: Projects }): Metadata {
   const project = allProjects.find((project) => project.slug === params.slug)
@@ -32,7 +32,6 @@ export default function ProjectPage({ params }: { params: Projects }) {
     return notFound();
 
   const tagsData = getProjectTagsData(project.tags);
-  const base64data = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNc0PahHgAGewKXqgTxrAAAAABJRU5ErkJggg==";
 
   return (
     <div className='container project-container'>
@@ -70,13 +69,9 @@ export default function ProjectPage({ params }: { params: Projects }) {
       </div>
 
       <div className="project-image">
-        <Image
-          className="project-cover"
+        <ProjectImage 
           src={project.coverImage}
-          alt={project.title}
-          fill
-          placeholder="blur"
-          blurDataURL={base64data}
+          title={project.title}
         />
       </div>
       <ul className='heading-tags'>
