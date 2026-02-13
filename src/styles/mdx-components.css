@@ -155,7 +155,7 @@ code > [data-line]::before {
   content: counter(line);
 }
 
-div[data-rehype-pretty-code-fragment] {
+figure[data-rehype-pretty-code-figure] {
   @apply relative w-full block overflow-hidden dark:bg-dark-2 bg-light-2 border border-solid dark:border-divider-1 border-divider-3 -mt-px mb-8 rounded-[0_0_8px_8px];
 }
 
@@ -163,33 +163,32 @@ div[data-rehype-pretty-code-fragment] {
   @apply text-sm dark:text-secondary-1 text-secondary-2 dark:bg-dark-2 bg-light-2 rounded inline leading-[1.2] self-center mx-1 my-0 px-1.5 py-[3px];
 }
 
-div[data-rehype-pretty-code-fragment] pre code {
+figure[data-rehype-pretty-code-figure] pre code {
   @apply grid tracking-[0] bg-transparent shadow-none leading-6 border-[none];
 }
 
+/* shiki dual theme: activate the correct theme colors per mode */
+[data-line] span {
+  color: var(--shiki-light);
+}
+html.dark [data-line] span {
+  color: var(--shiki-dark);
+}
+
 /* word highlight style */
-span[data-highlighted-chars] {
-  @apply bg-secondary-1/20 py-1 border-b dark:border-secondary-1 border-secondary-2;
+mark[data-highlighted-chars] {
+  @apply bg-secondary-1/20 py-1 border-b dark:border-secondary-1 border-secondary-2 rounded-sm text-inherit;
+}
+mark[data-highlighted-chars] span {
+  color: var(--shiki-light);
+}
+html.dark mark[data-highlighted-chars] span {
+  color: var(--shiki-dark);
 }
 
 /* line highlight style */
 span[data-highlighted-line] {
   @apply border-l-4 dark:border-secondary-1 border-secondary-2 bg-secondary-1/20;
-}
-
-/* avoid display of code twice */
-html.light .pre[data-theme="dark"] {
-  display: none;
-}
-html.light .pre-copy[data-theme="dark"] {
-  display: none;
-} 
-
-html.dark .pre[data-theme="light"] {
-  display: none;
-}
-html.dark .pre-copy[data-theme="light"] {
-  display: none;
 }
 
 /* code head */

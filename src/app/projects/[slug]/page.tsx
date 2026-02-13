@@ -7,8 +7,9 @@ import { notFound } from "next/navigation";
 import PageView from "@/components/PageView";
 import ProjectImage from "@/components/Projects/ProjectImage";
 
-export function generateMetadata({ params }: { params: Projects }): Metadata {
-  const project = allProjects.find((project) => project.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = allProjects.find((project) => project.slug === slug)
 
   return {
     title: {
@@ -26,8 +27,9 @@ export function generateMetadata({ params }: { params: Projects }): Metadata {
   }
 }
 
-export default function ProjectPage({ params }: { params: Projects }) {
-  const project = allProjects.find((project) => project.slug === params.slug)
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = allProjects.find((project) => project.slug === slug)
   if (!project)
     return notFound();
 
@@ -35,7 +37,7 @@ export default function ProjectPage({ params }: { params: Projects }) {
 
   return (
     <div className='container project-container'>
-      <PageView slug={params.slug} category='projects' />
+      <PageView slug={slug} category='projects' />
       <div className="project-heading-head">
         <h1 className="project-heading">
           {project.title}

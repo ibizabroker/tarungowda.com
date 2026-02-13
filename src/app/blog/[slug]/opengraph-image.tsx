@@ -10,8 +10,9 @@ export const size = {
 
 export const contentType = 'image/png';
 
-export default async function Image({ params }: { params: Blog }) {
-  const blog = allBlogs.find((blog) => blog.slug === params.slug)
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const blog = allBlogs.find((blog) => blog.slug === slug)
 
   return new ImageResponse(
     (

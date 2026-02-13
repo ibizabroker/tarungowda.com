@@ -4,9 +4,10 @@ import List from '@/components/Projects/List';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-export function generateMetadata({ params }: { params: any }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const tagData = allProjectTagsData.find((tag) => {
-    return tag.slug === params.slug;
+    return tag.slug === slug;
   });
 
   return {
@@ -24,9 +25,10 @@ export function generateMetadata({ params }: { params: any }): Metadata {
   }
 }
 
-export default function TagsPage({ params }: { params: any }) {
+export default async function TagsPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const tagData = allProjectTagsData.find((tag) => {
-    return tag.slug === params.slug;
+    return tag.slug === slug;
   });
 
   const tagName = tagData?.name

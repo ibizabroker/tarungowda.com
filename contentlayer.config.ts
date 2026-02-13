@@ -1,4 +1,4 @@
-import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files';
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -112,7 +112,8 @@ export const About = defineDocumentType(() => ({
 }))
 
 export default makeSource({ 
-  contentDirPath: 'src/content', 
+  contentDirPath: 'src/content',
+  disableImportAliasWarning: true,
   documentTypes: [Blog, Projects, About],
   mdx: {
     remarkPlugins: [remarkGfm],
