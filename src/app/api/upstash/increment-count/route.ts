@@ -18,7 +18,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return new NextResponse("Category not found.", { status: 400 });
   }
 
-  const ip = req.ip;
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
   if (ip) {
     // Hash the IP and turn it into a hex string
     const buf = await crypto.subtle.digest(
