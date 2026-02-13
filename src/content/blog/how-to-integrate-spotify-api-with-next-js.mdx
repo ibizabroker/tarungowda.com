@@ -51,7 +51,7 @@ http://localhost:3000/?code=AQDYMKmi2iPhuaZycBeyjAU5ruKgmkZFAz7-A0BlcplE5_mMvX7J
 
 <CodeHead lang="terminal"/>
 ```bash
-curl -H "Authorization: Basic <your_base64_encoded_code>"-d grant_type=authorization_code -d code=<your_code_generated_from_browser> -d redirect_uri=http%3A%2F%2Flocalhost:3000%2F https://accounts.spotify.com/api/token
+curl -H "Authorization: Basic <your_base64_encoded_code>" -d grant_type=authorization_code -d code=<your_code_generated_from_browser> -d redirect_uri=http%3A%2F%2Flocalhost:3000%2F https://accounts.spotify.com/api/token
 ```
 - **Note**: When you copy this directly to your terminal it might end up being in multiple lines. Make sure this command is in a **single line**.
 - You will receive a json which would look something like this:
